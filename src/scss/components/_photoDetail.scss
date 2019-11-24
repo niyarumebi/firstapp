@@ -1,0 +1,101 @@
+.PhotoDetail{
+  overflow-y: scroll;
+  position: fixed;
+  z-index: 1500;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  &:before{
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+  }
+  .photo-upper{
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 12px;
+    &.get-scroll{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    .left-area{
+      float: left;
+      .info-wrap{
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .user-name{
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .user-id{
+        font-size: 14px;
+        font-weight: 400;
+        color: #767676;
+      }
+    }
+    .right-area{
+      float: right;
+    }
+  }
+  .bg-wrap{
+    position: relative;
+    margin: 30px auto;
+    max-width: 1150px;
+    min-width: 80%;
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    .btn-close{
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      font-size: 20px;
+      color: #ddd;
+    }
+  }
+  .main-photo{
+    padding: 20px 10px;
+    text-align: center;
+    > img{
+      display: inline-block;
+      vertical-align: middle;
+      width: 80%;
+      max-width: 700px;
+    }
+  }
+  .photo-bottom{
+    padding: 10px 15px;
+    .left-area{
+      float: left;
+      i{
+        margin-left: 10px;
+        vertical-align: middle;
+        font-size: 15px;
+        color: #999;
+      }
+      .loc{
+        vertical-align: middle;
+        margin-left: 5px;
+        font-size: 13px;
+      }
+    }
+    .right-area{
+      float: right;
+      .btn-basic{
+        margin-left: 5px;
+      }
+    }
+  }
+}

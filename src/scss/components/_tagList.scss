@@ -1,0 +1,15 @@
+.TagList{
+  display: inline-block;
+  vertical-align: middle;
+  padding: 5px 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: #f1f1f1;
+  font-size: 15px;
+  font-weight: 400;
+  color: #777;
+  & + .TagList{
+    margin-left: 5px;
+  }
+}

@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Home from "./views/pages/home/Home";
+import Header from "./views/components/Header";
+import Search from "./views/pages/search/Search";
+import TagList from "./views/components/TagList";
+import {Route} from "react-router-dom";
+import Login from "./views/components/Login";
+import Category from "./views/components/Category";
+import Join from "./views/components/Join";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            {/*{Header({*/}
+            {/*today: 111,*/}
+                {/*yes:222*/}
+            {/*}*/}
+            {/*)}*/}
+            {/*<Header today={111} yes={222}/>*/}
+            <Header/>
+
+            <Route path={`/login`} component={Login}/>
+            <Route exact path={`/`} component={Home}/>
+            <Route path={`/category/1`} component={Category}/>
+            <Route path={`/search`} component={Search}/>
+            <Route path={`/join`} component={Join}/>
+
+
+        </div>
+    );
 }
 
 export default App;
