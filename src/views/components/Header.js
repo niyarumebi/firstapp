@@ -12,7 +12,8 @@ function Header (props) {
           //className={cn(((e.scorllTop >= 100vh) && 'get-scroll' ))}
           <div className="Header">
             <div className="upper">
-                <div className="logo">
+                <div className="
+                logo">
                     <svg className="_2m4hn" version="1.1" viewBox="0 0 32 32" width="32" height="32"
                          aria-labelledby="unsplash-home" aria-hidden="false"><title id="unsplash-home">Unsplash
                         Home</title>
