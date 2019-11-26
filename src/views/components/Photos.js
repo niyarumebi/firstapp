@@ -17,7 +17,24 @@ function Photos(props) {
 
     const [curItem, setCurItem] = useState({});
 
-    const _photos = _.chunk(photos, 3);
+    // const _photos = _.chunk(photos, 3);
+
+    //chunk 3 하기 전에 순서 바꿔놓으면 될 거 같은데  앞단에, 나머지 인거 너놓고
+
+    let _photos = new Array(3);
+    
+    console.log("@@ typeof(_photo)", typeof(_photo));
+    _photos = _.map(photos, i => {
+       if(i%3 == 1){
+           _photos[0].push(photos(i));
+       } else if (i%3 == 2){
+           _photos[1].push(photos(i));
+       } else{
+           _photos[2].push(photos(i));
+       }
+    });
+
+    _photos = _.chunk(_photos);
 
     return (
         <div className="Photos">
@@ -26,7 +43,6 @@ function Photos(props) {
                                                          dispatch={dispatch}
                                                          setCurItem={setCurItem}/>)
             }
-
             {/*{*/}
                  {/*_.keys(curItem).length > 0 &&*/}
                  {/*<PhotoDetail photo={curItem}*/}

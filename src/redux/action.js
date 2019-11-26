@@ -11,7 +11,7 @@ const Action = {
 
     Creators: {
         openSidebar : payload => {
-            //한줄로 바까보기
+            //한줄로 바까보기 : ( ) 안에 바로 리턴 값 (우리 지금 action에서는 오브젝트))
             return{
                 type: Action.Types.OPEN_SIDEBAR,
                 payload

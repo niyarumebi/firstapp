@@ -5,8 +5,7 @@
 // import {BrowserRouter} from "react-router-dom";
 // import store from './redux/store';
 // import Action from "./redux/action";
-//
-// //콘솔이 먼저 찍히는 이유는 앱을 감싸서 먼저 만들어져잇기대문이다.
+// //index.js에서 store 콘솔을 찍어도 찍히는 이유는 store가 앱을 감싸서 먼저 만들어져잇기대문이다.
 // console.log("@@ store", store);
 // const state = store.getState();
 // console.log("@@ preState", state);
@@ -27,8 +26,6 @@
 //     </Provider>, document.getElementById('root'));
 
 
-
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -36,6 +33,7 @@ import './scss/style.scss'
 import {BrowserRouter} from "react-router-dom";
 import store from './redux/store';
 import {Provider} from 'react-redux';
+
 
 ReactDOM.render(
     <Provider store={store}>
