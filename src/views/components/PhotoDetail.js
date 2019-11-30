@@ -23,8 +23,8 @@ function PhotoDetail(props) {
                         <div className="left-area">
                             <UserIcon src={photo.user.icon}/>
                             <div className="info-wrap">
-                                <div className="user-name">Patekf djfa</div>
-                                <div className="user-id">@patekf_djfa</div>
+                                <div className="user-name">{photo.user.name}</div>
+                                <div className="user-id">@{photo.user.id}</div>
                             </div>
                         </div>
                         <div className="right-area">
@@ -34,12 +34,12 @@ function PhotoDetail(props) {
                         </div>
                     </div>
                     <div className="main-photo">
-                        <img src={photo.imageUrl} alt=""/>
+                        <img src={photo.urls.regular} alt=""/>
                     </div>
                     <div className="photo-bottom clearfix">
                         <div className="left-area">
                             <i className="material-icons">pets</i>
-                            <span className="loc">Grindelwald, Suiza</span>
+                            <span className="loc">{photo.user.location}</span>
                         </div>
                         <div className="right-area">
                             <div className="btn-basic"><i className="material-icons">share</i> Share</div>

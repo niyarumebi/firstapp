@@ -20,7 +20,7 @@ function PhotoCard(props) {
             // console.log("@@ isOpen", isOpen);
 
         }}>
-            <img src={photo.imageUrl} alt="" className="img"/>
+            <img src={photo.urls.regular} alt="" className="img"/>
             <div className="desc">
 
                 <div className="upper">

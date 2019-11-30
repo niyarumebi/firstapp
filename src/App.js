@@ -2,7 +2,6 @@ import React from 'react';
 import Home from "./views/pages/home/Home";
 import Header from "./views/components/Header";
 import Search from "./views/pages/search/Search";
-import TagList from "./views/components/TagList";
 import {Route} from "react-router-dom";
 import Login from "./views/components/Login";
 import Category from "./views/components/Category";

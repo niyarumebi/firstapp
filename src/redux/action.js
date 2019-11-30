@@ -6,7 +6,9 @@ const Action = {
     //변수로 하면 틀렷을떄 스트링으로만햇을 에러못잡는거 잡기 용이
     Types: {
         OPEN_SIDEBAR : 'OPEN_SIDEBAR',
+        SET_PHOTOS: 'SET_PHOTOS',
         SET_SELECTED_PHOTO: 'SET_SELECTED_PHOTO',
+        SET_SELECTED_USER : 'SET_SELECTED_USER',
     },
 
     Creators: {
@@ -17,24 +19,21 @@ const Action = {
                 payload
             }
         },
+        setPhotos: payload => ({
+           type: Action.Types.SET_PHOTOS,
+           payload
+        }),
         setSelectedPhoto: payload => ({
             type: Action.Types.SET_SELECTED_PHOTO,
             payload
         }),
-
+        setSelectedUser: payload => ({
+            type: Action.Types.SET_SELECTED_USER,
+            payload
+        })
     }
 
 
 };
-
-// const openAction = {
-//     type: 'open',
-//     payload: {}
-// };
-// const a = Acton.Createors.openSidebar(payload: true)
-//var result = {
-//     'OPEN_SIDEBAR',
-//     payload : true
-// }
 
 export default Action;

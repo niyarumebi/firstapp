@@ -13,47 +13,21 @@ function Photos(props) {
         photos = [],
     } = props;
     
-    console.log("@@ props", props);
 
-    const [curItem, setCurItem] = useState({});
-
-    // const _photos = _.chunk(photos, 3);
-
-    //chunk 3 하기 전에 순서 바꿔놓으면 될 거 같은데  앞단에, 나머지 인거 너놓고
-
-    let _photos = new Array(3);
-    
-    console.log("@@ typeof(_photo)", typeof(_photo));
-    _photos = _.map(photos, i => {
-       if(i%3 == 1){
-           _photos[0].push(photos(i));
-       } else if (i%3 == 2){
-           _photos[1].push(photos(i));
-       } else{
-           _photos[2].push(photos(i));
-       }
-    });
-
-    _photos = _.chunk(_photos);
+    const _photos = _.chunk(photos, 3);
 
     return (
         <div className="Photos">
             {
-                _.map(_photos, photoGroup => <PhotoGroup photos={photoGroup}
+                _.map(_photos, group => <PhotoGroup group={group}
                                                          dispatch={dispatch}
-                                                         setCurItem={setCurItem}/>)
-            }
-            {/*{*/}
-                 {/*_.keys(curItem).length > 0 &&*/}
-                 {/*<PhotoDetail photo={curItem}*/}
-                              {/*onClose={() => setCurItem({})}*/}
-                 {/*/>*/}
-             {/*}*/}
 
+                                                         />)
+            }
             {
             _.keys(selectedPhoto).length > 0 &&
             <PhotoDetail photo={selectedPhoto}
-            onClose={() => dispatch(Action.Creators.setSelectedPhoto({}))}
+                         onClose={() => dispatch(Action.Creators.setSelectedPhoto({}))}
             />
             }
         </div>
@@ -63,16 +37,14 @@ function Photos(props) {
 function PhotoGroup(props) {
     const {
         dispatch,
-        photos,
-        setCurItem
+        group,
     } = props;
     return (
         <div className="photo-col">
             {
-                _.map(photos, (photo, i) => <PhotoCard
+                _.map(group, (photo, i) => <PhotoCard
                     key={i}
                     photo={photo}
-                    // showDetail={() => setCurItem(photo)}
                     showDetail={() => dispatch(Action.Creators.setSelectedPhoto(photo))}
                 />)
             }
