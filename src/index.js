@@ -1,3 +1,20 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from "./App";
+import './scss/style.scss';
+import {Provider} from "react-redux";
+import {Router} from "react-router-dom";
+import store from "./redux/store";
+import {HISTORY} from './helpers/HistoryHelper';
+
+
+ReactDOM.render(
+  <Provider store={store}>
+      <Router history={HISTORY}>
+          <App/>
+      </Router>
+  </Provider>, document.getElementById('root'));
+
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 // import App from './App';
@@ -26,18 +43,22 @@
 //     </Provider>, document.getElementById('root'));
 
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './scss/style.scss'
-import {BrowserRouter} from "react-router-dom";
-import store from './redux/store';
-import {Provider} from 'react-redux';
-
-
-ReactDOM.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>, document.getElementById('root'));
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import App from './App';
+// import './scss/style.scss'
+// import {BrowserRouter, Router} from "react-router-dom";
+// import store from './redux/store';
+// import {Provider} from 'react-redux';
+// import {HISTORY} from './helpers/HistoryHelper';
+//
+//
+// ReactDOM.render(
+//     <Provider store={store}>
+//         {/*<BrowserRouter>*/}
+//             {/*<App />*/}
+//         {/*</BrowserRouter>*/}
+//         <Router history={HISTORY}>
+//             <App/>
+//         </Router>
+//     </Provider>, document.getElementById('root'));

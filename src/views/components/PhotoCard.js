@@ -6,7 +6,7 @@ function PhotoCard(props) {
 
     const {
         photo = {}, // '기본값' 기냥 여기다 이렇게 쓰면 디폴트값 설정되는것임.
-        showDetail = () => {}
+        showDetail = () => {},
     } = props;
 
     const [isOpen, setIsOpen] = useState(false);

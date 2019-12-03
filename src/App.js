@@ -7,6 +7,8 @@ import Login from "./views/components/Login";
 import Category from "./views/components/Category";
 import Join from "./views/components/Join";
 
+import User from "./views/pages/user/User";
+
 function App() {
     return (
         <div className="App">
@@ -18,11 +20,12 @@ function App() {
             {/*<Header today={111} yes={222}/>*/}
             <Header/>
 
-            <Route path={`/login`} component={Login}/>
-            <Route exact path={`/`} component={Home}/>
-            <Route path={`/category/1`} component={Category}/>
-            <Route path={`/search`} component={Search}/>
-            <Route path={`/join`} component={Join}/>
+            <Route exact path={'/'} component={Home}/>
+            <Route path={'/login'} component={Login}/>
+            <Route path={'/category/1'} component={Category}/>
+            <Route path={'/search'} component={Search}/>
+            <Route path={'/join'} component={Join}/>
+            <Route path={'/user:username'} component={User}/>
 
 
         </div>

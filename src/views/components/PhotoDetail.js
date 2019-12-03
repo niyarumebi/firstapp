@@ -3,12 +3,14 @@ import UserIcon from "./UserIcon";
 import PhotoCard from "./PhotoCard";
 
 import * as _ from 'lodash';
+import {navigate} from "../../helpers/HistoryHelper";
 
 function PhotoDetail(props) {
 
     const {
         photo = {},
         onClose = () => {},
+        onClickUserLink = () => {},
     } = props;
 
 
@@ -23,7 +25,7 @@ function PhotoDetail(props) {
                         <div className="left-area">
                             <UserIcon src={photo.user.icon}/>
                             <div className="info-wrap">
-                                <div className="user-name">{photo.user.name}</div>
+                                <div className="user-name" onClick={() => navigate(`/users/${photo.username}`)}>{photo.username}</div>
                                 <div className="user-id">@{photo.user.id}</div>
                             </div>
                         </div>

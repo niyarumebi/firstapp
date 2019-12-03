@@ -12,23 +12,26 @@ function Photos(props) {
         selectedPhoto,
         photos = [],
     } = props;
-    
+
 
     const _photos = _.chunk(photos, 3);
 
     return (
         <div className="Photos">
             {
-                _.map(_photos, group => <PhotoGroup group={group}
-                                                         dispatch={dispatch}
+                _.map(_photos, (group, i) => <PhotoGroup
+                    key={i}
+                    group={group}
+                    dispatch={dispatch}
 
-                                                         />)
+                />)
             }
             {
-            _.keys(selectedPhoto).length > 0 &&
-            <PhotoDetail photo={selectedPhoto}
-                         onClose={() => dispatch(Action.Creators.setSelectedPhoto({}))}
-            />
+                _.keys(selectedPhoto).length > 0 &&
+                <PhotoDetail photo={selectedPhoto}
+                             onClose={() => dispatch(Action.Creators.updateState({}))}
+                             onClickUserLink={(username) => dispatch(Action.Creators.fetchUserProfile(username))}
+                />
             }
         </div>
     )
@@ -45,7 +48,7 @@ function PhotoGroup(props) {
                 _.map(group, (photo, i) => <PhotoCard
                     key={i}
                     photo={photo}
-                    showDetail={() => dispatch(Action.Creators.setSelectedPhoto(photo))}
+                    showDetail={() => dispatch(Action.Creators.updateState({selectedPhoto: photo}))}
                 />)
             }
         </div>
@@ -64,7 +67,11 @@ function PhotoGroup(props) {
 //foo는 이 photo.js에서만 쓸 커스텀 함수 하고싶을떄 일케쓰면됨
 //state안으로 접근안하고 바로 photo랑 병ㄱ렬로 놓게 !! ...으로 state전개해주기
 // export default connect((state) => ({state, foo: function foo(){ return 'hi';}}), (dispatch) => ({dispatch}))(Photos);
-export default connect((state) => ({...state, foo: function foo(){ return 'hi';}}), (dispatch) => ({dispatch}))(Photos);
+export default connect((state) => ({
+    ...state, foo: function foo() {
+        return 'hi';
+    }
+}), (dispatch) => ({dispatch}))(Photos);
 // export default Photos;
 
 //설명
