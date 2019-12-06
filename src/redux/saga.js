@@ -26,7 +26,7 @@ export default function* (){
         //프론트 액션 > 디스페츼 (원래 리듀서로갈거) > 사가가 인터셉트함takeLage가 > 리듀서로 다시 보내줘야함 > 이후 다시 스토어로.
         //여기서 리듀서로 다시보내주는게 put임.
         yield put(Action.Creators.updateState({photos:result.data}));
-    })
+    });
 
     yield takeLatest(Action.Types.FETCH_USER_PROFILE, function* (){
         const result = yield call(api.fetchUserProfile);

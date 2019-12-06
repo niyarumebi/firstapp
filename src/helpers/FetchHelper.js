@@ -40,7 +40,8 @@ const axiosInstance = axios.create({
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': ACCESS_KEY
+        'Authorization': ACCESS_KEY,
+        "scope": "public read_photos write_photos",
     }
 });
 
