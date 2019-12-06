@@ -218,3 +218,47 @@ input:disabled {
 body,html {
   height: 100%;
 }
+
+
+.btn-basic{
+  opacity: 0.8;
+  overflow-y: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  align-items: center;
+  padding: 0 15px;
+  background: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  background: rgba(255,255,255,.9);
+  border-radius: 3px;
+  border: 1px solid #888;
+  text-align: center;
+  line-height: 30px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #565656;
+  -webkit-transition: all .1s;
+  -moz-transition: all .1s;
+  -ms-transition: all .1s;
+  -o-transition: all .1s;
+  transition: all .1s;
+  cursor: pointer;
+  &:hover{
+    opacity: 1;
+  }
+  & + .btn-basic{
+    margin-left: 10px;
+  }
+  i{
+    vertical-align: middle;
+    font-size: 18px;
+  }
+  &.long{
+    min-width: 150px;
+  }
+  &.like-active{
+    background: pink;
+    color: white;
+  }
+}

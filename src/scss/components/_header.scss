@@ -19,6 +19,9 @@
       align-items: center;
     }
     .logo {
+      svg{
+        cursor: pointer;
+      }
       .txt-wrap{
         display: flex;
         flex-direction: column;

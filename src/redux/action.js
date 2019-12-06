@@ -14,10 +14,12 @@ const Action = {
         FETCH_USER_PORTFOLIOLINK:'FETCH_USER_PORTFOLIOLINK',
         FETCH_USER_PHOTOS:'FETCH_USER_PHOTOS',
         FETCH_USER_STASTICS:'FETCH_USER_STASTICS',
-        // OPEN_SIDEBAR : 'OPEN_SIDEBAR',
-        // SET_PHOTOS: 'SET_PHOTOS',
-        // SET_SELECTED_PHOTO: 'SET_SELECTED_PHOTO',
-        // SET_SELECTED_USER : 'SET_SELECTED_USER',
+        FETCH_SEARCH_RESULT: 'FETCH_SEARCH_RESULT',
+        FETCH_RELATED_COLLECTION: 'FETCH_RELATED_COLLECTION',
+        POST_LIKE_PHOTO: 'POST_LIKE_PHOTO',
+        POST_UN_LIKE_PHOTO: 'POST_UN_LIKE_PHOTO',
+        ADD_PHOTO_TO_COLLECTIONS: 'ADD_PHOTO_TO_COLLECTIONS',
+        CREATE_NEW_COLLECTIONS: 'CREATE_NEW_COLLECTIONS',
     },
 
     Creators: {
@@ -26,9 +28,22 @@ const Action = {
             payload
         }),
 
+        //saga에서 할거니까 payload 비어있음..
         fetchPhotos: () => ({
             type: Action.Types.FETCH_PHOTOS
         }),
+
+        //근데 아래의 fetch들은 데이터 들어와야하니 payload 받아야하지않나..
+        fetchSearchResult: payload => ({
+            type:Action.Types.FETCH_SEARCH_RESULT,
+            payload
+        }),
+        fetchRelatedCollections:() => ({
+            type:Action.Types.FETCH_RELATED_COLLECTION
+        }),
+
+
+
         fetchUserProfile: () => ({
             type: Action.Types.FETCH_USER_PROFILE
 
@@ -43,27 +58,29 @@ const Action = {
         }),
         fetchUserStatistics: () => ({
             type: Action.Types.FETCH_USER_STASTICS
+        }),
 
+        postLikePhoto: payload => ({
+            type: Action.Types.POST_LIKE_PHOTO,
+            payload
+            //photo_id
+        }),
+
+        postUnLikePhoto: payload => ({
+            type: Action.Types.POST_UN_LIKE_PHOTO,
+            payload
+            //photo_id
+        }),
+        addPhotoToCollections: () => ({
+            type: Action.Types.ADD_PHOTO_TO_COLLECTIONS,
+            //collection_id, photo_id
+        }),
+
+        createNewCollections: () => ({
+            type:Action.Types.CREATE_NEW_COLLECTIONS
+            //title, description, private
         })
-        // openSidebar : payload => {
-        //     //한줄로 바까보기 : ( ) 안에 바로 리턴 값 (우리 지금 action에서는 오브젝트))
-        //     return{
-        //         type: Action.Types.OPEN_SIDEBAR,
-        //         payload
-        //     }
-        // },
-        // setPhotos: payload => ({
-        //    type: Action.Types.SET_PHOTOS,
-        //    payload
-        // }),
-        // setSelectedPhoto: payload => ({
-        //     type: Action.Types.SET_SELECTED_PHOTO,
-        //     payload
-        // }),
-        // setSelectedUser: payload => ({
-        //     type: Action.Types.SET_SELECTED_USER,
-        //     payload
-        // })
+
     }
 };
 

@@ -4,18 +4,32 @@ import PhotoCard from "./PhotoCard";
 
 import * as _ from 'lodash';
 import {navigate} from "../../helpers/HistoryHelper";
+import {connect} from "react-redux";
+import cn from 'classnames';
+import Action from "../../redux/action";
 
 function PhotoDetail(props) {
 
     const {
         photo = {},
-        onClose = () => {},
-        onClickUserLink = () => {},
+        onClose = () => {
+        },
+        dispatch,
+        likedByUser,
     } = props;
 
+    console.log("@@ photo detail", likedByUser);
+
+    // const [likedByUser, setLikedByUser] = useState();
 
     return (
-        <div className="PhotoDetail">
+        <div className="PhotoDetail"
+             onKeyUp={(e) => {
+                 console.log("@@ e.keyCode", e.keyCode);
+                 if (e.keyCode === 13) {
+                     onClose();
+                 }
+             }}>
             <div className="bg-wrap">
                 <div className="btn-close" onClick={() => onClose()}>
                     <i className="material-icons">cancel</i>
@@ -25,12 +39,22 @@ function PhotoDetail(props) {
                         <div className="left-area">
                             <UserIcon src={photo.user.icon}/>
                             <div className="info-wrap">
-                                <div className="user-name" onClick={() => navigate(`/users/${photo.username}`)}>{photo.username}</div>
+                                <div className="user-name"
+                                     onClick={() => navigate(`/@${photo.user.username}`)}>{photo.user.username}</div>
                                 <div className="user-id">@{photo.user.id}</div>
                             </div>
                         </div>
                         <div className="right-area">
-                            <div className="btn-basic"><i className="material-icons">favorite</i></div>
+                            <div className={cn('btn-basic', {'like-active': likedByUser})}
+                                 onClick={() => {
+                                     if(likedByUser){
+                                         dispatch(Action.Creators.postUnLikePhoto(photo.id))
+                                     } else{
+                                         dispatch(Action.Creators.postLikePhoto(photo.id))
+                                     }
+                                 }}>
+                                <i className="material-icons">favorite</i>
+                            </div>
                             <div className="btn-basic"><i className="material-icons">add</i>Collect</div>
                             <div className="btn-basic long">Download</div>
                         </div>
@@ -62,4 +86,4 @@ function PhotoDetail(props) {
     )
 }
 
-export default PhotoDetail;
+export default connect(state => ({...state}), dispatch => ({dispatch}))(PhotoDetail);

@@ -8,15 +8,12 @@ import Action from './action';
 import api from './api'
 import {navigate} from "../helpers/HistoryHelper";
 //
-// const sagaFn = function* (){
-//     yield
-// };
 // 위에 함수 임포트해서 기능만 쓸거니까 이름 따로 필요없으니 아래처럼 바로 그냥 리턴하자
-export default function* (){
+export default function* () {
     //all은 차례대로 모두 실행하라는 뜻
     // yield all()
 
-    yield takeLatest(Action.Types.FETCH_PHOTOS, function* (){
+    yield takeLatest(Action.Types.FETCH_PHOTOS, function* () {
         // alert('take1!')
         //call은 첫번째 인자 실행 (==첫번째인자는 함수여야겟지?)ㅇㅇ
         const result = yield call(api.fetchPhotos);// 두번째 인자가있다면 그거 넣고 첫째함수 실행함
@@ -25,15 +22,46 @@ export default function* (){
 
         //프론트 액션 > 디스페츼 (원래 리듀서로갈거) > 사가가 인터셉트함takeLage가 > 리듀서로 다시 보내줘야함 > 이후 다시 스토어로.
         //여기서 리듀서로 다시보내주는게 put임.
-        yield put(Action.Creators.updateState({photos:result.data}));
+        yield put(Action.Creators.updateState({photos: result.data}));
     });
 
-    yield takeLatest(Action.Types.FETCH_USER_PROFILE, function* (){
+    yield takeLatest(Action.Types.FETCH_SEARCH_RESULT, function* (action) {
+        const result = yield call(api.fetchSearchResult, action.payload);
+        console.log(`[saga] [fetchSearchResult]`, result.data);
+        // navigate('/search');
+
+        yield put(Action.Creators.updateState({photos: result.data}));
+    });
+
+    yield takeLatest(Action.Types.POST_LIKE_PHOTO, function*(action){
+       const result = yield call(api.postLikePhoto, action.payload);
+        console.log(`[saga] [postLikePhoto]`, result.data);
+
+        yield put(Action.Creators.updateState({likedByUser: true}))
+
+    });
+
+    yield takeLatest(Action.Types.POST_UN_LIKE_PHOTO, function*(action){
+        const result = yield call(api.postUnLikePhoto, action.payload);
+        console.log(`[saga] [postUNLikePhoto]`, result.data);
+
+        yield put(Action.Creators.updateState({likedByUser: false}))
+
+    });
+
+    yield takeLatest(Action.Types.FETCH_RELATED_COLLECTION, function* () {
+       const result = yield call(api.fetchRelatedCollections);
+        console.log(`[saga] [fetchRelatedCollections]`, result);
+        yield put(Action.Creators.updateState({relatedCollections:result.data}));
+        navigate('/collections')
+
+    });
+
+    yield takeLatest(Action.Types.FETCH_USER_PROFILE, function* () {
         const result = yield call(api.fetchUserProfile);
         console.log(`[saga] [fetchUserProfile]`, result);
-
-        yield put(Action.Creators.updateState({userProfile:result.data}));
-
         // yield navigate('/user');
-    })
+        yield put(Action.Creators.updateState({userProfile: result.data}));
+    });
+
 }

@@ -5,7 +5,7 @@ function Collections (props) {
   const {} = props;
   
   return (
-          <div className="Collections">
+          <div className="Collection">
             TaggedGroup
               
           </div>
