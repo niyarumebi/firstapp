@@ -10,12 +10,14 @@ function Photos(props) {
     const {
         dispatch,
         selectedPhoto,
-        relatedCollections,
         photos = [],
     } = props;
 
+    // const [selectedPhoto, setSelectedPhoto] = useState({});
 
     const _photos = _.chunk(photos, 3);
+    // const chunkedPhotos = _.chunk(photos, 3);
+    // console.log("@@ chunkedPhotos", chunkedPhotos);
 
     return (
         <div className="Photos">
@@ -27,18 +29,38 @@ function Photos(props) {
 
                 />)
             }
+            {/*{*/}
+            {/*_.map(chunkedPhotos, (chunk, c) =>*/}
+            {/*<div className="photo-col" key={c}>*/}
+            {/*{*/}
+            {/*_.map(chunk, photos => {*/}
+            {/*_.map(photos, (photo, i) => <PhotoCard*/}
+            {/*key={i}*/}
+            {/*photo={photo}*/}
+            {/*showDetail={() => setSelectedPhoto(photo)}*/}
+            {/*// showDetail={() => dispatch(Action.Creators.updateState({selectedPhoto: photo}))}*/}
+            {/*/>*/}
+            {/*)*/}
+            {/*})*/}
+            {/*}*/}
+            {/*</div>*/}
+            {/*)*/}
+            {/*}*/}
             {
                 _.keys(selectedPhoto).length > 0 &&
                 <PhotoDetail photo={selectedPhoto}
-                             fetchRelatedCollections={() => dispatch(Action.Creators.fetchRelatedCollections(selectedPhoto.id))}
-                             onClose={() => {dispatch(Action.Creators.updateState({selectedPhoto: {}}))}}
+                             onClose={() => {
+                                 dispatch(Action.Creators.updateState({selectedPhoto: {}}))
+                             }}
+                    // fetchRelatedCollections={() => dispatch(Action.Creators.fetchRelatedCollections(selectedPhoto.id))}
 
-                             onClickUserLink={(username) => dispatch(Action.Creators.fetchUserProfile(username))}
+                    // onClickUserLink={(username) => dispatch(Action.Creators.fetchUserProfile(username))}
                 />
             }
         </div>
     )
 }
+
 
 function PhotoGroup(props) {
     const {
@@ -58,7 +80,7 @@ function PhotoGroup(props) {
     )
 }
 
-export default connect((state) => ({...state}), (dispatch) => ({dispatch}))(Photos);
+export default connect(state => ({}), (dispatch) => ({dispatch}))(Photos); //(state) => ({...state})
 //무조건 바로 스토어로 연결해서 빨대꼽는애 , = 스토어가 가지고잇는 스테이트 값 가져올수잇음
 //커넥은 인자로 함수 두개 받음 현재스테이트 알아야하고state, 랜더링해야하니까 dispatch
 //connect((state) => {}, (dispatch) => {})()  :: 앞에 함수인자받은애가 리턴을 함수로 하기 애 (연결하려는 컴포넌트).

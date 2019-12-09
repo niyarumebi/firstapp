@@ -7,15 +7,18 @@ import Action from "./action";
 const initialState = {
     isLoggedIn: false,
 
-    //test용으로 {}대신 null 넣었음..
+    //test용으로 {}대신 null 넣었음.. 배열은 []로해줘야함, 아니면 null of 나서....?????
     selectedPhoto: null,
-    selectedUser: null,
+    // selectedUser: null,
     userProfile: null,
-    keyword: '',
-    searchResult: null,
+    keyword: null,
+    searchResult: [],
     likedByUser: false,
-    relatedCollections: null,
+    relatedCollections: [],
+    relatedPhotos: [],
+    recentPhotos: [],
 };
+
 
 //변수에 있는 action이랑 임포트한 Action의 차이..? action은 현재 유동적으로 유저의 이벤트 발현에 의해 담겨지는 액션이고, Action은 선언해놓은거 가져온거잖아,,
 //리듀서가 업데이트해주는거 > 스토어

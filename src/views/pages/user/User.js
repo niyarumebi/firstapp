@@ -9,7 +9,6 @@ function User (props) {
 
 
   const params = props.match.params.username;
-  console.log("@@ props", props);
 
   useEffect(() => {
       // dispatch

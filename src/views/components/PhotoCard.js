@@ -8,8 +8,7 @@ function PhotoCard(props) {
     } = props;
 
     return (
-        <div className="PhotoCard" onClick={(e) => {
-            e.stopPropagation()
+        <div className="PhotoCard" onClick={() => {
             showDetail()
         }}>
             <img src={photo.urls.regular} alt="" className="img"/>

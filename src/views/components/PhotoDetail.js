@@ -7,25 +7,29 @@ import {navigate} from "../../helpers/HistoryHelper";
 import {connect} from "react-redux";
 import cn from 'classnames';
 import Action from "../../redux/action";
+import Photos from "./Photos";
 
 function PhotoDetail(props) {
 
     const {
         photo = {},
+        relatedPhotos,
         onClose = () => {
         },
         dispatch,
         likedByUser,
     } = props;
 
-    console.log("@@ photo detail", likedByUser);
-
-    // const [likedByUser, setLikedByUser] = useState();
+    useEffect(() => {
+        dispatch(Action.Creators.fetchRelatedPhotos('note'))
+        console.log("@@ relatedPhotos", relatedPhotos);
+    }, []);
+    {/* 창 esc로 끄는 건 밖에서 window.e 캐치해서 onCLose로 연결해줘야할*/}
 
     return (
+
         <div className="PhotoDetail"
              onKeyUp={(e) => {
-                 console.log("@@ e.keyCode", e.keyCode);
                  if (e.keyCode === 13) {
                      onClose();
                  }
@@ -75,10 +79,14 @@ function PhotoDetail(props) {
                 </div>
 
 
-                <div className="related-photos-wrap">
+x                <div className="related-photos-wrap">
+                    {/*{*/}
+                        {/*_.map(photo.related, (r_photo, i) =>*/}
+                            {/*(<PhotoCard key={i} photo={r_photo}/>))*/}
+                    {/*}*/}
+                    {/*<Photos photos={relatedPhotos}/>*/}
                     {
-                        _.map(photo.related, (r_photo, i) =>
-                            (<PhotoCard key={i} photo={r_photo}/>))
+                        relatedPhotos.length > 0 &&  <Photos photos={relatedPhotos}/>
                     }
                 </div>
             </div>

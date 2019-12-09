@@ -2,8 +2,10 @@ import FecthHelper from "../helpers/FetchHelper";
 
 const api = {
   fetchPhotos: () => FecthHelper.fetchJsonGet('/photos'),
-  fetchSearchResult: keyword => FecthHelper.fetchJsonGet(`search/photos?=page=1&query=${keyword}`),
-  fetchRelatedCollections: id => FecthHelper.fetchJsonGet(`/collections/${id}/related`),
+  fetchSearchResult: keyword => FecthHelper.fetchJsonGet(`/search/photos?=page=1&query=${keyword}`),
+  // fetchRelatedCollections: id => FecthHelper.fetchJsonGet(`/collections/${id}/related`),
+  fetchRelatedPhotos: keyword => FecthHelper.fetchJsonGet(`/search/photos?=page=1&query=${keyword}`),
+
 
   /**
    * user api

@@ -22,15 +22,20 @@ export default function* () {
 
         //프론트 액션 > 디스페츼 (원래 리듀서로갈거) > 사가가 인터셉트함takeLage가 > 리듀서로 다시 보내줘야함 > 이후 다시 스토어로.
         //여기서 리듀서로 다시보내주는게 put임.
-        yield put(Action.Creators.updateState({photos: result.data}));
+        yield put(Action.Creators.updateState({recentPhotos: result.data}));
     });
 
     yield takeLatest(Action.Types.FETCH_SEARCH_RESULT, function* (action) {
         const result = yield call(api.fetchSearchResult, action.payload);
         console.log(`[saga] [fetchSearchResult]`, result.data);
-        // navigate('/search');
+        yield put(Action.Creators.updateState({searchResult: result.data.results, keyword: action.payload}));
+        navigate('/search');
+    });
 
-        yield put(Action.Creators.updateState({photos: result.data}));
+    yield takeLatest(Action.Types.FETCH_RELATED_PHOTOS, function* (action) {
+        const result = yield call(api.fetchRelatedPhotos, action.payload);
+        console.log(`[saga] [fetchRelatedPhotos]`, result.data.results);
+        yield put(Action.Creators.updateState({relatedPhotos: result.data.results, keyword: action.payload}));
     });
 
     yield takeLatest(Action.Types.POST_LIKE_PHOTO, function*(action){
@@ -48,14 +53,14 @@ export default function* () {
         yield put(Action.Creators.updateState({likedByUser: false}))
 
     });
-
-    yield takeLatest(Action.Types.FETCH_RELATED_COLLECTION, function* () {
-       const result = yield call(api.fetchRelatedCollections);
-        console.log(`[saga] [fetchRelatedCollections]`, result);
-        yield put(Action.Creators.updateState({relatedCollections:result.data}));
-        navigate('/collections')
-
-    });
+    //
+    // yield takeLatest(Action.Types.FETCH_RELATED_COLLECTION, function* () {
+    //    const result = yield call(api.fetchRelatedCollections);
+    //     console.log(`[saga] [fetchRelatedCollections]`, result);
+    //     yield put(Action.Creators.updateState({relatedCollections:result.data}));
+    //     navigate('/collections')
+    //
+    // });
 
     yield takeLatest(Action.Types.FETCH_USER_PROFILE, function* () {
         const result = yield call(api.fetchUserProfile);

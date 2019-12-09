@@ -8,6 +8,8 @@ const Action = {
         UPDATE_STATE: 'UPDATE_STATE',
 
         FETCH_PHOTOS: 'FETCH_PHOTOS',
+        FETCH_SEARCH_RESULT: 'FETCH_SEARCH_RESULT',
+        FETCH_RELATED_PHOTOS: 'FETCH_RELATED_PHOTOS',
 
         //user 관련  cmd shift u 로 하면 전부 대/소문자로 한번에 바꿔줌
         FETCH_USER_PROFILE: 'FETCH_USER_PROFILE',
@@ -15,8 +17,7 @@ const Action = {
         FETCH_USER_PHOTOS:'FETCH_USER_PHOTOS',
         FETCH_USER_STASTICS:'FETCH_USER_STASTICS',
 
-        FETCH_SEARCH_RESULT: 'FETCH_SEARCH_RESULT',
-        FETCH_RELATED_COLLECTION: 'FETCH_RELATED_COLLECTION',
+
 
         POST_LIKE_PHOTO: 'POST_LIKE_PHOTO',
         POST_UN_LIKE_PHOTO: 'POST_UN_LIKE_PHOTO',
@@ -41,8 +42,9 @@ const Action = {
             type:Action.Types.FETCH_SEARCH_RESULT,
             payload
         }),
-        fetchRelatedCollections:() => ({
-            type:Action.Types.FETCH_RELATED_COLLECTION
+        fetchRelatedPhotos:payload => ({
+            type:Action.Types.FETCH_RELATED_PHOTOS,
+            payload
         }),
 
 
