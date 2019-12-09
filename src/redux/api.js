@@ -2,7 +2,7 @@ import FecthHelper from "../helpers/FetchHelper";
 
 const api = {
   fetchPhotos: () => FecthHelper.fetchJsonGet('/photos'),
-  fetchSearchResult: keyword => FecthHelper.fetchJsonGet(`/photos?=page=1&query=${keyword}`),
+  fetchSearchResult: keyword => FecthHelper.fetchJsonGet(`search/photos?=page=1&query=${keyword}`),
   fetchRelatedCollections: id => FecthHelper.fetchJsonGet(`/collections/${id}/related`),
 
   /**
@@ -15,8 +15,8 @@ const api = {
   fetchUserPhotos : username => FecthHelper.fetchJsonGet(`/users/${username}/photos`),
   fetchUserStatistics : id => FecthHelper.fetchJsonGet(`/photos/${id}/statistics`),
 
-  postLikePhoto:photo_id => FecthHelper.fetchJsonPost(`/photos/${photo_id}/like`),
-  postUnLikePhoto:photo_id => FecthHelper.fetchJsonDelete(`/photos/${photo_id}/like`),
+  postLikePhoto:id => FecthHelper.fetchJsonPost(`/photos/${id}/like`),
+  postUnLikePhoto:id => FecthHelper.fetchJsonDelete(`/photos/${id}/like`),
 
 };
 

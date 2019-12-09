@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import Photos from "../../components/Photos";
+import {connect} from "react-redux";
+import Header from "../../components/Header";
 
 function Search (props) {
 
   const {
-      photos = {}
+      searchResult = {}
   } = props;
-
-  console.log("@@ searchResult", photos);
 
   return (
           <div className="Search">
-            Search
 
-              <Photos photos={photos}/>
+              <Header/>
+
+              <Photos photos={searchResult}/>
           </div>
       )
 }
 
-export default Search;
+export default connect(state => ({...state}), dispatch => ({dispatch}))(Search);

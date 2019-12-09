@@ -1,15 +1,21 @@
 .TagList{
-  display: inline-block;
-  vertical-align: middle;
-  padding: 5px 10px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  background: #f1f1f1;
-  font-size: 15px;
-  font-weight: 400;
-  color: #777;
-  & + .TagList{
-    margin-left: 5px;
+  a{ //Link로 안먹히내 a로 해야
+    opacity: 0.8;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 7px;
+    padding: 5px 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: #f1f1f1;
+    font-size: 15px;
+    font-weight: 400;
+    color: #777;
+    & + a{
+      opacity: 1;
+      margin-left: 7px;
+
+    }
   }
 }

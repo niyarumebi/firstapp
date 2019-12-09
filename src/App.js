@@ -8,6 +8,8 @@ import Category from "./views/components/Category";
 import Join from "./views/components/Join";
 
 import User from "./views/pages/user/User";
+import Collections from "./views/pages/collections/Collections";
+import Footer from "./views/components/Footer";
 
 function App() {
     return (
@@ -22,11 +24,14 @@ function App() {
 
             <Route exact path={'/'} component={Home}/>
             <Route path={'/login'} component={Login}/>
+            <Route path={'/join'} component={Join}/>
+
+            <Route path={'/collections'} component={Collections}/>
             <Route path={'/category/1'} component={Category}/>
             <Route path={'/search'} component={Search}/>
-            <Route path={'/join'} component={Join}/>
             <Route path={'/user:username'} component={User}/>
 
+            <Footer/>
 
         </div>
     );

@@ -21,8 +21,6 @@ const initialState = {
 //리듀서가 업데이트해주는거 > 스토어
 //스토어에 연결하고싶을떄 connect사용
 const reducer = (state = initialState, action) => {
-    console.log("@@ action in reducer.js", action);
-
     switch (action.type) {
         default:
             return state; // return은 뭐 안써주면 undefiend > 그러면 스테이트가 다 날라감

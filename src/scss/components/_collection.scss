@@ -1,0 +1,66 @@
+.Collections{
+  display: flex;
+  max-width: 1320px;
+  margin: 0 auto; //랑 같이해서 중앙정렬도 맞춰줘야하나?
+  flex-wrap: wrap;
+}
+.Collection{
+  display: flex;
+  flex-direction: column;
+  width: 415px;
+  margin-bottom: 48px;
+  & + .Collection{
+    margin-left: 24px;
+  }
+  &:hover{
+    .thumbs-wrap{
+      opacity: 0.8;
+    }
+  }
+  .thumbs-wrap{
+    display: flex;
+    height: 290px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    .col{
+      display: flex;
+      width: 290px;
+      padding-right: 2px;
+      img{
+        width: 100%;
+      }
+    }
+    .col2{
+      display: flex;
+      flex-direction: column;
+      width: 125px;
+      .thumb{
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        background: #f1f1f1;
+        img{
+          height: 100%;
+        }
+        &:nth-child(1){
+          margin-bottom: 2px;
+        }
+      }
+    }
+  }
+  .desc-wrap{
+    padding-top: 5px;
+    .title{
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .summary{
+      font-size: 15px;
+      font-weight: 400;
+      color: #888;
+    }
+  }
+}

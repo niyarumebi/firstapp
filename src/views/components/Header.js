@@ -34,7 +34,7 @@ function Header (props) {
 
                 <div className="tools">
                     <div className="links">
-                        <Link to={'/collection'} className="link">Collections</Link>
+                        <Link to={'/collections'} className="link">Collections</Link>
                         <Link to={'/explore'} className="link">Explore</Link>
                         <div className="link">
                             <i className="material-icons">more_horiz</i>
