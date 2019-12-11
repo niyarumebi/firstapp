@@ -28,7 +28,7 @@
     bottom: 0;
     z-index: 1;
     font-weight: 400;
-    color: #767676;
+    color: $gray;
     -webkit-transition: all 0.15s ease-in-out;
     -moz-transition: all 0.15s ease-in-out;
     -ms-transition: all 0.15s ease-in-out;
@@ -71,7 +71,7 @@
       margin-top: 8px;
       font-size: 13px;
       font-weight: 300;
-      color: #ddd;
+      color: $gray;
       cursor: pointer;
       i{
         font-size: 17px;

@@ -1,0 +1,37 @@
+.Collections{
+  margin: 0 auto; //랑 같이해서 중앙정렬도 맞춰줘야하나?
+  padding: 0 20px;
+  .align-wrap{
+    display: flex;
+    justify-content: center;
+  }
+
+  .collection-wrap{
+    display: flex;
+    width: 1320px;
+    flex-wrap: wrap;
+    margin: -24px -12px;
+  }
+  .title-wrap{
+    max-width: 1320px;
+    margin: 60px auto 90px;
+    .title{
+      margin-bottom: 10px;
+      font-size:40px;
+      font-weight: 600;
+      color: $black;
+    }
+    .msg{
+      line-height: 1.5;
+      a{
+        opacity: 0.7;
+        display: block;
+        text-decoration: underline;
+        color: $black;
+        &:hover{
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

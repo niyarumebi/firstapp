@@ -14,26 +14,39 @@ function PhotoDetail(props) {
     const {
         photo = {},
         relatedPhotos,
-        onClose = () => {
-        },
+        onClose = () => {},
         dispatch,
-        likedByUser,
     } = props;
 
     useEffect(() => {
-        dispatch(Action.Creators.fetchRelatedPhotos('note'))
-        console.log("@@ relatedPhotos", relatedPhotos);
+        dispatch(Action.Creators.fetchRelatedPhotos('note'));
     }, []);
     {/* 창 esc로 끄는 건 밖에서 window.e 캐치해서 onCLose로 연결해줘야할*/}
 
-    return (
 
+    const [scrollY, setScrollY] = useState(0);
+    function logit() {
+        setScrollY(window.pageYOffset);
+    }
+    useEffect(() => {
+        function watchScroll() {
+            window.addEventListener("scroll", logit);
+        }
+        watchScroll();
+        // Remove listener (like componentWillUnmount)
+        return () => {
+            window.removeEventListener("scroll", logit);
+        };
+    });
+
+    return (
         <div className="PhotoDetail"
              onKeyUp={(e) => {
                  if (e.keyCode === 13) {
                      onClose();
                  }
              }}>
+
             <div className="bg-wrap">
                 <div className="btn-close" onClick={() => onClose()}>
                     <i className="material-icons">cancel</i>
@@ -49,14 +62,7 @@ function PhotoDetail(props) {
                             </div>
                         </div>
                         <div className="right-area">
-                            <div className={cn('btn-basic', {'like-active': likedByUser})}
-                                 onClick={() => {
-                                     if(likedByUser){
-                                         dispatch(Action.Creators.postUnLikePhoto(photo.id))
-                                     } else{
-                                         dispatch(Action.Creators.postLikePhoto(photo.id))
-                                     }
-                                 }}>
+                            <div className={cn('btn-basic', {'like-active': false})}>
                                 <i className="material-icons">favorite</i>
                             </div>
                             <div className="btn-basic"><i className="material-icons">add</i>Collect</div>
@@ -78,15 +84,10 @@ function PhotoDetail(props) {
                     </div>
                 </div>
 
-
-x                <div className="related-photos-wrap">
-                    {/*{*/}
-                        {/*_.map(photo.related, (r_photo, i) =>*/}
-                            {/*(<PhotoCard key={i} photo={r_photo}/>))*/}
-                    {/*}*/}
-                    {/*<Photos photos={relatedPhotos}/>*/}
+                <div className="related-photos-wrap">
                     {
-                        relatedPhotos.length > 0 &&  <Photos photos={relatedPhotos}/>
+                        console.log("@@ relatedPhotos.length", relatedPhotos.length)
+                        // relatedPhotos.length > 0 &&  <Photos photos={relatedPhotos}/>
                     }
                 </div>
             </div>

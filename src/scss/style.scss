@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import "base/color";
 @import "base/reset";
+@import "base/common";
 
 @import "components/header";
 @import "components/footer";
@@ -8,6 +9,7 @@
 @import "components/searchBar";
 @import "components/headerCategory";
 @import "components/headerUnderCate";
+@import "components/pageCategory";
 @import "components/tagList";
 @import "components/collection";
 
@@ -19,5 +21,8 @@
 @import "components/photos";
 @import "components/photoCard";
 @import "components/photoDetail";
+
+@import "pages/collections";
+
 
 @import "pages/home";

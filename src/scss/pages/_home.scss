@@ -33,18 +33,18 @@
         margin-bottom: 20px;
         font-size: 46px;
         font-weight: 600;
-        color: #fff;
+        color: $white;
       }
       .t2{
         line-height: 1.7;
         font-size: 18px;
         font-weight: 500;
-        color: #fff;
+        color: $white;
       }
       .sub{
         font-size: 15px;
         font-weight: 300;
-        color: #fff;
+        color: $white;
         .bold{
           font-weight: 400;
         }
@@ -71,7 +71,7 @@
         padding: 0 20px;
         font-size: 15px;
         font-weight: 400;
-        color: #ddd;
+        color: $gray;
         &:first-child{
           justify-content: flex-start;
         }
@@ -84,7 +84,7 @@
         }
         span{
           padding: 0 5px;
-          color: #777;
+          color: $gray;
         }
         img{
           display: inline-block;

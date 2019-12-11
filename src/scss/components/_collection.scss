@@ -1,17 +1,9 @@
-.Collections{
-  display: flex;
-  max-width: 1320px;
-  margin: 0 auto; //랑 같이해서 중앙정렬도 맞춰줘야하나?
-  flex-wrap: wrap;
-}
+
 .Collection{
   display: flex;
   flex-direction: column;
   width: 415px;
-  margin-bottom: 48px;
-  & + .Collection{
-    margin-left: 24px;
-  }
+  margin: 24px 12px;
   &:hover{
     .thumbs-wrap{
       opacity: 0.8;
@@ -52,13 +44,15 @@
     }
   }
   .desc-wrap{
-    padding-top: 5px;
+    padding-top: 25px;
     .title{
       font-size: 18px;
       font-weight: 500;
     }
     .summary{
-      font-size: 15px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      font-size: 14px;
       font-weight: 400;
       color: #888;
     }

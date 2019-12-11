@@ -6,16 +6,16 @@
   bottom: 0;
   left: 0;
   right: 0;
-  &:before{
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,0.5);
-  }
+  //&:before{
+  //  content: '';
+  //  position: absolute;
+  //  z-index: -1;
+  //  top: 0;
+  //  bottom: 0;
+  //  left: 0;
+  //  right: 0;
+  //  background: rgba(0,0,0,0.5);
+  //}
   .photo-upper{
     position: relative;
     top: 0;
@@ -42,7 +42,7 @@
       .user-id{
         font-size: 14px;
         font-weight: 400;
-        color: #767676;
+        color: $gray;
       }
     }
     .right-area{
@@ -54,7 +54,7 @@
     margin: 30px auto;
     max-width: 1150px;
     min-width: 80%;
-    background: #fff;
+    background: $white;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -63,7 +63,7 @@
       top: -20px;
       left: -20px;
       font-size: 20px;
-      color: #ddd;
+      color: $gray;
       cursor: pointer;
     }
   }
@@ -85,7 +85,7 @@
         margin-left: 10px;
         vertical-align: middle;
         font-size: 15px;
-        color: #999;
+        color: $gray;
       }
       .loc{
         vertical-align: middle;

@@ -34,7 +34,7 @@
       }
       &.current{
         .txt:before{
-          background: #000;
+          background: $black;
         }
       }
       &:nth-child(1){
@@ -56,7 +56,7 @@
         text-transform: capitalize;
         font-size: 15px;
         font-weight: 400;
-        color: #000;
+        color: $black;
         &:before{
           content: '';
           position: absolute;

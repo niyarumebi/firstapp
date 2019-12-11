@@ -13,7 +13,10 @@ function SearchBar(props) {
     const [value, setValue] = useState('');
     return (
         <div className="SearchBar">
-            <i className="material-icons">search</i>
+            <i className="material-icons"
+            onClick={() => {
+                dispatch(Action.Creators.fetchSearchResult(value));
+            }}>search</i>
             <input
                 type="text"
                 placeholder={placeholder}

@@ -25,6 +25,20 @@ export default function* () {
         yield put(Action.Creators.updateState({recentPhotos: result.data}));
     });
 
+    yield takeLatest(Action.Types.FETCH_RANDOM_PHOTOS, function* (){
+        const result = yield call(api.fetchRandomPhotos);
+        console.log(`[saga] [fetchRandomPhotos]`, result);
+
+        yield put(Action.Creators.updateState({randomPhotos: result}))
+    });
+
+    yield takeLatest(Action.Types.FETCH_API, function* (action){
+        const result = yield call(api.fetchApi, action.payload);
+        console.log(`[saga] [fetchApi]`, result);
+
+        yield put(Action.Creators.updateState({tabContent: result.data}))
+    });
+
     yield takeLatest(Action.Types.FETCH_SEARCH_RESULT, function* (action) {
         const result = yield call(api.fetchSearchResult, action.payload);
         console.log(`[saga] [fetchSearchResult]`, result.data);

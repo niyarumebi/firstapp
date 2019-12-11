@@ -17,6 +17,7 @@ const initialState = {
     relatedCollections: [],
     relatedPhotos: [],
     recentPhotos: [],
+    randomPhotos: [],
 };
 
 
@@ -24,29 +25,16 @@ const initialState = {
 //리듀서가 업데이트해주는거 > 스토어
 //스토어에 연결하고싶을떄 connect사용
 const reducer = (state = initialState, action) => {
+    console.log("@@ state in reducer.js", state);
     switch (action.type) {
         default:
             return state; // return은 뭐 안써주면 undefiend > 그러면 스테이트가 다 날라감
-
-        case Action.Types.UPDATE_STATE: {
+            case Action.Types.UPDATE_STATE: {
             return {
                 ...state,
                 ...action.payload //오브젝트로 만들엇기땜에 home에서 키를 같이 포함해서 써줛기땜에 전개연산자로 풀어서 써주는것.
             }
         }
-        // case Action.Types.FETCH_SEARCH_RESULT:{
-        //     return{
-        //         ...state,
-        //         keyword:
-        //     }
-        // }
-        // case Action.Types.SET_PHOTOS: {
-        //     console.log("@@ action.payload", action.payload);
-        //     return {
-        //         ...state,
-        //         photos: action.payload
-        //     }
-        // }
     }
 };
 

@@ -1,0 +1,33 @@
+.PageCategory{
+  padding: 0 30px;
+  border-bottom: 1px solid $lighter-gray;
+  .head{
+    opacity: 0.7;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    & + .head{
+      margin-left: 30px;
+    }
+    .txt{
+      display: inline-block;
+      vertical-align: middle;
+      padding: 15px 0;
+      border-bottom: 2px solid transparent;
+      font-size: 15px;
+      font-weight: 400;
+      color: $black;
+      i{
+        vertical-align: middle;
+        font-size: 20px;
+        margin-right: 4px;
+      }
+    }
+    &:hover, &.is-active{
+      opacity: 1;
+      .txt{
+        border-color: $black;
+      }
+    }
+  }
+}

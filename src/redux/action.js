@@ -7,9 +7,11 @@ const Action = {
     Types: {
         UPDATE_STATE: 'UPDATE_STATE',
 
+        FETCH_API: 'FETCH_API',
         FETCH_PHOTOS: 'FETCH_PHOTOS',
         FETCH_SEARCH_RESULT: 'FETCH_SEARCH_RESULT',
         FETCH_RELATED_PHOTOS: 'FETCH_RELATED_PHOTOS',
+        FETCH_RANDOM_PHOTOS: 'FETCH_RANDOM_PHOTOS',
 
         //user 관련  cmd shift u 로 하면 전부 대/소문자로 한번에 바꿔줌
         FETCH_USER_PROFILE: 'FETCH_USER_PROFILE',
@@ -32,9 +34,17 @@ const Action = {
             payload
         }),
 
+        fetchApi: payload => ({
+            type: Action.Types.FETCH_API,
+            payload
+        }),
         //saga에서 할거니까 payload 비어있음..
         fetchPhotos: () => ({
             type: Action.Types.FETCH_PHOTOS
+        }),
+
+        fetchRandomPhotos: () => ({
+            type: Action.Types.FETCH_RANDOM_PHOTOS
         }),
 
         //근데 아래의 fetch들은 데이터 들어와야하니 payload 받아야하지않나..

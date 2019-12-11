@@ -19,7 +19,7 @@
       text-transform: capitalize;
       font-size: 17px;
       font-weight: 500;
-      color: #000;
+      color: $black;
       i{
         margin-right: 5px;
         vertical-align: middle;
@@ -28,7 +28,7 @@
     &.is-active{
       .txt{
         opacity: 1;
-        border-color: #000;
+        border-color: $black;
       }
     }
   }

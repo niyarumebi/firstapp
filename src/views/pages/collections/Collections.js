@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Collection from "../../components/Collection";
 import MenuPopup from "../../components/MenuPopup";
 import {Link} from "react-router-dom";
+import PageTitle from "../../components/PageTitle";
 
 function Collections (props) {
   
@@ -9,11 +10,21 @@ function Collections (props) {
   
   return (
           <div className="Collections">
-              {/* map 돌리기 */}
-              <Collection/>
-              <Collection/>
-              <Collection/>
-              <Collection/>
+              <PageTitle
+                  title={'Collections'}
+                  msg={'Explore the world through collections of beautiful photos free to use under the '}
+                  link= {'/'}
+                  linkTxt = {'Unsplash License'}
+              />
+
+             <div className="align-wrap">
+                 <div className="collection-wrap">
+                     <Collection/>
+                     <Collection/>
+                     <Collection/>
+                     <Collection/>
+                 </div>
+             </div>
 
               <MenuPopup>
                   <div className="col-wrap">
