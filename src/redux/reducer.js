@@ -18,6 +18,7 @@ const initialState = {
     relatedPhotos: [],
     recentPhotos: [],
     randomPhotos: [],
+    categoryContent: [],
 };
 
 

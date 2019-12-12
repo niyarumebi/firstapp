@@ -1,68 +1,82 @@
 import React, {useState, useEffect} from 'react';
 import _ from 'lodash';
-import {Link} from "react-router-dom";
+import Action from "../../redux/action";
+import {connect} from "react-redux";
 
 function HeaderCategory(props) {
 
-    const {} = props;
+    const {
+        dispatch
+    } = props;
 
     const bigCategory = [
         {
             name: 'random',
-            url: '/random'
+            id: '/random'
         },
         {
             name: 'wallpapers',
-            url: '/wallpapers'
+            id: '1065976',
         },
         {
             name: 'textues & patterns',
-            url: '/textues_patterns'
+            id: '3348877'
         },
         {
             name: 'nature',
-            url: '/nature'
+            id: '3330448'
         },
         {
-            name: 'current events',
-            url: '/current_events'
+            name: 'people',
+            id: '3356568'
         },
         {
-            name: 'architecture',
-            url: '/architecture'
+            name: 'unsplash editorila',
+            id: '317099'
         },
         {
-            name: 'business & work',
-            url: '/business_work'
+            name: 'health',
+            id: '3356594'
         },
-        {
-            name: 'film',
-            url: '/film'
-        },
-
         {
             name: 'textues & patterns',
-            url: '/textues_patterns'
+            id: '3348877'
         },
         {
             name: 'nature',
-            url: '/nature'
+            id: '3330448'
         },
         {
-            name: 'current events',
-            url: '/current_events'
+            name: 'people',
+            id: '3356568'
         },
         {
-            name: 'architecture',
-            url: '/architecture'
+            name: 'unsplash editorila',
+            id: '317099'
         },
         {
-            name: 'business & work',
-            url: '/business_work'
+            name: 'health',
+            id: '3356594'
         },
         {
-            name: 'film',
-            url: '/film'
+            name: 'textues & patterns',
+            id: '3348877'
+        },
+        {
+            name: 'nature',
+            id: '3330448'
+        },
+        {
+            name: 'people',
+            id: '3356568'
+        },
+        {
+            name: 'unsplash editorila',
+            id: '317099'
+        },
+        {
+            name: 'health',
+            id: '3356594'
         },
     ];
 
@@ -71,9 +85,9 @@ function HeaderCategory(props) {
             <div className="links">
                 {
                     _.map(bigCategory, (bCate, i) =>
-                        <Link to={bCate.url} className="link" key={i}>
+                        <div className="link" key={i} onClick={() => dispatch(Action.Creators.fetchCollection(bCate.id))}>
                             <div className="txt">{bCate.name}</div>
-                        </Link>
+                        </div>
                     )
                 }
             </div>
@@ -81,4 +95,5 @@ function HeaderCategory(props) {
     )
 }
 
-export default HeaderCategory;
+// export default HeaderCategory;
+export default connect(state => ({...state}), dispatch => ({dispatch}))(HeaderCategory);

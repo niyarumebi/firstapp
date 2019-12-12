@@ -25,6 +25,13 @@ export default function* () {
         yield put(Action.Creators.updateState({recentPhotos: result.data}));
     });
 
+    yield takeLatest(Action.Types.FETCH_COLLECTION, function* (action){
+        const result = yield call(api.fetchCollection, action.payload);
+        console.log(`[saga] [fetchCollection]`, result);
+        navigate('/category');
+        yield put(Action.Creators.updateState({categoryContent: result.data}))
+    });
+
     yield takeLatest(Action.Types.FETCH_RANDOM_PHOTOS, function* (){
         const result = yield call(api.fetchRandomPhotos);
         console.log(`[saga] [fetchRandomPhotos]`, result);

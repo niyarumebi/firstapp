@@ -4,7 +4,7 @@ import Header from "./views/components/Header";
 import Search from "./views/pages/search/Search";
 import {Route} from "react-router-dom";
 import Login from "./views/components/Login";
-import Category from "./views/components/Category";
+import CategoryContent from "./views/pages/categoryContent/CategoryContent";
 import Join from "./views/components/Join";
 
 import Collections from "./views/pages/collections/Collections";
@@ -27,8 +27,9 @@ function App() {
             <Route path={'/join'} component={Join}/>
 
             <Route path={'/random'} component={RandomPhotos}/>
+            <Route path={'/category'} component={CategoryContent}/>
             <Route path={'/collections'} component={Collections}/>
-            <Route path={'/category/:value'} component={Category}/>
+            <Route path={'/category/:value'} component={CategoryContent}/>
             <Route path={'/search'} component={Search}/>
 
             <Footer/>

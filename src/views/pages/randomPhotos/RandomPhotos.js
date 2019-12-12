@@ -14,6 +14,8 @@ function RandomPhotos (props) {
   useEffect(() => {
      dispatch(Action.Creators.fetchRandomPhotos());
   });
+  
+  console.log("@@ randomPhotos", randomPhotos);
 
   return (
           <div className="RandomPhotos">
@@ -21,7 +23,7 @@ function RandomPhotos (props) {
                   title={'Random Photos'}
                   msg={'Photos spreaded among Unsplash data'}
               />
-              <Photos photos={randomPhotos}></Photos>
+              {/*<Photos photos={randomPhotos}></Photos>*/}
           </div>
       )
 }

@@ -1,28 +1,39 @@
 @charset "UTF-8";
+//base-------------------------
 @import "base/color";
 @import "base/reset";
 @import "base/common";
 
+
+//components-------------------
+
 @import "components/header";
-@import "components/footer";
-@import "components/userIcon";
-@import "components/searchBar";
 @import "components/headerCategory";
 @import "components/headerUnderCate";
+@import "components/footer";
+
+//common piece
+@import "components/searchBar";
+@import "components/pageTitle";
 @import "components/pageCategory";
+@import "components/tab";
+@import "components/noData";
+
+//content piece
+@import "components/userIcon";
 @import "components/tagList";
 @import "components/collection";
 
-@import "components/tab";
-@import "components/toast";
+//another layer piece
 @import "components/toast";
 @import "components/menuPopup";
 
+//main piece
 @import "components/photos";
 @import "components/photoCard";
 @import "components/photoDetail";
 
-@import "pages/collections";
 
-
+//pages-------------------------
 @import "pages/home";
+@import "pages/collections";

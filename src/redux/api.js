@@ -4,6 +4,7 @@ const api = {
   fetchApi: api => FetchHelper.fetchJsonGet(api),
   fetchPhotos: () => FetchHelper.fetchJsonGet('/photos'),
   fetchRandomPhotos: () => FetchHelper.fetchJsonGet('/photos/random/?featured&count=30'),
+  fetchCollection: id => FetchHelper.fetchJsonGet(`/collections/${id}`),
 
   fetchSearchResult: keyword => FetchHelper.fetchJsonGet(`/search/photos?=page=1&query=${keyword}`),
   // fetchRelatedCollections: id => FetchHelper.fetchJsonGet(`/collections/${id}/related`),
