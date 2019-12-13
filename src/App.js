@@ -10,6 +10,7 @@ import Join from "./views/components/Join";
 import Collections from "./views/pages/collections/Collections";
 import Footer from "./views/components/Footer";
 import RandomPhotos from "./views/pages/randomPhotos/RandomPhotos";
+import CollectionPhotos from "./views/pages/collections/CollectionPhotos";
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
             <Route path={'/random'} component={RandomPhotos}/>
             <Route path={'/category'} component={CategoryContent}/>
             <Route path={'/collections'} component={Collections}/>
+            <Route path={'/collection/photos'} component={CollectionPhotos}/>
             <Route path={'/category/:value'} component={CategoryContent}/>
             <Route path={'/search'} component={Search}/>
 

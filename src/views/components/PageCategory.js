@@ -14,7 +14,7 @@ function PageCategory(props) {
             },
             {
                 icon: 'layers',
-                txt: 'Collections',
+                txt: 'CollectionList',
                 val: '32',
                 id: '',
             },

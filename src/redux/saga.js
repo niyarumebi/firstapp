@@ -1,7 +1,8 @@
-import {all, put, call, takeLatest} from 'redux-saga/effects'
+import {all, put, call, takeLatest, select} from 'redux-saga/effects'
 import Action from './action';
 import api from './api'
 import {navigate} from "../helpers/HistoryHelper";
+
 
 export default function* () {
     yield takeLatest(Action.Types.FETCH_PHOTOS, function* () {
@@ -28,19 +29,24 @@ export default function* () {
         yield put(Action.Creators.updateState({searchResult: result.data.results, keyword: action.payload}));
     });
 
-    yield takeLatest(Action.Types.FETCH_API, function* (action){
-        const result = yield call(api.fetchApi, action.payload);
-        console.log(`[saga] [fetchApi]`, result);
+    yield takeLatest(Action.Types.FETCH_COLLECTIONS, function* (){
+        const result = yield call(api.fetchCollections);
+        console.log(`[saga] [fetchCollections]`, result.data);
 
-        yield put(Action.Creators.updateState({tabContent: result.data}))
+        yield put(Action.Creators.updateState({collections: result.data}));
     });
 
-    yield takeLatest(Action.Types.FETCH_COLLECTION, function* (action){
-        const result = yield call(api.fetchCollection, action.payload);
-        console.log(`[saga] [fetchCollection]`, result);
-        navigate('/category');
+    // yield takeLatest(Action.Types.FETCH_COLLECTION, function* (action){
+    //     const result = yield call(api.fetchCollection, action.payload);
+    //     console.log(`[saga] [fetchCollection]`, result, action);
+    //
+    // });
 
-        yield put(Action.Creators.updateState({categoryContent: result.data}))
+    yield takeLatest(Action.Types.FETCH_COLLECTION_PHOTOS, function* (action){
+        const result = yield call(api.fetchCollectionPhotos, action.payload);
+        console.log(`[saga] [fetchCollectionPhotos]`, result);
+
+        yield put(Action.Creators.updateState({collectionPhotos: result.data}))
     });
 
     yield takeLatest(Action.Types.FETCH_RELATED_PHOTOS, function* (action) {

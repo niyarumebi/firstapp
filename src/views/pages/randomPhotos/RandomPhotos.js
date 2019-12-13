@@ -23,7 +23,9 @@ function RandomPhotos (props) {
                   title={'Random Photos'}
                   msg={'Photos spreaded among Unsplash data'}
               />
-              {/*<Photos photos={randomPhotos}></Photos>*/}
+              <div className="container">
+                  {/*<Photos photos={randomPhotos}></Photos>*/}
+              </div>
           </div>
       )
 }

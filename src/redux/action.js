@@ -8,7 +8,9 @@ const Action = {
         FETCH_RELATED_PHOTOS: 'FETCH_RELATED_PHOTOS',
 
         FETCH_API: 'FETCH_API',
-        FETCH_COLLECTION: 'FETCH_COLLECTION',
+        FETCH_COLLECTIONS: 'FETCH_COLLECTIONS',
+        // FETCH_COLLECTION: 'FETCH_COLLECTION',
+        FETCH_COLLECTION_PHOTOS: 'FETCH_COLLECTION_PHOTOS',
 
         FETCH_USER_PROFILE: 'FETCH_USER_PROFILE',
         FETCH_USER_PORTFOLIOLINK:'FETCH_USER_PORTFOLIOLINK',
@@ -45,12 +47,15 @@ const Action = {
 
 
         //fetch etc
-        fetchApi: payload => ({
-            type: Action.Types.FETCH_API,
-            payload
+        fetchCollections: () => ({
+            type: Action.Types.FETCH_COLLECTIONS,
         }),
-        fetchCollection: payload => ({
-            type: Action.Types.FETCH_COLLECTION,
+        // fetchCollection: payload => ({
+        //     type: Action.Types.FETCH_COLLECTION,
+        //     payload
+        // }),
+        fetchCollectionPhotos: payload => ({
+            type: Action.Types.FETCH_COLLECTION_PHOTOS,
             payload
         }),
 

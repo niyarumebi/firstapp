@@ -1,41 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import Collection from "../../components/Collection";
-import MenuPopup from "../../components/MenuPopup";
-import {Link} from "react-router-dom";
+import React, {useState, useEffect} from 'react';
 import PageTitle from "../../components/PageTitle";
+import _ from 'lodash'
+import CollectionItem from "../../components/CollectionItem";
+import {connect} from "react-redux";
+import Action from "../../../redux/action";
 
-function Collections (props) {
-  
-  const {} = props;
-  
-  return (
-          <div className="Collections">
-              <PageTitle
-                  title={'Collections'}
-                  msg={'Explore the world through collections of beautiful photos free to use under the '}
-                  link= {'/'}
-                  linkTxt = {'Unsplash License'}
-              />
+function Collections(props) {
 
-             <div className="align-wrap">
-                 <div className="collection-wrap">
-                     <Collection/>
-                     <Collection/>
-                     <Collection/>
-                     <Collection/>
-                 </div>
-             </div>
+    const {
+        dispatch,
+        collections
+    } = props;
 
-              <MenuPopup>
-                  <div className="col-wrap">
-                      <Link to={'/'} className="item">ㅁ</Link>
-                      <Link to={'/'} className="item">ㅁ</Link>
-                      <Link to={'/'} className="item">ㅁ</Link>
-                      <Link to={'/'} className="item">ㅁ</Link>
-                  </div>
-              </MenuPopup>
-          </div>
-      )
+    useEffect(() => {
+        dispatch(Action.Creators.fetchCollections())
+    },[]);
+
+    return (
+        <div className="Collections">
+            <PageTitle
+                title={'Collections'}
+                msg={'Explore the world through collections of beautiful photos free to use under the '}
+                link={'/'}
+                linkTxt={'Unsplash License'}
+            />
+
+            {/*<div className="align-wrap">*/}
+                {/*<div className="collection-wrap">*/}
+                    {/*{*/}
+                        {/*_.map(collections, (collection,i) =>*/}
+                            {/*<CollectionItem*/}
+                                {/*key={i}*/}
+                                {/*collection={collection}*/}
+                            {/*/>*/}
+                        {/*)*/}
+                    {/*}*/}
+                {/*</div>*/}
+            {/*</div>*/}
+            <div className="container">
+                <div className="collection-wrap">
+                    {
+                        _.map(collections, (collection,i) =>
+                            <CollectionItem
+                                key={i}
+                                collection={collection}
+                            />
+                        )
+                    }
+                </div>
+            </div>
+        </div>
+    )
 }
 
-export default Collections;
+export default connect(state => ({...state}), dispatch => ({dispatch}))(Collections);

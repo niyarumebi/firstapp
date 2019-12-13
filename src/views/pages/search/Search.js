@@ -17,11 +17,13 @@ function Search(props) {
 
             <PageCategory></PageCategory>
 
-            {
-                searchResult.length > 0 ?
-                    <Photos photos={searchResult}/> :
-                    <NoData/>
-            }
+          <div className="container">
+              {
+                  searchResult.length > 0 ?
+                      <Photos photos={searchResult}/> :
+                      <NoData/>
+              }
+          </div>
 
         </div>
     )

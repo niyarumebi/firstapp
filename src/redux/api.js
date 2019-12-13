@@ -8,8 +8,9 @@ const api = {
   fetchRelatedPhotos: keyword => FetchHelper.fetchJsonGet(`/search/photos?=page=1&query=${keyword}`),
 
   //fetch etc
-  fetchApi: api => FetchHelper.fetchJsonGet(api),
-  fetchCollection: id => FetchHelper.fetchJsonGet(`/collections/${id}`),
+  fetchCollections: () => FetchHelper.fetchJsonGet('/collections'),
+  // fetchCollection: id => FetchHelper.fetchJsonGet(`/collections/${id}`),
+  fetchCollectionPhotos: id => FetchHelper.fetchJsonGet(`/collections/${id}/photos`),
 
   //fetch user
   //이름은 최대한 서버단에서 설명해주는거 그대로 써주는게좋음

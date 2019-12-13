@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import _ from 'lodash';
 import Action from "../../redux/action";
 import {connect} from "react-redux";
+import {navigate} from "../../helpers/HistoryHelper";
 
 function HeaderCategory(props) {
 
@@ -10,16 +11,13 @@ function HeaderCategory(props) {
     } = props;
 
     const bigCategory = [
-        {
-            name: 'random',
-            id: '/random'
-        },
+
         {
             name: 'wallpapers',
             id: '1065976',
         },
         {
-            name: 'textues & patterns',
+            name: 'business & work',
             id: '3348877'
         },
         {
@@ -83,9 +81,18 @@ function HeaderCategory(props) {
     return (
         <div className="HeaderCategory">
             <div className="links">
+                <div className="link" onClick={() => {
+                    dispatch(Action.Creators.fetchRandomPhotos());
+                    navigate('/random');
+                }}>
+                    <div className="txt">random</div>
+                </div>
                 {
                     _.map(bigCategory, (bCate, i) =>
-                        <div className="link" key={i} onClick={() => dispatch(Action.Creators.fetchCollection(bCate.id))}>
+                        <div className="link" key={i} onClick={() => {
+
+                            navigate('/category');
+                        }}>
                             <div className="txt">{bCate.name}</div>
                         </div>
                     )

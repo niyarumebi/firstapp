@@ -9,7 +9,10 @@ const initialState = {
     keyword: null,
     searchResult: [],
 
-    categoryContent: [],
+    collections: null,
+    collectionItem: null,
+    selectedCollection: null,
+    collectionPhotos: [],
 
     userProfile: null,
     // likedByUser: false,

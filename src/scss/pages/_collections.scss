@@ -1,14 +1,6 @@
 .Collections{
-  margin: 0 auto; //랑 같이해서 중앙정렬도 맞춰줘야하나?
-  padding: 0 20px;
-  .align-wrap{
-    display: flex;
-    justify-content: center;
-  }
-
   .collection-wrap{
     display: flex;
-    width: 1320px;
     flex-wrap: wrap;
     margin: -24px -12px;
   }

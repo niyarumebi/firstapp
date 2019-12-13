@@ -32,6 +32,11 @@
   margin-left: -2px;
 }
 
+.container{
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
 .btn-basic{
   opacity: 0.8;
   overflow-y: hidden;
@@ -58,12 +63,17 @@
   cursor: pointer;
   &:hover{
     opacity: 1;
+    &.btn-type{
+      -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,.1);
+      -moz-box-shadow: 2px 2px 3px rgba(0,0,0,.1);
+      box-shadow: 2px 2px 3px rgba(0,0,0,.1);
+    }
   }
   & + .btn-basic{
     margin-left: 10px;
   }
   i{
-    vertical-align: middle;
+    vertical-align: sub;
     font-size: 18px;
   }
   &.long{
@@ -72,5 +82,10 @@
   &.like-active{
     background: pink;
     color: $white;
+  }
+  &.btn-type{
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    background: $white;
   }
 }

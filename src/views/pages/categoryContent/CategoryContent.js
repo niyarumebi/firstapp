@@ -4,17 +4,16 @@ import PageTitle from "../../components/PageTitle";
 
 function CategoryContent(props) {
     const {
-        categoryContent = {},
+        collections = {},
     } = props;
 
 
     return (
         <div className="CategoryContent">
             <PageTitle
-                title={categoryContent.title}
-                msg={categoryContent.description}
+                title={collections.title}
+                msg={collections.description}
             />
-            {/*<Photos photos={categoryPhotos}></Photos>*/}
         </div>
     )
 }

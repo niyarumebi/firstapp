@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom'
+import {connect} from "react-redux";
+import Action from "../../redux/action";
+import _ from 'lodash'
 
 function TagList (props) {
 
-  const {} = props;
+  const {
+      dispatch,
+      items = []
+  } = props;
 
   return (
           <div className="TagList">
-              <Link to={'Abc'}>Abc</Link>
-              <Link to={'Abc'}>Abc</Link>
-              <Link to={'Abc'}>Abc</Link>
-              <Link to={'Abc'}>Abc</Link>
-              <Link to={'Abc'}>Abc</Link>
-              <Link to={'Abc'}>Abc</Link>
-              <Link to={'Abc'}>Abc</Link>
-              <Link to={'Abc'}>Abc</Link>
-              <Link to={'Abc'}>Abc</Link>
+              {
+                  _.map(items, (item,i) =>
+                      <div className='item'
+                           key={i}
+                           onClick={() => dispatch(Action.Creators.fetchSearchResult(item.title))}
+                      >{item.title}</div>
+                  )
+              }
           </div>
       )
 }
 
-export default TagList;
+export default connect(state => ({...state}), dispatch => ({dispatch}))(TagList);

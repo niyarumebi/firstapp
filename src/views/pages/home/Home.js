@@ -45,7 +45,9 @@ function Home(props) {
                     </div>
                 </div>
             </div>
-            <Photos photos={recentPhotos}/>
+            <div className="container">
+                <Photos photos={recentPhotos}/>
+            </div>
         </div>
     )
 }
