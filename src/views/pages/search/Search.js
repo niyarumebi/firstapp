@@ -2,25 +2,24 @@ import React, {useState, useEffect} from 'react';
 import Photos from "../../components/Photos";
 import {connect} from "react-redux";
 import NoData from "../../components/NoData";
-import PageCategory from "../../components/PageCategory";
+import Tab from "../../components/Tab";
 
 function Search(props) {
 
     const {
-        searchResult = []
+        searchPhotos = []
     } = props;
 
-    console.log("@@ searchResult in Search.js", searchResult);
 
     return (
         <div className="Search">
 
-            <PageCategory></PageCategory>
+            <Tab></Tab>
 
           <div className="container">
               {
-                  searchResult.length > 0 ?
-                      <Photos photos={searchResult}/> :
+                  searchPhotos.length > 0 ?
+                      <Photos photos={searchPhotos}/> :
                       <NoData/>
               }
           </div>

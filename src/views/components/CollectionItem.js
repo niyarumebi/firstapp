@@ -37,7 +37,6 @@ function CollectionItem(props) {
                 <div className="summary">{collection.total_photos} photos · Curated by <Link to={collection.user.links.html}>{collection.user.name}</Link></div>
                 <TagList items={collection.tags}/>
             </div>
-
         </div>
     )
 }

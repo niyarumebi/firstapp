@@ -3,13 +3,14 @@ const Action = {
         UPDATE_STATE: 'UPDATE_STATE',
 
         FETCH_PHOTOS: 'FETCH_PHOTOS',
-        FETCH_SEARCH_RESULT: 'FETCH_SEARCH_RESULT',
         FETCH_RANDOM_PHOTOS: 'FETCH_RANDOM_PHOTOS',
         FETCH_RELATED_PHOTOS: 'FETCH_RELATED_PHOTOS',
 
-        FETCH_API: 'FETCH_API',
+        FETCH_SEARCH_PHOTOS: 'FETCH_SEARCH_PHOTOS',
+        FETCH_SEARCH_COLLECTIONS: 'FETCH_SEARCH_COLLECTIONS',
+        FETCH_SEARCH_USERS: 'FETCH_SEARCH_USERS',
+
         FETCH_COLLECTIONS: 'FETCH_COLLECTIONS',
-        // FETCH_COLLECTION: 'FETCH_COLLECTION',
         FETCH_COLLECTION_PHOTOS: 'FETCH_COLLECTION_PHOTOS',
 
         FETCH_USER_PROFILE: 'FETCH_USER_PROFILE',
@@ -36,8 +37,8 @@ const Action = {
         fetchRandomPhotos: () => ({
             type: Action.Types.FETCH_RANDOM_PHOTOS
         }),
-        fetchSearchResult: payload => ({
-            type:Action.Types.FETCH_SEARCH_RESULT,
+        fetchSearchPhotos: payload => ({
+            type:Action.Types.FETCH_SEARCH_PHOTOS,
             payload
         }),
         fetchRelatedPhotos:payload => ({
@@ -50,10 +51,6 @@ const Action = {
         fetchCollections: () => ({
             type: Action.Types.FETCH_COLLECTIONS,
         }),
-        // fetchCollection: payload => ({
-        //     type: Action.Types.FETCH_COLLECTION,
-        //     payload
-        // }),
         fetchCollectionPhotos: payload => ({
             type: Action.Types.FETCH_COLLECTION_PHOTOS,
             payload

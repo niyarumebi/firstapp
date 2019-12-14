@@ -18,15 +18,31 @@ export default function* () {
         const result = yield call(api.fetchRandomPhotos);
         console.log(`[saga] [fetchRandomPhotos]`, result);
 
-        yield put(Action.Creators.updateState({randomPhotos: result}))
+        yield put(Action.Creators.updateState({randomPhotos: result.data}))
     });
 
-    yield takeLatest(Action.Types.FETCH_SEARCH_RESULT, function* (action) {
-        const result = yield call(api.fetchSearchResult, action.payload);
-        console.log(`[saga] [fetchSearchResult]`, result.data);
+    yield takeLatest(Action.Types.FETCH_SEARCH_PHOTOS, function* (action) {
+        const result = yield call(api.fetchSearchPhotos, action.payload);
+        console.log(`[saga] [fetchSearchPhotos]`, result.data);
         navigate('/search');
 
-        yield put(Action.Creators.updateState({searchResult: result.data.results, keyword: action.payload}));
+        yield put(Action.Creators.updateState({searchPhotos: result.data.results, keyword: action.payload}));
+    });
+
+    yield takeLatest(Action.Types.FETCH_SEARCH_COLLECTIONS, function* (action) {
+        const result = yield call(api.fetchSearchCollections, action.payload);
+        console.log(`[saga] [fetchSearchCollections]`, result.data);
+        navigate('/search');
+
+        yield put(Action.Creators.updateState({searchCollections: result.data.results, keyword: action.payload}));
+    });
+
+    yield takeLatest(Action.Types.FETCH_SEARCH_USERS, function* (action) {
+        const result = yield call(api.fetchSearchUsers, action.payload);
+        console.log(`[saga] [fetchSearchUsers]`, result.data);
+        navigate('/search');
+
+        yield put(Action.Creators.updateState({searchUsers: result.data.results, keyword: action.payload}));
     });
 
     yield takeLatest(Action.Types.FETCH_COLLECTIONS, function* (){
@@ -35,12 +51,6 @@ export default function* () {
 
         yield put(Action.Creators.updateState({collections: result.data}));
     });
-
-    // yield takeLatest(Action.Types.FETCH_COLLECTION, function* (action){
-    //     const result = yield call(api.fetchCollection, action.payload);
-    //     console.log(`[saga] [fetchCollection]`, result, action);
-    //
-    // });
 
     yield takeLatest(Action.Types.FETCH_COLLECTION_PHOTOS, function* (action){
         const result = yield call(api.fetchCollectionPhotos, action.payload);

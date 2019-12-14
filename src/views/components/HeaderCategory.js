@@ -10,93 +10,92 @@ function HeaderCategory(props) {
         dispatch
     } = props;
 
-    const bigCategory = [
+    {/*const bigCategory = [*/}
 
-        {
-            name: 'wallpapers',
-            id: '1065976',
-        },
-        {
-            name: 'business & work',
-            id: '3348877'
-        },
-        {
-            name: 'nature',
-            id: '3330448'
-        },
-        {
-            name: 'people',
-            id: '3356568'
-        },
-        {
-            name: 'unsplash editorila',
-            id: '317099'
-        },
-        {
-            name: 'health',
-            id: '3356594'
-        },
-        {
-            name: 'textues & patterns',
-            id: '3348877'
-        },
-        {
-            name: 'nature',
-            id: '3330448'
-        },
-        {
-            name: 'people',
-            id: '3356568'
-        },
-        {
-            name: 'unsplash editorila',
-            id: '317099'
-        },
-        {
-            name: 'health',
-            id: '3356594'
-        },
-        {
-            name: 'textues & patterns',
-            id: '3348877'
-        },
-        {
-            name: 'nature',
-            id: '3330448'
-        },
-        {
-            name: 'people',
-            id: '3356568'
-        },
-        {
-            name: 'unsplash editorila',
-            id: '317099'
-        },
-        {
-            name: 'health',
-            id: '3356594'
-        },
-    ];
+        {/*{*/}
+    //         name: 'wallpapers',
+    //         id: '1065976',
+        {/*},*/}
+        {/*{*/}
+            {/*name: 'business & work',*/}
+            {/*id: '3348877'*/}
+        {/*},*/}
+    //     {
+    //         name: 'nature',
+    //         id: '3330448'
+    //     },
+    //     {
+    //         name: 'people',
+    //         id: '3356568'
+    //     },
+    //     {
+    //         name: 'unsplash editorila',
+    //         id: '317099'
+    //     },
+    //     {
+    //         name: 'health',
+    //         id: '3356594'
+    //     },
+    //     {
+    //         name: 'textues & patterns',
+    //         id: '3348877'
+    //     },
+    //     {
+            {/*name: 'nature',*/}
+    //         id: '3330448'
+    //     },
+    //     {
+            {/*name: 'people',*/}
+    //         id: '3356568'
+    //     },
+    //     {
+            {/*name: 'unsplash editorila',*/}
+            {/*id: '317099'*/}
+        {/*},*/}
+        {/*{*/}
+            {/*name: 'health',*/}
+    //         id: '3356594'
+    //     },
+    //     {
+            {/*name: 'textues & patterns',*/}
+            {/*id: '3348877'*/}
+        {/*},*/}
+        {/*{*/}
+            {/*name: 'nature',*/}
+            {/*id: '3330448'*/}
+    //     },
+    //     {
+    //         name: 'people',
+    //         id: '3356568'
+        {/*},*/}
+        {/*{*/}
+    //         name: 'unsplash editorila',
+    //         id: '317099'
+    //     },
+    //     {
+    //         name: 'health',
+    //         id: '3356594'
+    //     },
+    // ];
 
     return (
         <div className="HeaderCategory">
             <div className="links">
                 <div className="link" onClick={() => {
-                    dispatch(Action.Creators.fetchRandomPhotos());
                     navigate('/random');
                 }}>
                     <div className="txt">random</div>
                 </div>
-                {
-                    _.map(bigCategory, (bCate, i) =>
-                        <div className="link" key={i} onClick={() => {
-
-                            navigate('/category');
-                        }}>
-                            <div className="txt">{bCate.name}</div>
-                        </div>
-                    )
-                }
+                {/*{*/}
+                    {/*_.map(bigCategory, (bCate, i) =>*/}
+                        {/*<div className="link" key={i} onClick={() => {*/}
+                            {/*dispatch(Action.Creators.updateState({selectedCollection: bCate}));*/}
+                            {/*navigate('/category');*/}
+                        {/*}}>*/}
+                            {/*<div className="txt">{bCate.name}</div>*/}
+                        {/*</div>*/}
+                    {/*)*/}
+                {/*}*/}
             </div>
         </div>
     )

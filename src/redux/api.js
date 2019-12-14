@@ -3,13 +3,16 @@ import FetchHelper from "../helpers/FetchHelper";
 const api = {
   //fetch photo array
   fetchPhotos: () => FetchHelper.fetchJsonGet('/photos'),
-  fetchRandomPhotos: () => FetchHelper.fetchJsonGet('/photos/random/?featured'),
-  fetchSearchResult: keyword => FetchHelper.fetchJsonGet(`/search/photos?=page=1&query=${keyword}`),
+  fetchRandomPhotos: () => FetchHelper.fetchJsonGet('/photos/random/?count=30'),
   fetchRelatedPhotos: keyword => FetchHelper.fetchJsonGet(`/search/photos?=page=1&query=${keyword}`),
+
+  fetchSearchPhotos: keyword => FetchHelper.fetchJsonGet(`/search/photos?=page=1&query=${keyword}`),
+  fetchSearchCollections: keyword => FetchHelper.fetchJsonGet(`/search/collections?=page=1&query=${keyword}`),
+  fetchSearchUsers: keyword => FetchHelper.fetchJsonGet(`/search/users?=page=1&query=${keyword}`),
+
 
   //fetch etc
   fetchCollections: () => FetchHelper.fetchJsonGet('/collections'),
-  // fetchCollection: id => FetchHelper.fetchJsonGet(`/collections/${id}`),
   fetchCollectionPhotos: id => FetchHelper.fetchJsonGet(`/collections/${id}/photos`),
 
   //fetch user

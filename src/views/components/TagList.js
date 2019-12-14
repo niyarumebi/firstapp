@@ -16,7 +16,7 @@ function TagList (props) {
                   _.map(items, (item,i) =>
                       <div className='item'
                            key={i}
-                           onClick={() => dispatch(Action.Creators.fetchSearchResult(item.title))}
+                           onClick={() => dispatch(Action.Creators.fetchSearchPhotos(item.title))}
                       >{item.title}</div>
                   )
               }

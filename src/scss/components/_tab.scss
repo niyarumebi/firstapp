@@ -1,39 +1,44 @@
-//Texttab, Icontab
-
-.comp-tab{
-  .head-wrap{
-    padding: 0 15px;
-    border-bottom: 1px solid #777;
-  }
-  .tab-head{
+.Tab{
+  padding: 0 30px;
+  border-bottom: 1px solid $lighter-gray;
+  .head{
+    opacity: 0.7;
     display: inline-block;
     vertical-align: middle;
     cursor: pointer;
-    & + .tab-head{
-      padding-left: 25px;
+    & + .head{
+      margin-left: 30px;
     }
     .txt{
-      opacity: 0.7;
-      padding: 15px 0;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 13px 0;
       border-bottom: 2px solid transparent;
-      text-transform: capitalize;
-      font-size: 17px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 400;
       color: $black;
       i{
-        margin-right: 5px;
         vertical-align: middle;
+        font-size: 20px;
+        margin-right: 10px;
       }
     }
-    &.is-active{
+    &:hover, &.is-active{
+      opacity: 1;
       .txt{
-        opacity: 1;
         border-color: $black;
       }
     }
   }
-  .tab-body{
+  .cont{
     display: none;
-    padding-top: 30px;
+    min-height: calc(100vh - 120px); //about
+    background: pink;
+    padding: 200px;
+    text-align: center;
+    font-size: 30px;
+    &.is-active{
+      display: block;
+    }
   }
 }

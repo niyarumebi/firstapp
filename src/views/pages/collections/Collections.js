@@ -24,19 +24,6 @@ function Collections(props) {
                 link={'/'}
                 linkTxt={'Unsplash License'}
             />
-
-            {/*<div className="align-wrap">*/}
-                {/*<div className="collection-wrap">*/}
-                    {/*{*/}
-                        {/*_.map(collections, (collection,i) =>*/}
-                            {/*<CollectionItem*/}
-                                {/*key={i}*/}
-                                {/*collection={collection}*/}
-                            {/*/>*/}
-                        {/*)*/}
-                    {/*}*/}
-                {/*</div>*/}
-            {/*</div>*/}
             <div className="container">
                 <div className="collection-wrap">
                     {

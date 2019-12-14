@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Photos from "../../components/Photos";
-import PageTitle from "../collections/Collections";
+import PageTitle from "../../components/PageTitle";
 import {connect} from "react-redux";
 import Action from "../../../redux/action";
 
@@ -13,10 +13,8 @@ function RandomPhotos (props) {
 
   useEffect(() => {
      dispatch(Action.Creators.fetchRandomPhotos());
-  });
+  }, []);
   
-  console.log("@@ randomPhotos", randomPhotos);
-
   return (
           <div className="RandomPhotos">
               <PageTitle
@@ -24,7 +22,7 @@ function RandomPhotos (props) {
                   msg={'Photos spreaded among Unsplash data'}
               />
               <div className="container">
-                  {/*<Photos photos={randomPhotos}></Photos>*/}
+                  <Photos photos={randomPhotos}/>
               </div>
           </div>
       )

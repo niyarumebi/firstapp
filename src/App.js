@@ -13,6 +13,7 @@ import RandomPhotos from "./views/pages/randomPhotos/RandomPhotos";
 import CollectionPhotos from "./views/pages/collections/CollectionPhotos";
 
 function App() {
+
     return (
         <div className="App">
             {/*{Header({*/}
@@ -29,9 +30,11 @@ function App() {
 
             <Route path={'/random'} component={RandomPhotos}/>
             <Route path={'/category'} component={CategoryContent}/>
+            {/*<Route path={'/category'}*/}
+            {/*render={(props = { test: '209138'}) => <CategoryContent {...props}/>}*/}
+            {/*/>*/}
             <Route path={'/collections'} component={Collections}/>
             <Route path={'/collection/photos'} component={CollectionPhotos}/>
-            <Route path={'/category/:value'} component={CategoryContent}/>
             <Route path={'/search'} component={Search}/>
 
             <Footer/>

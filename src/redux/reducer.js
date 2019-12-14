@@ -7,10 +7,11 @@ const initialState = {
     relatedPhotos: [],
 
     keyword: null,
-    searchResult: [],
+    searchPhotos: [],
+    searchCollections: [],
+    searchUsers: [],
 
     collections: null,
-    collectionItem: null,
     selectedCollection: null,
     collectionPhotos: [],
 

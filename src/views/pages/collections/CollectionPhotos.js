@@ -10,7 +10,6 @@ function CollectionPhotos(props) {
 
     const {
         dispatch,
-        photos, //for test
         selectedCollection = {
             id: '',
         },
@@ -18,12 +17,13 @@ function CollectionPhotos(props) {
     } = props;
 
 
-    const [openShare, setOpenShare] = useState(false);
+    
 
     useEffect(() => {
         dispatch(Action.Creators.fetchCollectionPhotos(selectedCollection.id));
     }, []);
-
+    
+    const [openShare, setOpenShare] = useState(false);
 
     return (
         <div className="CollectionPhotos">
@@ -41,15 +41,17 @@ function CollectionPhotos(props) {
                         </div>
                     </div>
 
-                    <div className={cn("share-popup", {'is-active': openShare})} onClick={() => setOpenShare(!openShare)}>
-                        <div className="btn-close">
+                    <div className={cn("share-popup", {'is-active': openShare})} onClick={() => setOpenShare(true)}>
+                        <div className="btn-close" onClick={(e) => {
+                            e.stopPropagation();
+                            setOpenShare(false);}}>
                             <i className="material-icons">cancel</i>
                         </div>
                         <div className="title">Share</div>
                         <div className="sub">CollectionPhotos by {selectedCollection.user.username}</div>
 
                         <div className="link-wrap text-ellipsis">
-                            https://unsplash.com/collections/209138/happinesshappinesshappinesshappiness
+                            {selectedCollection.links.html}
                             <div className="btn-basic">Copy link</div>
                         </div>
                     </div>
