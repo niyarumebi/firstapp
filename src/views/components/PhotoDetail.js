@@ -4,18 +4,49 @@ import PhotoCard from "./PhotoCard";
 
 import * as _ from 'lodash';
 import {navigate} from "../../helpers/HistoryHelper";
+import {connect} from "react-redux";
+import cn from 'classnames';
+import Action from "../../redux/action";
+import Photos from "./Photos";
 
 function PhotoDetail(props) {
 
     const {
         photo = {},
+        relatedPhotos,
         onClose = () => {},
-        onClickUserLink = () => {},
+        dispatch,
     } = props;
 
+    useEffect(() => {
+        dispatch(Action.Creators.fetchRelatedPhotos('note'));
+    }, []);
+    {/* 창 esc로 끄는 건 밖에서 window.e 캐치해서 onCLose로 연결해줘야할*/}
+
+
+    const [scrollY, setScrollY] = useState(0);
+    function logit() {
+        setScrollY(window.pageYOffset);
+    }
+    useEffect(() => {
+        function watchScroll() {
+            window.addEventListener("scroll", logit);
+        }
+        watchScroll();
+        // Remove listener (like componentWillUnmount)
+        return () => {
+            window.removeEventListener("scroll", logit);
+        };
+    });
 
     return (
-        <div className="PhotoDetail">
+        <div className="PhotoDetail"
+             onKeyUp={(e) => {
+                 if (e.keyCode === 13) {
+                     onClose();
+                 }
+             }}>
+
             <div className="bg-wrap">
                 <div className="btn-close" onClick={() => onClose()}>
                     <i className="material-icons">cancel</i>
@@ -25,12 +56,15 @@ function PhotoDetail(props) {
                         <div className="left-area">
                             <UserIcon src={photo.user.icon}/>
                             <div className="info-wrap">
-                                <div className="user-name" onClick={() => navigate(`/users/${photo.username}`)}>{photo.username}</div>
+                                <div className="user-name"
+                                     onClick={() => navigate(`/@${photo.user.username}`)}>{photo.user.username}</div>
                                 <div className="user-id">@{photo.user.id}</div>
                             </div>
                         </div>
                         <div className="right-area">
-                            <div className="btn-basic"><i className="material-icons">favorite</i></div>
+                            <div className={cn('btn-basic', {'like-active': false})}>
+                                <i className="material-icons">favorite</i>
+                            </div>
                             <div className="btn-basic"><i className="material-icons">add</i>Collect</div>
                             <div className="btn-basic long">Download</div>
                         </div>
@@ -50,11 +84,10 @@ function PhotoDetail(props) {
                     </div>
                 </div>
 
-
                 <div className="related-photos-wrap">
                     {
-                        _.map(photo.related, (r_photo, i) =>
-                            (<PhotoCard key={i} photo={r_photo}/>))
+                        console.log("@@ relatedPhotos.length", relatedPhotos.length)
+                        // relatedPhotos.length > 0 &&  <Photos photos={relatedPhotos}/>
                     }
                 </div>
             </div>
@@ -62,4 +95,4 @@ function PhotoDetail(props) {
     )
 }
 
-export default PhotoDetail;
+export default connect(state => ({...state}), dispatch => ({dispatch}))(PhotoDetail);

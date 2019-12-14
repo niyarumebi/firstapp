@@ -26,6 +26,7 @@ const FetchConsts = {
     APPLICATION_X_WWW_FORM_URL_ENCODED: 'application/x-www-form-urlencoded',
     MULTIPART_FORM_DATA: 'multipart/form-data',
     TEXT_PLAIN: 'text/plain',
+    SCOPE: "public read_photos write_photos write_likes write_collections",
 };
 
 const response = (ok, data) => ({
@@ -38,10 +39,10 @@ const axiosInstance = axios.create({
     timeout: 12000,
     // withCredentials: true,
     headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        'Accept': FetchConsts.APPLICATION_JSON,
+        'Content-Type': FetchConsts.APPLICATION_JSON,
         'Authorization': ACCESS_KEY,
-        "scope": "public read_photos write_photos",
+        "scope": FetchConsts.SCOPE,
     }
 });
 
@@ -49,27 +50,23 @@ const request = async (method, url, data = {}) => {
 
     try {
         let axiosConfig = {
-            url,
             method,
+            url,
             data,
         };
 
         if(method === FetchConsts.GET) {
-            //왜 get에만 이렇게 허지? 왜 어떻게 axios로 create하지않은?
-            //axiosConfid에 params가 있고 거기에 data를 넣은거야?
-            //그냥 바로 키값 삽입한걸로 생각하면 되나..
-            axiosConfig.method = FetchConsts.GET;
-            axiosConfig.params = data;
+            //왜 get에만 이렇게 나눠서 따로 잡지? params는 위에 없는데
+            //get일때는 params로 추가해서 쓰고, 나머지 통신은 data로 쓰는 요소인가본,,
+            axiosConfig.params = data; // get은 body가없고, url에 쿼리 추가해서 쓰는 방식이라서고.
         } else {
-            //get외 post, put delete는 데이터 필요하니까...
             axiosConfig.data = data;
         }
 
         const result = await axiosInstance(axiosConfig);
-        return response(true, result.data); // 왜 그냥 익명오브젝트로 아니고 response를 한 번 더 썼을까? 밑에 e.reponse??랑은 별개같은데
+        return response(true, result.data);
 
     } catch (e) {
-
         if(e.response) {
             // apiExceptionLog(e.response.config, e.response.data.message);
             console.log(`@@ [failed api] method:${e.response.config.method}, url: ${e.response.config.url}, data:${e.response.config.data}, message:${e.response.data.message}`);

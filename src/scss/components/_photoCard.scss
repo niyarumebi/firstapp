@@ -28,7 +28,7 @@
     bottom: 0;
     z-index: 1;
     font-weight: 400;
-    color: #767676;
+    color: $gray;
     -webkit-transition: all 0.15s ease-in-out;
     -moz-transition: all 0.15s ease-in-out;
     -ms-transition: all 0.15s ease-in-out;
@@ -71,30 +71,30 @@
       margin-top: 8px;
       font-size: 13px;
       font-weight: 300;
-      color: #ddd;
+      color: $gray;
       cursor: pointer;
       i{
         font-size: 17px;
       }
     }
-    .btn{
-      padding: 0 15px;
-      -webkit-border-radius: 3px;
-      -moz-border-radius: 3px;
-      border-radius: 3px;
-      background: rgba(255,255,255,.9);
-      height: 29px;
-      overflow-y: hidden;
-      line-height: 29px;
-      cursor: pointer;
-      text-align: center;
-      & + .btn{
-        margin-left: 10px;
-      }
-      i{
-        font-size: 18px;
-      }
-    }
+    //.btn{
+    //  padding: 0 15px;
+    //  -webkit-border-radius: 3px;
+    //  -moz-border-radius: 3px;
+    //  border-radius: 3px;
+    //  background: rgba(255,255,255,.9);
+    //  height: 29px;
+    //  overflow-y: hidden;
+    //  line-height: 29px;
+    //  cursor: pointer;
+    //  text-align: center;
+    //  & + .btn{
+    //    margin-left: 10px;
+    //  }
+    //  i{
+    //    font-size: 18px;
+    //  }
+    //}
     .user-wrap{
       .name{
         display: inline-block;

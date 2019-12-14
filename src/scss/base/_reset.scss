@@ -153,25 +153,25 @@ input[type="search"]::-webkit-search-decoration {
 input::-webkit-input-placeholder {
   font-size: 12px;
   font-weight: 200;
-  color: #777;
+  color: $gray;
 }
 
 input:-moz-placeholder {
   font-size: 12px;
   font-weight: 200;
-  color: #777;
+  color: $gray;
 }
 
 input::-moz-placeholder {
   font-size: 12px;
   font-weight: 200;
-  color: #777;
+  color: $gray;
 }
 
 input:-ms-input-placeholder {
   font-size: 12px;
   font-weight: 200;
-  color: #777;
+  color: $gray;
 }
 
 input:focus {
@@ -182,39 +182,7 @@ input:disabled {
   background: $lighter-gray;
 }
 
-/*inline style option class*/
-.m0 {
-  margin: 0 !important;
-}
 
-.bdt-transparent {
-  border-top-color: transparent !important;
-}
-
-.pull-left {
-  float: left !important;
-}
-
-.pull-right {
-  float: right !important;
-}
-
-.txt-center {
-  text-align: center !important;
-}
-
-.underline {
-  text-decoration: underline;
-}
-
-.tilt {
-  display: inline-block;
-  -webkit-transform: skew(-10deg);
-  -ms-transform: skew(-10deg);
-  -o-transform: skew(-10deg);
-  transform: skew(-10deg);
-  margin-left: -2px;
-}
 body,html {
-  height: 100%;
+  height: 100vh;
 }
