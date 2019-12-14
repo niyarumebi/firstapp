@@ -4,6 +4,7 @@ import TagList from "./TagList";
 import {connect} from "react-redux";
 import Action from "../../redux/action";
 import {navigate} from "../../helpers/HistoryHelper";
+import {makeADash} from "../../helpers/CommonHelper";
 
 function CollectionItem(props) {
 
@@ -15,8 +16,7 @@ function CollectionItem(props) {
 
     return (
         <div className="Collection" onClick={() => {
-            dispatch(Action.Creators.updateState({selectedCollection: collection}));
-            navigate(`/collection/photos`)
+            navigate(`/collections/${collection.id}/${makeADash(collection.title)}`);
         }}>
             <div className="thumbs-wrap">
                 <div className="col">

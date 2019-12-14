@@ -13,28 +13,37 @@ function CollectionPhotos(props) {
         selectedCollection = {
             id: '',
         },
-        collectionPhotos = []
+        collectionPhotos = [],
+        collectionsById
     } = props;
 
 
-    
+    console.log("@@ collectionsById", collectionsById);
+
+    const id = props.match.params.id;
 
     useEffect(() => {
-        dispatch(Action.Creators.fetchCollectionPhotos(selectedCollection.id));
-    }, []);
-    
+        dispatch(Action.Creators.fetchCollectionsById(id));
+        dispatch(Action.Creators.fetchCollectionPhotos(id));
+    }, [id]);
+
     const [openShare, setOpenShare] = useState(false);
+
+
+    if(!collectionsById) {
+        return false;
+    }
 
     return (
         <div className="CollectionPhotos">
             <div className="page-header">
                 <div className="bg"
-                     style={{backgroundImage: `url(${selectedCollection.cover_photo.urls.regular})`}}/>
-                <PageTitle  title={selectedCollection.title} msg={selectedCollection.description}>
+                     style={{backgroundImage: `url(${collectionsById.cover_photo.urls.regular})`}}/>
+                <PageTitle  title={collectionsById.title} msg={collectionsById.description}>
                     <div className="user-wrap">
                         <UserIcon
-                            src={selectedCollection.user.profile_image.small}
-                            name={selectedCollection.user.username}
+                            src={collectionsById.user.profile_image.small}
+                            name={collectionsById.user.username}
                         />
                         <div className="btn-basic btn-type btn-share">
                             <i className="material-icons">reply</i> Share
@@ -48,10 +57,10 @@ function CollectionPhotos(props) {
                             <i className="material-icons">cancel</i>
                         </div>
                         <div className="title">Share</div>
-                        <div className="sub">CollectionPhotos by {selectedCollection.user.username}</div>
+                        <div className="sub">CollectionPhotos by {collectionsById.user.username}</div>
 
                         <div className="link-wrap text-ellipsis">
-                            {selectedCollection.links.html}
+                            {collectionsById.links.html}
                             <div className="btn-basic">Copy link</div>
                         </div>
                     </div>
@@ -61,7 +70,7 @@ function CollectionPhotos(props) {
 
             <div className="container">
                 <div className="count-info">
-                    {selectedCollection.total_photos} photos
+                    {collectionsById.total_photos} photos
                 </div>
 
                 <Photos photos={collectionPhotos}></Photos>

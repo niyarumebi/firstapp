@@ -4,11 +4,13 @@ import HeaderCategory from "./HeaderCategory";
 import {Link} from "react-router-dom";
 import {navigate} from "../../helpers/HistoryHelper";
 import MenuPopup from "./MenuPopup";
-
+import * as _ from "lodash";
 
 function Header(props) {
 
-    const {} = props;
+    const {
+        currentPath,
+    } = props;
 
     const [moreMenu, setMoreMenu] = useState({
         isOpen: false,
@@ -54,9 +56,47 @@ function Header(props) {
         },
     ];
 
+
+    const collectionMenuRoutes = [
+        {
+            name: 'collec',
+            to: '/'
+        },
+        {
+            name: 'following',
+            to: '/following'
+        }
+    ];
+
+    const homeMenuRoutes = [
+        {
+            name: 'Editorial',
+            to: '/'
+        },
+        {
+            name: 'following',
+            to: '/following'
+        }
+    ];
+
+
+
+    function Menu({routes}) {
+        return _.map(routes, route => <div onClick={() => navigate(route.to)}>{route.name}</div>)
+    }
+
     return (
         //className={cn(((e.scorllTop >= 100vh) && 'get-scroll' ))}
         <div className="Header">
+            {
+                currentPath === '/' &&
+                <Menu routes={homeMenuRoutes}/>
+            }
+
+            {
+                currentPath === '/collections' &&
+                <Menu routes={collectionMenuRoutes}/>
+            }
             <div className="upper">
                 <div className="
                 logo">

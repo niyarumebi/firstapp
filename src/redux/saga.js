@@ -1,10 +1,23 @@
-import {all, put, call, takeLatest, select} from 'redux-saga/effects'
+import {all, put, delay, call, spawn, takeLatest, select} from 'redux-saga/effects'
 import Action from './action';
 import api from './api'
 import {navigate} from "../helpers/HistoryHelper";
 
 
 export default function* () {
+
+    const toastMessage = function* (message, duration) {
+        yield put(Action.Creators.updateState({
+            toastMessage: message
+        }));
+        yield spawn(function* () {
+            yield delay(duration);
+            yield put(Action.Creators.updateState({
+                toastMessage: ''
+            }));
+        })
+    };
+
     yield takeLatest(Action.Types.FETCH_PHOTOS, function* () {
         const result = yield call(api.fetchPhotos); //call : promise 까는 역할도 함
         console.log(`[saga] [fetchPhotos]`, result);
@@ -45,11 +58,29 @@ export default function* () {
         yield put(Action.Creators.updateState({searchUsers: result.data.results, keyword: action.payload}));
     });
 
+
+
+
+    /**
+     * ======= COLLECTIONS =======
+     */
     yield takeLatest(Action.Types.FETCH_COLLECTIONS, function* (){
         const result = yield call(api.fetchCollections);
         console.log(`[saga] [fetchCollections]`, result.data);
 
         yield put(Action.Creators.updateState({collections: result.data}));
+    });
+
+    yield takeLatest(Action.Types.FETCH_COLLECTIONS_BY_ID, function* ({id}){
+        const result = yield call(api.fetchCollectionsById, id);
+        console.log(`[saga] [fetchCollectionsById]`, result.data);
+
+        yield put(Action.Creators.updateState({
+            collectionsById: result.data,
+        }));
+
+        yield toastMessage('업데이트가 종료되었습니다.', 2000);
+
     });
 
     yield takeLatest(Action.Types.FETCH_COLLECTION_PHOTOS, function* (action){

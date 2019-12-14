@@ -3,6 +3,11 @@ import Photos from "../../components/Photos";
 import {connect} from "react-redux";
 import NoData from "../../components/NoData";
 import Tab from "../../components/Tab";
+import {Redirect, Switch} from "react-router-dom";
+import Route from "react-router-dom/es/Route";
+import Users from "./Users";
+import Collections from "./Collections";
+import {navigate} from "../../../helpers/HistoryHelper";
 
 function Search(props) {
 
@@ -14,14 +19,22 @@ function Search(props) {
     return (
         <div className="Search">
 
-            <Tab></Tab>
+            {/*<Tab></Tab>*/}
+
+
+
+            <nav>
+                <div className="item" onClick={() => navigate('/search/users')}>Users</div>
+                <div className="item" onClick={() => navigate('/search/collections')}>collections</div>
+            </nav>
+            <Switch>
+                <Route path={'/search/users'} component={Users}/>
+                <Route path={'/search/collections'} component={Collections}/>
+                <Redirect to={'/search/users'}/>
+            </Switch>
 
           <div className="container">
-              {
-                  searchPhotos.length > 0 ?
-                      <Photos photos={searchPhotos}/> :
-                      <NoData/>
-              }
+
           </div>
 
         </div>
