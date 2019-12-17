@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-function Category (props) {
+function Collections (props) {
   
   const {} = props;
   
   return (
-          <div className="Category">
-            Category
+          <div className="Collections">
+            Collections
               
           </div>
       )
 }
 
-export default Category;
+export default Collections;

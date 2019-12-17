@@ -5,6 +5,7 @@
     align-items: center;
     position: relative;
     height: 540px;
+    margin-bottom: 80px;
     padding-bottom: 20px;
     //background-image 선언하고 아래에 background 또 써주면 덮써져서 설정 없어짐
     //그리고 50% 50% / cover no-repeat
@@ -33,18 +34,18 @@
         margin-bottom: 20px;
         font-size: 46px;
         font-weight: 600;
-        color: #fff;
+        color: $white;
       }
       .t2{
         line-height: 1.7;
         font-size: 18px;
         font-weight: 500;
-        color: #fff;
+        color: $white;
       }
       .sub{
         font-size: 15px;
         font-weight: 300;
-        color: #fff;
+        color: $white;
         .bold{
           font-weight: 400;
         }
@@ -71,7 +72,7 @@
         padding: 0 20px;
         font-size: 15px;
         font-weight: 400;
-        color: #ddd;
+        color: $gray;
         &:first-child{
           justify-content: flex-start;
         }
@@ -84,7 +85,7 @@
         }
         span{
           padding: 0 5px;
-          color: #777;
+          color: $gray;
         }
         img{
           display: inline-block;

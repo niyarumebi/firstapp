@@ -1,5 +1,14 @@
 .Footer{
-  padding: 50px 0;
-  background: #b4def3;
-  border-top: 1px solid #eee;
+  padding: 90px 0 70px;
+  background: $white;
+  text-align: center;
+  svg{
+    height: 32px;
+  }
+  p{
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    color: $gray;
+  }
 }
