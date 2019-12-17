@@ -17,7 +17,7 @@ function CollectionPhotos(props) {
     } = props;
 
 
-    
+    console.log("@@ props.match.params.id", props.match.params.id);
 
     useEffect(() => {
         dispatch(Action.Creators.fetchCollectionPhotos(selectedCollection.id));
@@ -27,6 +27,7 @@ function CollectionPhotos(props) {
 
     return (
         <div className="CollectionPhotos">
+            {props.match.params.id}
             <div className="page-header">
                 <div className="bg"
                      style={{backgroundImage: `url(${selectedCollection.cover_photo.urls.regular})`}}/>

@@ -45,6 +45,18 @@ function Photos(props) {
     )
 }
 
+//map안에서 Map 또 돌려도됨
+// let result = [[],[],[]]
+// _.map(a, (item, idex) => {
+//     if(index%3 === 0){
+//         retsult[0].push(index%3)
+//     } else if (index % 3 ===1 ) {
+//     result[1].push(item)
+//     } else if (index % 3 ===2 ){
+//         result[2].push(item)
+//     }
+// });
+
 function PhotoGroup(props) {
     const {
         dispatch,
