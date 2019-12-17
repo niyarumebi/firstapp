@@ -16,7 +16,7 @@ function CollectionItem(props) {
     return (
         <div className="Collection" onClick={() => {
             dispatch(Action.Creators.updateState({selectedCollection: collection}));
-            navigate(`/collection/photos`)
+            navigate(`/collections/${collection.id}/${collection.title}`)
         }}>
             <div className="thumbs-wrap">
                 <div className="col">

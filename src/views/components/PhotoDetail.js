@@ -23,22 +23,6 @@ function PhotoDetail(props) {
     }, []);
     {/* 창 esc로 끄는 건 밖에서 window.e 캐치해서 onCLose로 연결해줘야할*/}
 
-
-    const [scrollY, setScrollY] = useState(0);
-    function logit() {
-        setScrollY(window.pageYOffset);
-    }
-    useEffect(() => {
-        function watchScroll() {
-            window.addEventListener("scroll", logit);
-        }
-        watchScroll();
-        // Remove listener (like componentWillUnmount)
-        return () => {
-            window.removeEventListener("scroll", logit);
-        };
-    });
-
     return (
         <div className="PhotoDetail"
              onKeyUp={(e) => {

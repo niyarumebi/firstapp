@@ -18,12 +18,12 @@ function CollectionPhotos(props) {
 
 
     console.log("@@ props.match.params.id", props.match.params.id);
+    console.log("@@ props.match.params.title", props.match.params.title);
 
     useEffect(() => {
         dispatch(Action.Creators.fetchCollectionPhotos(selectedCollection.id));
     }, []);
     
-    const [openShare, setOpenShare] = useState(false);
 
     return (
         <div className="CollectionPhotos">
@@ -42,20 +42,7 @@ function CollectionPhotos(props) {
                         </div>
                     </div>
 
-                    <div className={cn("share-popup", {'is-active': openShare})} onClick={() => setOpenShare(true)}>
-                        <div className="btn-close" onClick={(e) => {
-                            e.stopPropagation();
-                            setOpenShare(false);}}>
-                            <i className="material-icons">cancel</i>
-                        </div>
-                        <div className="title">Share</div>
-                        <div className="sub">CollectionPhotos by {selectedCollection.user.username}</div>
 
-                        <div className="link-wrap text-ellipsis">
-                            {selectedCollection.links.html}
-                            <div className="btn-basic">Copy link</div>
-                        </div>
-                    </div>
 
                 </PageTitle>
             </div>

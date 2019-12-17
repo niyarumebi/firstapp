@@ -17,6 +17,21 @@ import PopupShare from "./views/components/PopupShare";
 
 function App() {
 
+    // const [scrollY, setScrollY] = useState(0);
+    // function logit() {
+    //     setScrollY(window.pageYOffset);
+    // }
+    // useEffect(() => {
+    //     function watchScroll() {
+    //         window.addEventListener("scroll", logit);
+    //     }
+    //     watchScroll();
+    //     // Remove listener (like componentWillUnmount)
+    //     return () => {
+    //         window.removeEventListener("scroll", logit);
+    //     };
+    // });
+
     return (
         <div className="App">
             <Header/>
@@ -31,13 +46,13 @@ function App() {
                 {/*<Route path={'/category'}*/}
                 {/*render={(props = { test: '209138'}) => <CategoryContent {...props}/>}*/}
                 {/*/>*/}
-                <Route path={'/collections/:id/photos/'} component={CollectionPhotos}/>
+                <Route path={'/collections/:id/:title/'} component={CollectionPhotos}/>
                 <Route path={'/collections'} component={Collections}/>
                 <Route path={'/collections/share'} component={PopupShare}/>
 
                 <Route path={'/search'} component={Search}/>
                 <Route path={'/404'} component={NotFound}/>
-                <Redirect path={'/404'}/>
+                <Redirect to={'/404'}/>
             </Switch>
 
             <Footer/>

@@ -13,13 +13,16 @@ function Photos(props) {
         photos = [],
     } = props;
 
-
-    let item_length = photos.length;
-    const unit = 3;
-    const chunk_unit = Math.floor((item_length / unit)) + 1;
-    const _photos = _.chunk(photos, chunk_unit); // 사이즈를 3으로하면 안되고 3개로 나눴을 떄 갯수로 구해야하는?
-
-
+    let _photos = [[], [], []];
+    _.map(photos, (photo, i) => {
+        if (i % 3 === 0) {
+            _photos[0].push(photo);
+        } else if (i % 3 === 1) {
+            _photos[1].push(photo);
+        } else if (i % 3 === 2) {
+            _photos[2].push(photo);
+        }
+    });
 
     return (
         <div className="Photos">
@@ -45,17 +48,6 @@ function Photos(props) {
     )
 }
 
-//map안에서 Map 또 돌려도됨
-// let result = [[],[],[]]
-// _.map(a, (item, idex) => {
-//     if(index%3 === 0){
-//         retsult[0].push(index%3)
-//     } else if (index % 3 ===1 ) {
-//     result[1].push(item)
-//     } else if (index % 3 ===2 ){
-//         result[2].push(item)
-//     }
-// });
 
 function PhotoGroup(props) {
     const {
