@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 
-function NotFound (props) {
+function NotFound(props) {
 
-  const {} = props;
+    const {} = props;
 
-  return (
-          <div className="NotFound">
+    return (
+        <div className="NotFound">
             NotFound <br/>
-              NotFound <br/>
-              NotFound <br/>
-              NotFound <br/>
-              NotFound <br/>
-              NotFound <br/>
-              NotFound <br/>
-              NotFound <br/>
-              NotFound <br/>
-              NotFound <br/>
-              NotFound <br/>
+            NotFound <br/>
+            NotFound <br/>
+            NotFound <br/>
+            NotFound <br/>
+            NotFound <br/>
+            NotFound <br/>
+            NotFound <br/>
+            NotFound <br/>
+            NotFound <br/>
+            NotFound <br/>
 
 
-          </div>
-      )
+        </div>
+    )
 }
 
 export default NotFound;

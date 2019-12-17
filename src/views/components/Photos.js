@@ -13,6 +13,23 @@ function Photos(props) {
         photos = [],
     } = props;
 
+    // const a = [1,2,3,4,5,6,6,7];
+    //
+    // let result = [[],[],[]]
+    //
+    // _.map(a, (item, index) => {
+    //     if(index % 3 === 0) {
+    //         result[0].push(item) ;
+    //     }
+    //     else if(index % 3 === 1) {
+    //         result[1].push(item);
+    //     }
+    //     else if(index % 3 === 2) {
+    //         result[2].push(item);
+    //     }
+    // });
+    //
+    // console.log("@@ result", result);
 
     let item_length = photos.length;
     const unit = 3;

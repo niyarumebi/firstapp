@@ -1,34 +1,36 @@
 import Action from "./action";
 
 const initialState = {
+    //photos
     recentPhotos: [],
     selectedPhoto: null,
     randomPhotos: [],
     relatedPhotos: [],
 
+    //search
     keyword: null,
     searchPhotos: [],
     searchCollections: [],
     searchUsers: [],
 
+    //collection
     collections: null,
     selectedCollection: null,
     collectionPhotos: [],
 
+    //user
     userProfile: null,
-    // likedByUser: false,
-    // relatedCollections: [],
 };
 
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         default:
-            return state; // return은 뭐 안써주면 undefiend > 그러면 스테이트가 다 날라감
+            return state;
             case Action.Types.UPDATE_STATE: {
             return {
                 ...state,
-                ...action.payload //오브젝트로 만들엇기땜에 home에서 키를 같이 포함해서 써줛기땜에 전개연산자로 풀어서 써주는것.
+                ...action.payload
             }
         }
     }

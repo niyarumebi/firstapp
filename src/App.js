@@ -71,10 +71,6 @@ function App(props) {
             <Footer/>
 
 
-
-
-
-
             {
                 showSharePopup &&
                 <SharePopup/>
@@ -85,10 +81,6 @@ function App(props) {
                 toastMessage &&
                 <Toast message={toastMessage}/>
             }
-
-
-
-
 
 
         </div>

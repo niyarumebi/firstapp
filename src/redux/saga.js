@@ -59,8 +59,6 @@ export default function* () {
     });
 
 
-
-
     /**
      * ======= COLLECTIONS =======
      */
@@ -103,19 +101,5 @@ export default function* () {
         // yield navigate('/user');
         yield put(Action.Creators.updateState({userProfile: result.data}));
     });
-
-    // yield takeLatest(Action.Types.POST_LIKE_PHOTO, function*(action){
-    //    const result = yield call(api.postLikePhoto, action.payload);
-    //     console.log(`[saga] [postLikePhoto]`, result.data);
-    //
-    //     yield put(Action.Creators.updateState({likedByUser: true}))
-    // });
-    //
-    // yield takeLatest(Action.Types.POST_UN_LIKE_PHOTO, function*(action){
-    //     const result = yield call(api.postUnLikePhoto, action.payload);
-    //     console.log(`[saga] [postUNLikePhoto]`, result.data);
-    //
-    //     yield put(Action.Creators.updateState({likedByUser: false}))
-    //
-    // });
 }
+

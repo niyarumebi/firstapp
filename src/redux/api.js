@@ -1,11 +1,18 @@
 import FetchHelper from "../helpers/FetchHelper";
 
 const api = {
-  //fetch photo array
+
+  /**
+   * 일반 사진 api
+   */
   fetchPhotos: () => FetchHelper.fetchJsonGet('/photos'),
   fetchRandomPhotos: () => FetchHelper.fetchJsonGet('/photos/random/?count=30'),
   fetchRelatedPhotos: keyword => FetchHelper.fetchJsonGet(`/search/photos?=page=1&query=${keyword}`),
 
+
+  /**
+   * 검색 api
+   */
   fetchSearchPhotos: keyword => FetchHelper.fetchJsonGet(`/search/photos?=page=1&query=${keyword}`),
   fetchSearchCollections: keyword => FetchHelper.fetchJsonGet(`/search/collections?=page=1&query=${keyword}`),
   fetchSearchUsers: keyword => FetchHelper.fetchJsonGet(`/search/users?=page=1&query=${keyword}`),
@@ -18,8 +25,7 @@ const api = {
   fetchCollectionsById: (id) => FetchHelper.fetchJsonGet(`/collections/${id}`),
   fetchCollectionPhotos: id => FetchHelper.fetchJsonGet(`/collections/${id}/photos`),
 
-  //fetch user
-  //이름은 최대한 서버단에서 설명해주는거 그대로 써주는게좋음
+
   /**
    * 사용자 api
    */
