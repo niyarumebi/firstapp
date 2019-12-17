@@ -4,7 +4,6 @@ import SearchBar from "../../components/SearchBar";
 import {connect} from "react-redux";
 import Action from '../../../redux/action'
 
-
 function Home(props) {
     const {
         dispatch,
