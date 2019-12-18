@@ -13,6 +13,7 @@ const api = {
 
   //fetch etc
   fetchCollections: () => FetchHelper.fetchJsonGet('/collections'),
+  fetchCollectionById: id => FetchHelper.fetchJsonGet(`/collections/${id}`),
   fetchCollectionPhotos: id => FetchHelper.fetchJsonGet(`/collections/${id}/photos`),
 
   //fetch user

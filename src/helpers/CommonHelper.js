@@ -1,5 +1,5 @@
 export const makeADash = word => {
-    return word.toLowerCase().split(' ').join('-');
+    return word.toLowerCase().split(' ').join('-').split('(').join('').split(')').join('');
 };
 
 export const kComma = (number, decPlaces = 1) => {

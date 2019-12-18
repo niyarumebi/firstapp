@@ -11,6 +11,7 @@ const Action = {
         FETCH_SEARCH_USERS: 'FETCH_SEARCH_USERS',
 
         FETCH_COLLECTIONS: 'FETCH_COLLECTIONS',
+        FETCH_COLLECTION_BY_ID: 'FETCH_COLLECTION_BY_ID',
         FETCH_COLLECTION_PHOTOS: 'FETCH_COLLECTION_PHOTOS',
 
         FETCH_USER_PROFILE: 'FETCH_USER_PROFILE',
@@ -50,6 +51,10 @@ const Action = {
         //fetch etc
         fetchCollections: () => ({
             type: Action.Types.FETCH_COLLECTIONS,
+        }),
+        fetchCollectionById: payload => ({
+            type: Action.Types.FETCH_COLLECTION_BY_ID,
+            payload
         }),
         fetchCollectionPhotos: payload => ({
             type: Action.Types.FETCH_COLLECTION_PHOTOS,

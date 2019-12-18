@@ -10,46 +10,44 @@ function CollectionPhotos(props) {
 
     const {
         dispatch,
-        selectedCollection = {
-            id: '',
-        },
-        collectionPhotos = []
+        collectionById,
+        collectionPhotos,
     } = props;
 
 
-    console.log("@@ props.match.params.id", props.match.params.id);
-    console.log("@@ props.match.params.title", props.match.params.title);
+    const id = props.match.params.id;
 
     useEffect(() => {
-        dispatch(Action.Creators.fetchCollectionPhotos(selectedCollection.id));
-    }, []);
+        dispatch(Action.Creators.updateState({collectionById : null, collectionPhotos: null}))
+        dispatch(Action.Creators.fetchCollectionById(id));
+        dispatch(Action.Creators.fetchCollectionPhotos(id));
+    }, [id]);
     
+    if(!collectionById){
+        return false;
+    }
 
     return (
         <div className="CollectionPhotos">
-            {props.match.params.id}
             <div className="page-header">
                 <div className="bg"
-                     style={{backgroundImage: `url(${selectedCollection.cover_photo.urls.regular})`}}/>
-                <PageTitle  title={selectedCollection.title} msg={selectedCollection.description}>
+                     style={{backgroundImage: `url(${collectionById.cover_photo.urls.regular})`}}/>
+                <PageTitle  title={collectionById.title} msg={collectionById.description}>
                     <div className="user-wrap">
                         <UserIcon
-                            src={selectedCollection.user.profile_image.small}
-                            name={selectedCollection.user.username}
+                            src={collectionById.user.profile_image.small}
+                            name={collectionById.user.username}
                         />
                         <div className="btn-basic btn-type btn-share">
                             <i className="material-icons">reply</i> Share
                         </div>
                     </div>
-
-
-
                 </PageTitle>
             </div>
 
             <div className="container">
                 <div className="count-info">
-                    {selectedCollection.total_photos} photos
+                    {collectionById.total_photos} photos
                 </div>
 
                 <Photos photos={collectionPhotos}></Photos>

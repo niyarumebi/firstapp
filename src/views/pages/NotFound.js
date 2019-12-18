@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import styled from 'styled-components'
 
 const Container = styled.div`
-h100        
+height: 100px;
 `;
 
 

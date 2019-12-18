@@ -3,8 +3,8 @@ import SearchBar from "./SearchBar";
 import HeaderCategory from "./HeaderCategory";
 import {Link} from "react-router-dom";
 import {navigate} from "../../helpers/HistoryHelper";
-import MenuPopup from "./MenuPopup";
-
+import PopupMenu from "./PopupMenu";
+import { FaTwitter, FaFacebookSquare,  FaInstagram, FaMedium } from "react-icons/fa";
 
 function Header(props) {
 
@@ -92,26 +92,26 @@ function Header(props) {
                             <div className="txt">
                                 <i className="material-icons">more_horiz</i>
                             </div>
-                            <MenuPopup
+                            <PopupMenu
                                 items={moreMenuItems}
                                 isOpen={moreMenu.isOpen}
                             >
                                 <div className="col-wrap">
                                     <Link to={'/'} className="item">
-                                        <i className="material-icons">contactless</i>
+                                        <FaTwitter/>
                                     </Link>
                                     <Link to={'/'} className="item">
-                                        <i className="material-icons">contactless</i>
+                                        <FaFacebookSquare/>
                                     </Link>
                                     <Link to={'/'} className="item">
-                                        <i className="material-icons">contactless</i>
+                                        <FaInstagram/>
                                     </Link>
                                     <Link to={'/'} className="item">
-                                        <i className="material-icons">contactless</i>
+                                        <FaMedium/>
                                     </Link>
                                 </div>
 
-                            </MenuPopup>
+                            </PopupMenu>
                         </div>
                         <Link to={'/submit'} className="link btn-type">
                             <div className="txt">Submit a photo</div>

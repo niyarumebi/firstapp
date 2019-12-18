@@ -16,7 +16,7 @@ export default function* () {
 
     yield takeLatest(Action.Types.FETCH_RANDOM_PHOTOS, function* (){
         const result = yield call(api.fetchRandomPhotos);
-        console.log(`[saga] [fetchRandomPhotos]`, result);
+        console.log(`[saga] [fetchRandomPhotos]`, result.data);
 
         yield put(Action.Creators.updateState({randomPhotos: result.data}))
     });
@@ -52,9 +52,17 @@ export default function* () {
         yield put(Action.Creators.updateState({collections: result.data}));
     });
 
+
+    yield takeLatest(Action.Types.FETCH_COLLECTION_BY_ID, function* (action){
+        const result = yield call(api.fetchCollectionById, action.payload);
+        console.log(`[saga] [fetchCollectionById]`, result.data);
+
+        yield put(Action.Creators.updateState({collectionById: result.data}))
+    });
+
     yield takeLatest(Action.Types.FETCH_COLLECTION_PHOTOS, function* (action){
         const result = yield call(api.fetchCollectionPhotos, action.payload);
-        console.log(`[saga] [fetchCollectionPhotos]`, result);
+        console.log(`[saga] [fetchCollectionPhotos]`, result.data);
 
         yield put(Action.Creators.updateState({collectionPhotos: result.data}))
     });
@@ -68,23 +76,8 @@ export default function* () {
 
     yield takeLatest(Action.Types.FETCH_USER_PROFILE, function* () {
         const result = yield call(api.fetchUserProfile);
-        console.log(`[saga] [fetchUserProfile]`, result);
+        console.log(`[saga] [fetchUserProfile]`, result.data);
         // yield navigate('/user');
         yield put(Action.Creators.updateState({userProfile: result.data}));
     });
-
-    // yield takeLatest(Action.Types.POST_LIKE_PHOTO, function*(action){
-    //    const result = yield call(api.postLikePhoto, action.payload);
-    //     console.log(`[saga] [postLikePhoto]`, result.data);
-    //
-    //     yield put(Action.Creators.updateState({likedByUser: true}))
-    // });
-    //
-    // yield takeLatest(Action.Types.POST_UN_LIKE_PHOTO, function*(action){
-    //     const result = yield call(api.postUnLikePhoto, action.payload);
-    //     console.log(`[saga] [postUNLikePhoto]`, result.data);
-    //
-    //     yield put(Action.Creators.updateState({likedByUser: false}))
-    //
-    // });
 }
