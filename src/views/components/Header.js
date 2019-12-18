@@ -5,10 +5,12 @@ import {Link} from "react-router-dom";
 import {navigate} from "../../helpers/HistoryHelper";
 import PopupMenu from "./PopupMenu";
 import { FaTwitter, FaFacebookSquare,  FaInstagram, FaMedium } from "react-icons/fa";
-
+import _ from 'lodash';
 function Header(props) {
 
-    const {} = props;
+    const {
+        currentPath
+    } = props;
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -68,12 +70,45 @@ function Header(props) {
         return () => {
             window.removeEventListener('click', checkEvent)
         }
-    });
+    }, []);
 
+    const collectionMenuRoutes = [
+        {
+            name: 'collec',
+            to: '/'
+        },
+        {
+            name: 'follwing',
+            to: '/follwing'
+        }
+    ];
+
+    const homeMenuRoutes = [
+        {
+            name: 'editorial',
+            to: '/11'
+        }, {
+            name: 'collec22',
+            to: '/22'
+        },
+    ];
+
+    function Menu({routes}){
+        return _.map(routes, (route, i) => <div key={i}
+                                           onClick={() => navigate(route.to)}>{route.name}</div>)
+    }
 
     return (
         //className={cn(((e.scorllTop >= 100vh) && 'get-scroll' ))}
         <div className="Header">
+            {
+                currentPath === '/' &&
+                    <Menu routes = {homeMenuRoutes}/>
+            }
+            {
+                currentPath === '/collections' &&
+                    <Menu routes={collectionMenuRoutes}/>
+            }
             <div className="upper">
                 <div className="
                 logo">

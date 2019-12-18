@@ -48,8 +48,8 @@ function App(props) {
                 {/*render={(props = { test: '209138'}) => <CategoryContent {...props}/>}*/}
                 {/*/>*/}
 
+                {/*<Route path={'/collections/:id/:title/share'} component={PopupShare}/>*/}
                 <Route path={'/collections/:id/:title/'} component={CollectionPhotos}/>
-                <Route path={'/collections/:id/:title/share'} component={PopupShare}/>
                 <Route path={'/collections'} component={Collections}/>
 
 

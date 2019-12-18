@@ -23,9 +23,9 @@ function PhotoDetail(props) {
     }, []);
 
     function checkEvent(e){
-       if(e.keyCode === 13 || e.keyCode === 27){
-           onClose();
-       }
+        if(e.keyCode === 13 || e.keyCode === 27){
+            onClose();
+        }
     }
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function PhotoDetail(props) {
         return () => {
             window.removeEventListener('keyup', checkEvent)
         }
-    });
+    }, []);
 
     return (
         <div className="PhotoDetail"
