@@ -3,46 +3,36 @@ import cn from "classnames";
 import {connect} from "react-redux";
 
 function PopupShare(props) {
-
     const {
         dispatch,
-        selectedCollection = {},
-        selectedPhoto = {},
+        collectionById,
+        // selectedPhoto,
     } = props;
-    const [openShare, setOpenShare] = useState(false);
+    const [openShare, setOpenShare] = useState(true);
+
+    console.log("@@ collectionById", collectionById);
 
     return (
-        <div className={cn("PopupShare", {'is-active': selectedPhoto.id || selectedCollection.id})}>
-            <div className="btn-close" onClick={(e) => {
-                e.stopPropagation();
-                setOpenShare(false);
-            }}>
-                <i className="material-icons">cancel</i>
-            </div>
-            <div className="title">Share</div>
+        <>
             {
-                selectedPhoto &&
-                <>
-                    <div className="sub">CollectionPhotos by {selectedCollection.user.username}</div>
-
-                    <div className="link-wrap text-ellipsis">
-                        {selectedCollection.links.html}
-                        <div className="btn-basic">Copy link</div>
+                openShare &&
+                <div className="PopupShare">
+                    <div className="btn-close" onClick={(e) => {
+                        e.stopPropagation();
+                        setOpenShare(false);
+                    }}>
+                        <i className="material-icons">cancel</i>
                     </div>
-                </>
-            }
-            {
-                selectedCollection &&
-                <>
-                    <div className="sub">CollectionPhotos by {selectedCollection.user.username}</div>
+                    <div className="title">Share</div>
+                    <div className="sub">CollectionPhotos by {collectionById.user.username}</div>
 
                     < div className="link-wrap text-ellipsis">
-                        {selectedCollection.links.html}
+                        {/*{collectionById.links.html}*/}
                         <div className="btn-basic">Copy link</div>
                     </div>
-                </>
+                </div>
             }
-        </div>
+        </>
     )
 }
 

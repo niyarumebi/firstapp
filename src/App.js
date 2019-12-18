@@ -1,40 +1,41 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {Route, withRouter, Switch, Redirect} from "react-router-dom";
+import {connect} from "react-redux";
+import Action from "./redux/action";
 import Home from "./views/pages/home/Home";
 import Header from "./views/components/Header";
+import NotFound from "./views/pages/NotFound";
 import Search from "./views/pages/search/Search";
-import {Route, withRouter, Switch, Redirect} from "react-router-dom";
+
 import Login from "./views/components/Login";
 import CategoryContent from "./views/pages/categoryContent/CategoryContent";
 import Join from "./views/components/Join";
-
 import Collections from "./views/pages/collections/Collections";
 import Footer from "./views/components/Footer";
 import RandomPhotos from "./views/pages/randomPhotos/RandomPhotos";
 import CollectionPhotos from "./views/pages/collections/CollectionPhotos";
-import {connect} from "react-redux";
-import NotFound from "./views/pages/NotFound";
 import PopupShare from "./views/components/PopupShare";
+import Toast from "./views/components/Toast";
+import cn from "classnames";
 
-function App() {
+function App(props) {
 
-    // const [scrollY, setScrollY] = useState(0);
-    // function logit() {
-    //     setScrollY(window.pageYOffset);
-    // }
-    // useEffect(() => {
-    //     function watchScroll() {
-    //         window.addEventListener("scroll", logit);
-    //     }
-    //     watchScroll();
-    //     // Remove listener (like componentWillUnmount)
-    //     return () => {
-    //         window.removeEventListener("scroll", logit);
-    //     };
-    // });
+    const {
+        dispatch,
+        toastMessage,
+        location,
+    } = props;
+
+    useEffect(() => {
+       dispatch(Action.Creators.updateState({
+           toastMessage: '',
+           currentPath: location.pathname,
+       }))
+    }, [location.pathname]);
 
     return (
         <div className="App">
-            <Header/>
+            <Header currentPath={location.pathname}/>
 
             <Switch>
                 <Route exact path={'/'} component={Home}/>
@@ -46,9 +47,11 @@ function App() {
                 {/*<Route path={'/category'}*/}
                 {/*render={(props = { test: '209138'}) => <CategoryContent {...props}/>}*/}
                 {/*/>*/}
+
                 <Route path={'/collections/:id/:title/'} component={CollectionPhotos}/>
+                <Route path={'/collections/:id/:title/share'} component={PopupShare}/>
                 <Route path={'/collections'} component={Collections}/>
-                <Route path={'/collections/share'} component={PopupShare}/>
+
 
                 <Route path={'/search'} component={Search}/>
                 <Route path={'/404'} component={NotFound}/>
@@ -56,7 +59,10 @@ function App() {
             </Switch>
 
             <Footer/>
-
+            {
+                toastMessage &&
+                <Toast message={toastMessage}/>
+            }
         </div>
     );
 }

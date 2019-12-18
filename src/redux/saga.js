@@ -1,20 +1,31 @@
-import {all, put, call, takeLatest, select} from 'redux-saga/effects'
+import {all, put, call, takeLatest, select, delay, spawn} from 'redux-saga/effects'
 import Action from './action';
 import api from './api'
 import {navigate} from "../helpers/HistoryHelper";
 
 
 export default function* () {
-    yield takeLatest(Action.Types.FETCH_PHOTOS, function* () {
-        const result = yield call(api.fetchPhotos); //call : promise 까는 역할도 함
-        console.log(`[saga] [fetchPhotos]`, result);
-        //프론트 액션 > 디스페치 (원래 리듀서로갈거) > 사가 인터셉트함takeLage가 > 리듀서로 다시 보내줘야함 > 이후 다시 스토어로.
-        //여기서 리듀서로 다시보내주는게 put임.
+    const toastMessage = function*(message, duration){
+      yield put(Action.Creators.updateState({
+          toastMessage: message
+      }));
+        yield spawn(function*() {
+            delay(duration); //동기를 비동기로 만들어주는 것 맞지?
+            yield put(Action.Creators.updateState({
+                toastMessage: ''
+            }));
+        })
+    };
 
+    yield takeLatest(Action.Types.FETCH_PHOTOS, function* () {
+        const result = yield call(api.fetchPhotos);
+        console.log(`[saga] [fetchPhotos]`, result);
         yield put(Action.Creators.updateState({recentPhotos: result.data}));
+
+        yield toastMessage('로드가 완료되었습니다.',2000);
     });
 
-    yield takeLatest(Action.Types.FETCH_RANDOM_PHOTOS, function* (){
+    yield takeLatest(Action.Types.FETCH_RANDOM_PHOTOS, function* () {
         const result = yield call(api.fetchRandomPhotos);
         console.log(`[saga] [fetchRandomPhotos]`, result.data);
 
@@ -45,7 +56,7 @@ export default function* () {
         yield put(Action.Creators.updateState({searchUsers: result.data.results, keyword: action.payload}));
     });
 
-    yield takeLatest(Action.Types.FETCH_COLLECTIONS, function* (){
+    yield takeLatest(Action.Types.FETCH_COLLECTIONS, function* () {
         const result = yield call(api.fetchCollections);
         console.log(`[saga] [fetchCollections]`, result.data);
 
@@ -53,14 +64,14 @@ export default function* () {
     });
 
 
-    yield takeLatest(Action.Types.FETCH_COLLECTION_BY_ID, function* (action){
+    yield takeLatest(Action.Types.FETCH_COLLECTION_BY_ID, function* (action) {
         const result = yield call(api.fetchCollectionById, action.payload);
         console.log(`[saga] [fetchCollectionById]`, result.data);
 
         yield put(Action.Creators.updateState({collectionById: result.data}))
     });
 
-    yield takeLatest(Action.Types.FETCH_COLLECTION_PHOTOS, function* (action){
+    yield takeLatest(Action.Types.FETCH_COLLECTION_PHOTOS, function* (action) {
         const result = yield call(api.fetchCollectionPhotos, action.payload);
         console.log(`[saga] [fetchCollectionPhotos]`, result.data);
 

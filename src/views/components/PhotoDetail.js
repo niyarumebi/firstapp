@@ -21,7 +21,23 @@ function PhotoDetail(props) {
     useEffect(() => {
         dispatch(Action.Creators.fetchRelatedPhotos('note'));
     }, []);
-    {/* 창 esc로 끄는 건 밖에서 window.e 캐치해서 onCLose로 연결해줘야할*/}
+
+    function checkEvent(e){
+       if(e.keyCode === 13 || e.keyCode === 27){
+           onClose();
+       }
+    }
+
+    useEffect(() => {
+        function watchKeyUp(){
+            window.addEventListener('keyup', checkEvent);
+        }
+        watchKeyUp();
+
+        return () => {
+            window.removeEventListener('keyup', checkEvent)
+        }
+    });
 
     return (
         <div className="PhotoDetail"

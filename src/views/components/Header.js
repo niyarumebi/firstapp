@@ -51,7 +51,7 @@ function Header(props) {
         },
     ];
 
-    function checkArea(e){
+    function checkEvent(e){
        if(document.getElementsByClassName('PopupMenu')){
            if(e.target.innerHTML !== 'more_horiz' || e.target.className.indexOf('PopupMenu') == 0){
                setIsOpen(false);
@@ -61,12 +61,12 @@ function Header(props) {
 
     useEffect(() => {
         function watchClick(){
-            window.addEventListener('click', checkArea);
+            window.addEventListener('click', checkEvent);
         }
         watchClick();
         //component will unmount 시에 걸리는 return 인가?
         return () => {
-            window.removeEventListener('click', checkArea)
+            window.removeEventListener('click', checkEvent)
         }
     });
 

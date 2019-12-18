@@ -5,6 +5,8 @@ import Action from "../../../redux/action";
 import Photos from "../../components/Photos";
 import UserIcon from "../../components/UserIcon";
 import cn from 'classnames'
+import {navigate} from "../../../helpers/HistoryHelper";
+import {makeADash} from "../../../helpers/CommonHelper";
 
 function CollectionPhotos(props) {
 
@@ -18,7 +20,7 @@ function CollectionPhotos(props) {
     const id = props.match.params.id;
 
     useEffect(() => {
-        dispatch(Action.Creators.updateState({collectionById : null, collectionPhotos: null}))
+        // dispatch(Action.Creators.updateS tate({collectionById : null, collectionPhotos: null}));
         dispatch(Action.Creators.fetchCollectionById(id));
         dispatch(Action.Creators.fetchCollectionPhotos(id));
     }, [id]);
@@ -38,7 +40,9 @@ function CollectionPhotos(props) {
                             src={collectionById.user.profile_image.small}
                             name={collectionById.user.username}
                         />
-                        <div className="btn-basic btn-type btn-share">
+                        <div className="btn-basic btn-type btn-share" onClick={() => {
+                            navigate(`/collections/${id}/${makeADash(collectionById.title)}/share`)
+                        }}>
                             <i className="material-icons">reply</i> Share
                         </div>
                     </div>
