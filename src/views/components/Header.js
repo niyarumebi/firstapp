@@ -10,10 +10,7 @@ function Header(props) {
 
     const {} = props;
 
-    const [moreMenu, setMoreMenu] = useState({
-        isOpen: false,
-        isRightSide: false,
-    });
+    const [isOpen, setIsOpen] = useState(false);
 
     const moreMenuItems = [
         {
@@ -54,6 +51,26 @@ function Header(props) {
         },
     ];
 
+    function checkArea(e){
+       if(document.getElementsByClassName('PopupMenu')){
+           if(e.target.innerHTML !== 'more_horiz' || e.target.className.indexOf('PopupMenu') == 0){
+               setIsOpen(false);
+           }
+       }
+    }
+
+    useEffect(() => {
+        function watchClick(){
+            window.addEventListener('click', checkArea);
+        }
+        watchClick();
+        //component will unmount 시에 걸리는 return 인가?
+        return () => {
+            window.removeEventListener('click', checkArea)
+        }
+    });
+
+
     return (
         //className={cn(((e.scorllTop >= 100vh) && 'get-scroll' ))}
         <div className="Header">
@@ -87,14 +104,14 @@ function Header(props) {
                         </Link>
                         <div className="link"
                              style={{position: 'relative'}}
-                             onClick={() => setMoreMenu({isOpen: !moreMenu.isOpen})}
+                             onClick={() => setIsOpen(!isOpen)}
                         >
                             <div className="txt">
                                 <i className="material-icons">more_horiz</i>
                             </div>
                             <PopupMenu
                                 items={moreMenuItems}
-                                isOpen={moreMenu.isOpen}
+                                isOpen = {isOpen}
                             >
                                 <div className="col-wrap">
                                     <Link to={'/'} className="item">
