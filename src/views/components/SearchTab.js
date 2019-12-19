@@ -1,72 +1,153 @@
-import React, {useState, useEffect, useRef} from 'react';
-import _ from 'lodash'
-import cn from 'classnames'
-import {kComma} from "../../helpers/CommonHelper";
+import React, {useState, useEffect} from 'react';
+import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
 import Action from "../../redux/action";
+import cn from 'classnames'
+import NoData from "./NoData";
+import Collections from "../pages/collections/Collections";
+import Photos from "./Photos";
+import _ from "lodash";
+import CollectionItem from "./CollectionItem";
+import {kComma} from "../../helpers/CommonHelper";
+import {navigate} from "../../helpers/HistoryHelper";
 
 function SearchTab(props) {
+
     const {
-        keyword
+        dispatch,
+        searchResult,
     } = props;
 
-    const heads = [
-        {
-            icon: 'insert_photo',
-            txt: 'Photos',
-            // val: '45643', //10만 100k
-            func: () => {
-                dispatch(Action.Creators.fetchSearchPhotos(keyword))
-            }
-        },
-        {
-            icon: 'layers',
-            txt: 'Collections',
-            func: () => {
-                dispatch(Action.Creators.fetchSearchCollections(keyword))
-            }
-        },
-        {
-            icon: 'group',
-            txt: 'Users',
-            func: () => {
-                dispatch(Action.Creators.fetchSearchUsers(keyword))
-            }
-        },
-    ];
+    //data는 .results붙이기
+    //나중에 UseSTate로 바꾸던가. type은 바껴야하니까 keyword는 바꾸지말고
 
-    const [currentHead, setCurrentHead] = useState(0);
-    const headsRef = useRef();//함수형 컴포넌트 초기값 설정 어떻게해줘야하지
-    const toggleClass = (idx) => {
-        for (let i = 0; i < headsRef.current.children.length; i++) {
-            headsRef.current.children[i].classList.remove('is-active');
-            headsRef.current.children[idx].classList.add('is-active');
-        }
-    };
+    const T1 = 'photos';
+    const T2 = 'collections';
+    const T3 = 'users';
 
-    // const myRef = React.createRef(); // 함수 컴포넌트 안되고 클래스컴포에서만 사용된다던
+
+    const [type, setType] = useState(props.match.params.type);
+    // const type = props.match.params.type;
+    const keyword = props.match.params.keyword;
+
+    // const heads = [
+    //     {
+    //         icon: 'insert_photo',
+    //         txt: 'Photos',
+    //         // val: '45643', //10만 100k
+    //         func: dispatch(Action.Creators.fetchSearchPhotos(keyword))
+    //     },
+    //     {
+    //         icon: 'layers',
+    //         txt: 'Collections',
+    //         func: dispatch(Action.Creators.fetchSearchCollections(keyword))
+    //     },
+    //     {
+    //         icon: 'group',
+    //         txt: 'Users',
+    //         func: dispatch(Action.Creators.fetchSearchUsers(keyword))
+    //     },
+    // ];
+
+
+    useEffect(() => {
+        dispatch(Action.Creators.fetchSearch(keyword));
+        // dispatch(Action.Creators.fetchSearchCollections(keyword));
+        // dispatch(Action.Creators.fetchSearchUsers(keyword));
+    }, [keyword]);
+
+    if (!searchResult) {
+        return false;
+    }
 
     return (
-        <div className="Tab">
-            <div className="head-wrap" ref={headsRef}>
-                {
-                    _.map(heads, (head, i) =>
-                        <div className={cn("head", (i === 0 && 'is-active'))}
-                             key={i}
-                             onClick={() => {
-                                 toggleClass(i, head.id); //초기값을 i로 주는 게 맞나,,, children[0] 이런거 없나..
-                                 //map으로 출력된 애는 조작하기에는 반은 static한 데이터 인거 맞지?
-                                 setCurrentHead(i);
-                             }}
-                        >
-                            <div className="txt">
-                                <i className="material-icons">{head.icon}</i>
-                                {head.txt} {kComma(parseInt(head.val))}</div>
-                        </div>
-                    )
-                }
+        <div className="Tab SearchTab">
+
+
+            <div className="head-wrap">
+                <div className={cn("head", {'is-active': type === 'photos'})} onClick={() => {
+                    setType(T1);
+                    // dispatch(Action.Creators.fetchSearchPhotos(keyword))
+                }}>
+                    <div className="txt">
+                        <i className="material-icons">insert_photo</i>
+                        Photos {kComma(searchResult.photos.total)}
+                    </div>
+                </div>
+                <div className={cn("head", {'is-active': type === 'collections'})} onClick={() => {
+                    // dispatch(Action.Creators.fetchSearchCollections(keyword))
+                    setType(T2);
+                }}>
+                    <div className="txt">
+                        <i className="material-icons">layers</i>
+                        Collections {kComma(searchResult.collections.total)}
+                    </div>
+                </div>
+                <div className={cn("head", {'is-active': type === 'Users'})} onClick={() => {
+                    setType(T3);
+                }}>
+                    <div className="txt">
+                        <i className="material-icons">group</i>
+                        Users {kComma(searchResult.users.total)}
+                    </div>
+                </div>
             </div>
+
+            <div className="cont-wrap">
+                <div className="container">
+
+                    <div className="title">{keyword}</div>
+                  <div className="related-keywords-wrap">
+                      <div className="related-keywords">
+                          {
+                              _.map((searchResult.related_searches), (keyword, i) =>
+                                  <div className='item'
+                                       key={i}
+                                       onClick={() => dispatch(Action.Creators.fetchSearch({keyword}))}
+                                  >
+                                      <div className="txt">{keyword.title}</div>
+                                  </div>
+                              )
+                          }
+                      </div>
+                  </div>
+
+                    {
+                        type === T1 && <Photos photos={searchResult.photos.results}></Photos>
+                        // searchPhotos.results.length > 0) ?  : <NoData/>
+                    }
+                    {
+                        type === T2 &&
+                        <div className='collection-wrap'>
+                            {
+                                _.map(searchResult.collections.results, (collection, i) =>
+                                    <CollectionItem
+                                        key={i}
+                                        collection={collection}
+                                    />
+                                )
+                            }
+                        </div>
+                    }
+                    {
+                        type === T3 &&
+                        <div className='collection-wrap'>
+                           Users
+                        </div>
+                    }
+                    {/*{*/}
+                    {/*    type === 'collections' ?*/}
+                    {/*        searchPhotos.length > 0 ? <Collections photos={searchCollections.results}></Collections> : <NoData/> : false*/}
+                    {/*}*/}
+                    {/*{*/}
+                    {/*    type === 'users' ?*/}
+                    {/*        searchPhotos.length > 0 ? <Photos photos={searchUsers.results}></Photos> : <NoData/>*/}
+                    {/*}*/}
+                </div>
+            </div>
+
         </div>
     )
 }
 
-export default SearchTab;
+export default connect(state => ({...state}), dispatch => ({dispatch}))(withRouter(SearchTab));

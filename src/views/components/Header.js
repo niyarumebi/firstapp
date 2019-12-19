@@ -12,47 +12,43 @@ function Header(props) {
         currentPath
     } = props;
 
-    //bCate 파람스로 있으면 그거있으면 헤더에 catecontet.js dlavhxmgksmsrjffh
-    //아그냥 current Path 에서 걸러주면될거같은데
-    console.log("@@ props in header", currentPath);
-
     const [isOpen, setIsOpen] = useState(false);
 
     const moreMenuItems = [
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'Blog',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'Community',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'History',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'Made with Unsplash',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'API/Developers',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'Press',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'Join the team',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'License',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'Help',
         },
     ];

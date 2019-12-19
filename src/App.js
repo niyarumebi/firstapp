@@ -57,7 +57,7 @@ function App(props) {
                 <Route path={'/collections'} component={Collections}/>
 
 
-                <Route path={'/search/:type/:query'} component={Search}/>
+                <Route path={'/search/:type/:keyword'} component={Search}/>
                 <Route path={'/404'} component={NotFound}/>
                 <Redirect to={'/404'}/>
             </Switch>

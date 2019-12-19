@@ -1,20 +1,33 @@
 import Action from "./action";
 
 const initialState = {
+    /**
+     * ======= Photos =======
+     */
     recentPhotos: [],
     selectedPhoto: null,
     randomPhotos: [],
     relatedPhotos: [],
 
+    /**
+     * ======= Search =======
+     */
     keyword: null,
+    searchResult: null,
     searchPhotos: [],
     searchCollections: [],
     searchUsers: [],
 
+    /**
+     * ======= Collections =======
+     */
     collections: null,
     collectionById: null,
     collectionPhotos: [],
 
+    /**
+     * ======= Users =======
+     */
     userProfile: null,
 };
 

@@ -6,7 +6,7 @@ import {navigate} from "../helpers/HistoryHelper";
 export default function* () {
 
     /**
-     * ======= Public used =======
+     * ======= Common usage =======
      */
     const toastMessage = function* (message, duration) {
         yield put(Action.Creators.updateState({
@@ -50,28 +50,32 @@ export default function* () {
     /**
      * ======= Search =======
      */
+    yield takeLatest(Action.Types.FETCH_SEARCH, function* (action) {
+        const result = yield call(api.fetchSearch, action.payload);
+        console.log(`[saga] [fetchSearch]`, result.data);
+
+        yield put(Action.Creators.updateState({searchResult: result.data, keyword: action.payload}));
+    });
+
     yield takeLatest(Action.Types.FETCH_SEARCH_PHOTOS, function* (action) {
         const result = yield call(api.fetchSearchPhotos, action.payload);
         console.log(`[saga] [fetchSearchPhotos]`, result.data);
-        navigate('/search');
 
-        yield put(Action.Creators.updateState({searchPhotos: result.data.results, keyword: action.payload}));
+        yield put(Action.Creators.updateState({searchPhotos: result.data, keyword: action.payload}));
     });
 
     yield takeLatest(Action.Types.FETCH_SEARCH_COLLECTIONS, function* (action) {
         const result = yield call(api.fetchSearchCollections, action.payload);
         console.log(`[saga] [fetchSearchCollections]`, result.data);
-        navigate('/search');
 
-        yield put(Action.Creators.updateState({searchCollections: result.data.results, keyword: action.payload}));
+        yield put(Action.Creators.updateState({searchCollections: result.data, keyword: action.payload}));
     });
 
     yield takeLatest(Action.Types.FETCH_SEARCH_USERS, function* (action) {
         const result = yield call(api.fetchSearchUsers, action.payload);
         console.log(`[saga] [fetchSearchUsers]`, result.data);
-        navigate('/search');
 
-        yield put(Action.Creators.updateState({searchUsers: result.data.results, keyword: action.payload}));
+        yield put(Action.Creators.updateState({searchUsers: result.data, keyword: action.payload}));
     });
 
 
@@ -106,7 +110,6 @@ export default function* () {
     yield takeLatest(Action.Types.FETCH_USER_PROFILE, function* () {
         const result = yield call(api.fetchUserProfile);
         console.log(`[saga] [fetchUserProfile]`, result.data);
-        // yield navigate('/user');
         yield put(Action.Creators.updateState({userProfile: result.data}));
     });
 }

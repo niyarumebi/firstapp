@@ -6,6 +6,7 @@ const Action = {
         FETCH_RANDOM_PHOTOS: 'FETCH_RANDOM_PHOTOS',
         FETCH_RELATED_PHOTOS: 'FETCH_RELATED_PHOTOS',
 
+        FETCH_SEARCH : 'FETCH_SEARCH',
         FETCH_SEARCH_PHOTOS: 'FETCH_SEARCH_PHOTOS',
         FETCH_SEARCH_COLLECTIONS: 'FETCH_SEARCH_COLLECTIONS',
         FETCH_SEARCH_USERS: 'FETCH_SEARCH_USERS',
@@ -15,40 +16,58 @@ const Action = {
         FETCH_COLLECTION_PHOTOS: 'FETCH_COLLECTION_PHOTOS',
 
         FETCH_USER_PROFILE: 'FETCH_USER_PROFILE',
-        FETCH_USER_PORTFOLIOLINK:'FETCH_USER_PORTFOLIOLINK',
-        FETCH_USER_PHOTOS:'FETCH_USER_PHOTOS',
-        FETCH_USER_STASTICS:'FETCH_USER_STASTICS',
-
-        // POST_LIKE_PHOTO: 'POST_LIKE_PHOTO',
-        // POST_UN_LIKE_PHOTO: 'POST_UN_LIKE_PHOTO',
-        // ADD_PHOTO_TO_COLLECTIONS: 'ADD_PHOTO_TO_COLLECTIONS',
-        // CREATE_NEW_COLLECTIONS: 'CREATE_NEW_COLLECTIONS',
+        FETCH_USER_PORTFOLIOLINK: 'FETCH_USER_PORTFOLIOLINK',
+        FETCH_USER_PHOTOS: 'FETCH_USER_PHOTOS',
+        FETCH_USER_STASTICS: 'FETCH_USER_STASTICS',
     },
 
     Creators: {
+        /**
+         * ======= Common usage =======
+         */
         updateState: payload => ({
             type: Action.Types.UPDATE_STATE,
             payload
         }),
 
-        //fetch photo array
+        /**
+         * ======= Photos =======
+         */
         fetchPhotos: () => ({
             type: Action.Types.FETCH_PHOTOS
         }),
         fetchRandomPhotos: () => ({
             type: Action.Types.FETCH_RANDOM_PHOTOS
         }),
+        fetchRelatedPhotos: payload => ({
+            type: Action.Types.FETCH_RELATED_PHOTOS,
+            payload
+        }),
+
+
+        /**
+         * ======= Search =======
+         */
+        fetchSearch: payload => ({
+            type: Action.Types.FETCH_SEARCH,
+            payload
+        }),
         fetchSearchPhotos: payload => ({
-            type:Action.Types.FETCH_SEARCH_PHOTOS,
+            type: Action.Types.FETCH_SEARCH_PHOTOS,
             payload
         }),
-        fetchRelatedPhotos:payload => ({
-            type:Action.Types.FETCH_RELATED_PHOTOS,
+        fetchSearchCollections: payload => ({
+            type: Action.Types.FETCH_SEARCH_COLLECTIONS,
+            payload
+        }),
+        fetchSearchUsers: payload => ({
+            type: Action.Types.FETCH_SEARCH_USERS,
             payload
         }),
 
-
-        //fetch etc
+        /**
+         * ======= Collections =======
+         */
         fetchCollections: () => ({
             type: Action.Types.FETCH_COLLECTIONS,
         }),
@@ -62,7 +81,9 @@ const Action = {
         }),
 
 
-        //fetch user
+        /**
+         * ======= Users =======
+         */
         fetchUserProfile: () => ({
             type: Action.Types.FETCH_USER_PROFILE
         }),

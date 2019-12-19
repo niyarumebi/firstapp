@@ -16,10 +16,7 @@ function SearchBar(props) {
         <div className="SearchBar">
             <i className="material-icons"
             onClick={() => {
-                // dispatch(Action.Creators.fetchSearchPhotos(value));
-                // dispatch(Action.Creators.fetchSearchCollections(value));
-                // dispatch(Action.Creators.fetchSearchUsers(value));
-                navigate(`/search/${value}`)
+                navigate(`/search/photos/${value}`)
             }}>search</i>
             <input
                 type="text"
@@ -30,10 +27,7 @@ function SearchBar(props) {
                 }}
                 onKeyUp={(e) => {
                     if (e.keyCode === 13) {
-                        navigate(`/search/${value}`)
-                        // dispatch(Action.Creators.fetchSearchPhotos(value));
-                        // dispatch(Action.Creators.fetchSearchCollections(value));
-                        // dispatch(Action.Creators.fetchSearchUsers(value));
+                        navigate(`/search/photos/${value}`)
                     }
                 }}
             />

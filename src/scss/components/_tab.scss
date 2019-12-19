@@ -1,7 +1,7 @@
 .Tab{
-  border-bottom: 1px solid $lighter-gray;
   .head-wrap{
     padding: 0 20px;
+    border-bottom: 1px solid $border-gray;
   }
   .head{
     opacity: 0.7;
@@ -20,16 +20,30 @@
       font-weight: 400;
       color: $black;
       i{
+        opacity: 0.3;
         vertical-align: middle;
-        font-size: 20px;
-        margin-right: 10px;
+        font-size: 18px;
+        margin-right: 6px;
       }
     }
     &:hover, &.is-active{
       opacity: 1;
       .txt{
         border-color: $black;
+        i{
+          opacity: 1;
+        }
       }
+    }
+  }
+  .cont-wrap{
+    padding-top: 60px;
+    .title{
+      margin-bottom: 12px;
+      text-transform: capitalize;
+      font-size: 43px;
+      font-weight: 700;
+      color: $black;
     }
   }
   .cont{
