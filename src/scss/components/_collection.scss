@@ -20,8 +20,13 @@
       display: flex;
       width: 290px;
       padding-right: 2px;
-      img{
-        width: 100%;
+      .thumb{
+        display: flex;
+        flex-grow: 1;
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #f1f1f1;
       }
     }
     .col2{
@@ -32,10 +37,10 @@
         display: flex;
         flex-direction: column;
         height: 50%;
-        background: #f1f1f1;
-        img{
-          height: 100%;
-        }
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #f1f1f1;
         &:nth-child(1){
           margin-bottom: 2px;
         }

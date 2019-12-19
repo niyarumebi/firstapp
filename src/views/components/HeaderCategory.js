@@ -3,6 +3,7 @@ import _ from 'lodash';
 import Action from "../../redux/action";
 import {connect} from "react-redux";
 import {navigate} from "../../helpers/HistoryHelper";
+import {makeADash} from "../../helpers/CommonHelper";
 
 function HeaderCategory(props) {
 
@@ -10,73 +11,68 @@ function HeaderCategory(props) {
         dispatch
     } = props;
 
-    {/*const bigCategory = [*/}
-
-        {/*{*/}
-    //         name: 'wallpapers',
-    //         id: '1065976',
-        {/*},*/}
-        {/*{*/}
-            {/*name: 'business & work',*/}
-            {/*id: '3348877'*/}
-        {/*},*/}
-    //     {
-    //         name: 'nature',
-    //         id: '3330448'
-    //     },
-    //     {
-    //         name: 'people',
-    //         id: '3356568'
-    //     },
-    //     {
-    //         name: 'unsplash editorila',
-    //         id: '317099'
-    //     },
-    //     {
-    //         name: 'health',
-    //         id: '3356594'
-    //     },
-    //     {
-    //         name: 'textues & patterns',
-    //         id: '3348877'
-    //     },
-    //     {
-            {/*name: 'nature',*/}
-    //         id: '3330448'
-    //     },
-    //     {
-            {/*name: 'people',*/}
-    //         id: '3356568'
-    //     },
-    //     {
-            {/*name: 'unsplash editorila',*/}
-            {/*id: '317099'*/}
-        {/*},*/}
-        {/*{*/}
-            {/*name: 'health',*/}
-    //         id: '3356594'
-    //     },
-    //     {
-            {/*name: 'textues & patterns',*/}
-            {/*id: '3348877'*/}
-        {/*},*/}
-        {/*{*/}
-            {/*name: 'nature',*/}
-            {/*id: '3330448'*/}
-    //     },
-    //     {
-    //         name: 'people',
-    //         id: '3356568'
-        {/*},*/}
-        {/*{*/}
-    //         name: 'unsplash editorila',
-    //         id: '317099'
-    //     },
-    //     {
-    //         name: 'health',
-    //         id: '3356594'
-    //     },
-    // ];
+    const bigCategory = [
+        {
+            title: 'wallpapers',
+            id: '1065976',
+        },
+        {
+            title: 'business & work',
+            id: '3348877',
+        },
+        {
+            title: 'nature',
+            id: '3330448'
+        },
+        {
+            title: 'people',
+            id: '3356568'
+        },
+        {
+            title: 'unsplash editorial',
+            id: '317099'
+        },
+        {
+            title: 'health',
+            id: '3356594'
+        },
+        {
+            title: 'textures & patterns',
+            id: '3330445'
+        },
+        {
+            title: 'nature',
+            id: '3330448'
+        },
+        {
+            title: 'people',
+            id: '3356568'
+        },
+        {
+            title: 'unsplash editorial',
+            id: '317099'
+        },
+        {
+            title: 'health',
+            id: '3356594'
+        },
+        {
+            title: 'textures & patterns',
+            id: '3330445'
+        },
+        {
+            title: 'nature',
+            id: '3330448'
+        },
+        {
+            title: 'people',
+            id: '3356568'
+        },
+        {
+            title: 'unsplash editorial',
+            id: '317099'
+        },
+    ];
 
     return (
         <div className="HeaderCategory">
@@ -86,20 +82,17 @@ function HeaderCategory(props) {
                 }}>
                     <div className="txt">random</div>
                 </div>
-                {/*{*/}
-                    {/*_.map(bigCategory, (bCate, i) =>*/}
-                        {/*<div className="link" key={i} onClick={() => {*/}
-                            {/*dispatch(Action.Creators.updateState({selectedCollection: bCate}));*/}
-                            {/*navigate('/category');*/}
-                        {/*}}>*/}
-                            {/*<div className="txt">{bCate.name}</div>*/}
-                        {/*</div>*/}
-                    {/*)*/}
-                {/*}*/}
+                {
+                    _.map(bigCategory, (bCate, i) =>
+                        <div className="link" key={i} onClick={() => {
+                            navigate(`/collections/${bCate.id}/${makeADash(bCate.title)}/bCate`);
+                        }}>
+                           <div className="txt">{bCate.title}</div>
+                        </div>
+                    )}
             </div>
         </div>
     )
 }
 
-// export default HeaderCategory;
 export default connect(state => ({...state}), dispatch => ({dispatch}))(HeaderCategory);

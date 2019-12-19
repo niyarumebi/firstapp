@@ -18,14 +18,12 @@ function CollectionItem(props) {
         }}>
             <div className="thumbs-wrap">
                 <div className="col">
-                    <img src={collection.preview_photos[0].urls.small} alt=""/>
+                    <div className="thumb" style={{backgroundImage: `url(${collection.preview_photos[0].urls.small})`}}></div>
                 </div>
                 <div className="col2">
-                    <div className="thumb">
-                        <img src={collection.preview_photos[1].urls.small} alt=""/>
+                    <div className="thumb" style={{backgroundImage: `url(${collection.preview_photos[1].urls.small})`}}>
                     </div>
-                    <div className="thumb">
-                        <img src={collection.preview_photos[2].urls.small} alt=""/>
+                    <div className="thumb" style={{backgroundImage: `url(${collection.preview_photos[2].urls.small})`}}>
                     </div>
                 </div>
             </div>

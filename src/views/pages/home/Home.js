@@ -3,6 +3,7 @@ import Photos from "../../components/Photos";
 import SearchBar from "../../components/SearchBar";
 import {connect} from "react-redux";
 import Action from '../../../redux/action'
+import Toast from "../../components/Toast";
 
 
 function Home(props) {
@@ -19,6 +20,7 @@ function Home(props) {
 
     return (
         <div className="Home">
+
             <div className="main-visual">
                 <div className="main-txt">
                     <p className="t1">Unsplash</p>

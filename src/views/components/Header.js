@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import SearchBar from "./SearchBar";
 import HeaderCategory from "./HeaderCategory";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {navigate} from "../../helpers/HistoryHelper";
 import PopupMenu from "./PopupMenu";
 import { FaTwitter, FaFacebookSquare,  FaInstagram, FaMedium } from "react-icons/fa";
@@ -11,6 +11,10 @@ function Header(props) {
     const {
         currentPath
     } = props;
+
+    //bCate 파람스로 있으면 그거있으면 헤더에 catecontet.js dlavhxmgksmsrjffh
+    //아그냥 current Path 에서 걸러주면될거같은데
+    console.log("@@ props in header", currentPath);
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -72,27 +76,6 @@ function Header(props) {
         }
     }, []);
 
-    const collectionMenuRoutes = [
-        {
-            name: 'collec',
-            to: '/'
-        },
-        {
-            name: 'follwing',
-            to: '/follwing'
-        }
-    ];
-
-    const homeMenuRoutes = [
-        {
-            name: 'editorial',
-            to: '/11'
-        }, {
-            name: 'collec22',
-            to: '/22'
-        },
-    ];
-
     function Menu({routes}){
         return _.map(routes, (route, i) => <div key={i}
                                            onClick={() => navigate(route.to)}>{route.name}</div>)
@@ -101,14 +84,6 @@ function Header(props) {
     return (
         //className={cn(((e.scorllTop >= 100vh) && 'get-scroll' ))}
         <div className="Header">
-            {
-                currentPath === '/' &&
-                    <Menu routes = {homeMenuRoutes}/>
-            }
-            {
-                currentPath === '/collections' &&
-                    <Menu routes={collectionMenuRoutes}/>
-            }
             <div className="upper">
                 <div className="
                 logo">
@@ -182,11 +157,12 @@ function Header(props) {
                     </div>
                 </div>
             </div>
-            <div className="bottom">
-                <HeaderCategory/>
-            </div>
+                {
+                    (currentPath === '/' || currentPath.indexOf('bCate') > 0 ) &&
+                    <HeaderCategory/>
+                }
         </div>
     )
 }
 
-export default Header;
+export default withRouter(Header);
