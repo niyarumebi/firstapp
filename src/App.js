@@ -17,6 +17,7 @@ import CollectionPhotos from "./views/pages/collections/CollectionPhotos";
 import PopupShare from "./views/components/PopupShare";
 import Toast from "./views/components/Toast";
 import cn from "classnames";
+import PreLoader from "./views/components/PreLoader";
 
 function App(props) {
 
@@ -28,13 +29,15 @@ function App(props) {
 
     useEffect(() => {
        dispatch(Action.Creators.updateState({
-           toastMessage: '',
+           // toastMessage: '',
            currentPath: location.pathname,
        }))
     }, [location.pathname]);
 
     return (
         <div className="App">
+
+            {/*<PreLoader/>*/}
             <Header currentPath={location.pathname}/>
 
             <Switch>
@@ -54,7 +57,7 @@ function App(props) {
                 <Route path={'/collections'} component={Collections}/>
 
 
-                <Route path={'/search'} component={Search}/>
+                <Route path={'/search/:type/:query'} component={Search}/>
                 <Route path={'/404'} component={NotFound}/>
                 <Redirect to={'/404'}/>
             </Switch>

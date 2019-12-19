@@ -12,3 +12,30 @@
     color: $gray;
   }
 }
+
+.PreLoader{
+  position: fixed;
+  z-index: 50000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  display: flex;
+  //img{
+  //  display: flex;
+  //  justify-content: center;
+  //  align-items: center;
+  //  width: 100px;
+  //  height: 70px;
+  //}
+  .img{
+    width: 100px;
+    height: 70px;
+    background-image: url(https://ryanmartinproductions.com/image/186051-full_open-source-loading-gif-icons-vol-1-on-behance.gif);
+    -webkit-background-size: cover;
+    background-size: cover;
+
+    background-repeat: no-repeat;
+  }
+}

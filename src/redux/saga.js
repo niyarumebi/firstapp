@@ -8,18 +8,17 @@ export default function* () {
     /**
      * ======= Public used =======
      */
-    const toastMessage = function*(message, duration){
-      yield put(Action.Creators.updateState({
-          toastMessage: message
-      }));
-        yield spawn(function*() {
-            delay(duration); //동기를 비동기로 만들어주는 것 맞지?
+    const toastMessage = function* (message, duration) {
+        yield put(Action.Creators.updateState({
+            toastMessage: message
+        }));
+        yield spawn(function* () {
+            yield delay(duration); //동기를 비동기로 만들어주는 것 맞지? delay앞에 yield 안써줘서 안됐었다..
             yield put(Action.Creators.updateState({
                 toastMessage: ''
             }));
         })
     };
-
 
 
     /**
@@ -30,7 +29,7 @@ export default function* () {
         console.log(`[saga] [fetchPhotos]`, result);
         yield put(Action.Creators.updateState({recentPhotos: result.data}));
 
-        yield toastMessage('로드가 완료되었습니다.',2000);
+        yield toastMessage('로드가 완료되었습니다.', 2000);
     });
 
     yield takeLatest(Action.Types.FETCH_RANDOM_PHOTOS, function* () {
@@ -46,7 +45,6 @@ export default function* () {
 
         yield put(Action.Creators.updateState({relatedPhotos: result.data.results, keyword: action.payload}));
     });
-
 
 
     /**

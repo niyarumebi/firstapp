@@ -19,7 +19,8 @@ const Container = styled.div`
   text-align: center;
   font-size: 14px;
   font-weight: 400;
-  color: $white;
+  color: #fff;
+  //color: $white;
 `;
 
 function Toast(props) {

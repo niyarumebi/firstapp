@@ -3,7 +3,7 @@ import _ from 'lodash'
 import cn from 'classnames'
 import {kComma} from "../../helpers/CommonHelper";
 
-function Tab(props) {
+function SearchTab(props) {
     const {
 //store에 안 꽂고, 데이터 fetch해온 데에서 배열로 concat묶어서 [photo,collection,users]로 가져오면 될듯,, 다른곳도 그렇게 받아오게,, 이름상관없이 배열형으로
         heads = [
@@ -55,9 +55,6 @@ function Tab(props) {
             headsRef.current.children[idx].classList.add('is-active');
         }
     };
-
-    console.log("@@ currentHead", currentHead);
-    console.log("@@ contentsRef", contentsRef);
 
     // const myRef = React.createRef(); // 함수 컴포넌트 안되고 클래스컴포에서만 사용된다던
 

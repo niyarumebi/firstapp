@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Photos from "../../components/Photos";
 import {connect} from "react-redux";
 import NoData from "../../components/NoData";
-import Tab from "../../components/Tab";
+import SearchTab from "../../components/SearchTab";
 
 function Search(props) {
 
@@ -14,7 +14,7 @@ function Search(props) {
     return (
         <div className="Search">
 
-            <Tab></Tab>
+            <SearchTab></SearchTab>
 
           <div className="container">
               {
