@@ -7,7 +7,6 @@ import SearchTab from "../../components/SearchTab";
 function Search(props) {
 
     const {
-        searchPhotos = []
     } = props;
 
 

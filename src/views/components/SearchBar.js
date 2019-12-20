@@ -8,10 +8,17 @@ function SearchBar(props) {
 
     const {
         placeholder = 'Search free high-resolution photos',
+        keyword,
         dispatch,
     } = props;
 
+
     const [value, setValue] = useState('');
+
+    useEffect(() => {
+        setValue(keyword)
+    },[keyword]);
+
     return (
         <div className="SearchBar">
             <i className="material-icons"

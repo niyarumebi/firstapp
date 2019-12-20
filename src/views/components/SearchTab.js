@@ -4,12 +4,12 @@ import {connect} from "react-redux";
 import Action from "../../redux/action";
 import cn from 'classnames'
 import NoData from "./NoData";
-import Collections from "../pages/collections/Collections";
 import Photos from "./Photos";
 import _ from "lodash";
 import CollectionItem from "./CollectionItem";
 import {kComma} from "../../helpers/CommonHelper";
 import {navigate} from "../../helpers/HistoryHelper";
+import UserCard from "./UserCard";
 
 function SearchTab(props) {
 
@@ -17,9 +17,6 @@ function SearchTab(props) {
         dispatch,
         searchResult,
     } = props;
-
-    //data는 .results붙이기
-    //나중에 UseSTate로 바꾸던가. type은 바껴야하니까 keyword는 바꾸지말고
 
     const T1 = 'photos';
     const T2 = 'collections';
@@ -59,25 +56,31 @@ function SearchTab(props) {
     return (
         <div className="Tab SearchTab">
             <div className="head-wrap">
-                <div className={cn("head", {'is-active': type === 'photos'})} onClick={() => {
-                    setType(T1);
-                }}>
+                <div className={cn("head", {'is-active': type === T1})}
+                     onClick={() => {
+                         setType(T1);
+                         navigate(`/search/${T1}/${keyword}`)
+                     }}>
                     <div className="txt">
                         <i className="material-icons">insert_photo</i>
                         Photos {kComma(searchResult.photos.total)}
                     </div>
                 </div>
-                <div className={cn("head", {'is-active': type === 'collections'})} onClick={() => {
-                    setType(T2);
-                }}>
+                <div className={cn("head", {'is-active': type === T2})}
+                     onClick={() => {
+                         setType(T2);
+                         navigate(`/search/${T2}/${keyword}`)
+                     }}>
                     <div className="txt">
                         <i className="material-icons">layers</i>
                         Collections {kComma(searchResult.collections.total)}
                     </div>
                 </div>
-                <div className={cn("head", {'is-active': type === 'Users'})} onClick={() => {
-                    setType(T3);
-                }}>
+                <div className={cn("head", {'is-active': type === T3})}
+                     onClick={() => {
+                         setType(T3);
+                         navigate(`/search/${T3}/${keyword}`)
+                     }}>
                     <div className="txt">
                         <i className="material-icons">group</i>
                         Users {kComma(searchResult.users.total)}
@@ -95,9 +98,8 @@ function SearchTab(props) {
                                     <div className='item'
                                          key={i}
                                          onClick={() => {
-                                             navigate(`/search/photo/${keyword.title}`)}
-                                         }
-                                    >
+                                             navigate(`/search/${T1}/${keyword.title}`)
+                                         }}>
                                         <div className="txt">{keyword.title}</div>
                                     </div>
                                 )
@@ -125,7 +127,9 @@ function SearchTab(props) {
                     {
                         type === T3 &&
                         <div className='collection-wrap'>
-                            Users
+                            {
+                                <UserCard></UserCard>
+                            }
                         </div>
                     }
                 </div>

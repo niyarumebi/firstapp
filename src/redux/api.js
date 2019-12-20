@@ -12,10 +12,10 @@ const api = {
   /**
    * ======= Search =======
    */
-  fetchSearch: keyword => FetchHelper.fetchJsonGet(`/search?=page=1&query=${keyword}`),
-  fetchSearchPhotos: keyword => FetchHelper.fetchJsonGet(`/search/photos?=page=1&query=${keyword}`),
-  fetchSearchCollections: keyword => FetchHelper.fetchJsonGet(`/search/collections?=page=1&query=${keyword}`),
-  fetchSearchUsers: keyword => FetchHelper.fetchJsonGet(`/search/users?=page=1&query=${keyword}`),
+  fetchSearch: keyword => FetchHelper.fetchJsonGet(`/search?page=1&query=${keyword}`),
+  fetchSearchPhotos: keyword => FetchHelper.fetchJsonGet(`/search/photos?page=1&query=${keyword}`),
+  fetchSearchCollections: keyword => FetchHelper.fetchJsonGet(`/search/collections?page=1&query=${keyword}`),
+  fetchSearchUsers: keyword => FetchHelper.fetchJsonGet(`/search/users?page=1&query=${keyword}`),
 
 
   /**
