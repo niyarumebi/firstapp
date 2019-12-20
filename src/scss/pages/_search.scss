@@ -36,7 +36,7 @@
       -o-transition: all .1s;
       transition: all .1s;
       & + .item{
-        margin-left: 14px;
+        margin-left: 10px;
       }
       &:hover, &.is-active{
         opacity: 1;

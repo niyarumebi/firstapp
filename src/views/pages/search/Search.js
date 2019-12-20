@@ -16,14 +16,6 @@ function Search(props) {
 
             <SearchTab></SearchTab>
 
-          {/*<div className="container">*/}
-          {/*    {*/}
-          {/*        searchPhotos.length > 0 ?*/}
-          {/*            <Photos photos={searchPhotos}/> :*/}
-          {/*            <NoData/>*/}
-          {/*    }*/}
-          {/*</div>*/}
-
         </div>
     )
 }

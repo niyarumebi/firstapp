@@ -25,9 +25,7 @@ function SearchTab(props) {
     const T2 = 'collections';
     const T3 = 'users';
 
-
     const [type, setType] = useState(props.match.params.type);
-    // const type = props.match.params.type;
     const keyword = props.match.params.keyword;
 
     // const heads = [
@@ -52,8 +50,6 @@ function SearchTab(props) {
 
     useEffect(() => {
         dispatch(Action.Creators.fetchSearch(keyword));
-        // dispatch(Action.Creators.fetchSearchCollections(keyword));
-        // dispatch(Action.Creators.fetchSearchUsers(keyword));
     }, [keyword]);
 
     if (!searchResult) {
@@ -62,12 +58,9 @@ function SearchTab(props) {
 
     return (
         <div className="Tab SearchTab">
-
-
             <div className="head-wrap">
                 <div className={cn("head", {'is-active': type === 'photos'})} onClick={() => {
                     setType(T1);
-                    // dispatch(Action.Creators.fetchSearchPhotos(keyword))
                 }}>
                     <div className="txt">
                         <i className="material-icons">insert_photo</i>
@@ -75,7 +68,6 @@ function SearchTab(props) {
                     </div>
                 </div>
                 <div className={cn("head", {'is-active': type === 'collections'})} onClick={() => {
-                    // dispatch(Action.Creators.fetchSearchCollections(keyword))
                     setType(T2);
                 }}>
                     <div className="txt">
@@ -95,22 +87,23 @@ function SearchTab(props) {
 
             <div className="cont-wrap">
                 <div className="container">
-
                     <div className="title">{keyword}</div>
-                  <div className="related-keywords-wrap">
-                      <div className="related-keywords">
-                          {
-                              _.map((searchResult.related_searches), (keyword, i) =>
-                                  <div className='item'
-                                       key={i}
-                                       onClick={() => dispatch(Action.Creators.fetchSearch({keyword}))}
-                                  >
-                                      <div className="txt">{keyword.title}</div>
-                                  </div>
-                              )
-                          }
-                      </div>
-                  </div>
+                    <div className="related-keywords-wrap">
+                        <div className="related-keywords">
+                            {
+                                _.map((searchResult.related_searches), (keyword, i) =>
+                                    <div className='item'
+                                         key={i}
+                                         onClick={() => {
+                                             navigate(`/search/photo/${keyword.title}`)}
+                                         }
+                                    >
+                                        <div className="txt">{keyword.title}</div>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
 
                     {
                         type === T1 && <Photos photos={searchResult.photos.results}></Photos>
@@ -132,17 +125,9 @@ function SearchTab(props) {
                     {
                         type === T3 &&
                         <div className='collection-wrap'>
-                           Users
+                            Users
                         </div>
                     }
-                    {/*{*/}
-                    {/*    type === 'collections' ?*/}
-                    {/*        searchPhotos.length > 0 ? <Collections photos={searchCollections.results}></Collections> : <NoData/> : false*/}
-                    {/*}*/}
-                    {/*{*/}
-                    {/*    type === 'users' ?*/}
-                    {/*        searchPhotos.length > 0 ? <Photos photos={searchUsers.results}></Photos> : <NoData/>*/}
-                    {/*}*/}
                 </div>
             </div>
 
