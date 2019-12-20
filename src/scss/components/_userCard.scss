@@ -1,15 +1,23 @@
+.user-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -12px;
+}
 .UserCard{
   display: flex;
   flex-direction: column;
   justify-content: center;
   //align-items: center;
   min-width: 370px;
+  width: 33.33%;
+  margin: 24px 12px;
   padding: 15px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid $border-gray;
   background: $white;
+  cursor: pointer;
   &:hover{
     border-color: #656565;
   }
@@ -28,7 +36,7 @@
     border-radius: 3px;
     background: #007fff;
     text-align: center;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     color: $white;
     svg{
@@ -57,13 +65,13 @@
     .bold{
       display: flex;
       margin-bottom: 2px;
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 600;
       color: $black;
     }
     .id{
       display: flex;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 400;
       color: $gray;
     }

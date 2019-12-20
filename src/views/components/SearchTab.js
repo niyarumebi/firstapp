@@ -126,10 +126,14 @@ function SearchTab(props) {
                     }
                     {
                         type === T3 &&
-                        <div className='collection-wrap'>
+                        <div className='user-wrap'>
                             {
-                                <UserCard></UserCard>
-                            }
+                            _.map(searchResult.users.results, (user, i) =>
+                            <UserCard
+                                key={i}
+                                user={user}
+                            />
+                            )}
                         </div>
                     }
                 </div>
