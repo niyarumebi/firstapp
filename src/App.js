@@ -25,6 +25,7 @@ function App(props) {
         dispatch,
         isLoading,
         toastMessage,
+        showSharePopup,
         location,
     } = props;
 
@@ -63,6 +64,11 @@ function App(props) {
             {/*{*/}
             {/*    isLoading && <PreLoader isLoading={isLoading}/>*/}
             {/*}*/}
+            {
+                showSharePopup &&
+                <SharePopup/>
+            }
+
             {
                 toastMessage &&
                 <Toast message={toastMessage}/>
