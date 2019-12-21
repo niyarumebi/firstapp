@@ -9,34 +9,22 @@ function UserCard (props) {
   } = props;
   
   return (
-      // <div  className="UserCard">
-      //     <div className="info-wrap">
-      //         <div className="thumb"></div>
-      //         <div className="desc">
-      //             <p className="bold">user.name</p>
-      //             <p className="id">@user.id</p>
-      //         </div>
-      //     </div>
-      //     <div className="btn-follow"
-      //          onClick={() => {alert('Not prepared yet')}}
-      //     >
-      //         <IoMdPersonAdd/> Follow
-      //     </div>
-      // </div>
-          <Link to={user.links.html} className="UserCard">
-              <div className="info-wrap">
-                  <div className="thumb" style={{backgroundImage: user.profile_image}}></div>
-                  <div className="desc">
-                      <p className="bold">{user.name}</p>
-                      <p className="id">@{user.id}</p>
+          <div className="UserCard">
+              <div className="inner-wrap">
+                  <div className="info-wrap">
+                      <div className="thumb" style={{backgroundImage: user.profile_image}}></div>
+                      <div className="desc">
+                          <p className="bold">{user.name}</p>
+                          <p className="id">@{user.id}</p>
+                      </div>
+                  </div>
+                  <div className="btn-follow"
+                       onClick={() => alert('Not prepared yet')}
+                  >
+                      <IoMdPersonAdd/> Follow
                   </div>
               </div>
-              <div className="btn-follow"
-                   onClick={() => alert('Not prepared yet')}
-              >
-                  <IoMdPersonAdd/> Follow
-              </div>
-          </Link>
+          </div>
       )
 }
 

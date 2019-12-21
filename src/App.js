@@ -7,8 +7,8 @@ import Header from "./views/components/Header";
 import NotFound from "./views/pages/NotFound";
 import Search from "./views/pages/search/Search";
 
-import Login from "./views/components/Login";
 import CategoryContent from "./views/pages/categoryContent/CategoryContent";
+import Login from "./views/components/Login";
 import Join from "./views/components/Join";
 import Collections from "./views/pages/collections/Collections";
 import Footer from "./views/components/Footer";
@@ -23,6 +23,7 @@ function App(props) {
 
     const {
         dispatch,
+        isLoading,
         toastMessage,
         location,
     } = props;
@@ -31,26 +32,21 @@ function App(props) {
        dispatch(Action.Creators.updateState({
            // toastMessage: '',
            currentPath: location.pathname,
+           isLoading: true
        }))
     }, [location.pathname]);
 
     return (
         <div className="App">
 
-            {/*<PreLoader/>*/}
+
             <Header currentPath={location.pathname}/>
 
             <Switch>
                 <Route exact path={'/'} component={Home}/>
-                <Route path={'/login'} component={Login}/>
-                <Route path={'/join'} component={Join}/>
 
                 <Route path={'/random'} component={RandomPhotos}/>
                 <Route path={'/category'} component={CategoryContent}/>
-                {/*<Route path={'/category'}*/}
-                {/*render={(props = { test: '209138'}) => <CategoryContent {...props}/>}*/}
-                {/*/>*/}
-
 
                 {/*<Route path={'/collections/:id/:title/share'} component={PopupShare}/>*/}
                 <Route path={'/collections/:id/:title/'} component={CollectionPhotos}/>
@@ -63,6 +59,10 @@ function App(props) {
             </Switch>
 
             <Footer/>
+            <PreLoader isLoading={isLoading}></PreLoader>
+            {/*{*/}
+            {/*    isLoading && <PreLoader isLoading={isLoading}/>*/}
+            {/*}*/}
             {
                 toastMessage &&
                 <Toast message={toastMessage}/>

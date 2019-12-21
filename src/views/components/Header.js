@@ -144,12 +144,12 @@ function Header(props) {
                         {/*<div className="link">*/}
                         {/*<i className="material-icons">notification_important</i>*/}
                         {/*</div>*/}
-                        <Link to={'/login'} className="link">
+                        <div className="link" onClick={() => {alert('Not prepared yet!')}}>
                             <div className="txt">Login</div>
-                        </Link>
-                        <Link to={'/join'} className="link green">
+                        </div>
+                        <div className="link green" onClick={() => {alert('Not prepared yet!')}}>
                             <div className="txt">Join free</div>
-                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>

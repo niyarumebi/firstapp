@@ -2,6 +2,13 @@ import Action from "./action";
 
 const initialState = {
     /**
+     * ======= Common usage =======
+     */
+    isLoading: false,
+    toastMessage: '',
+    popupShare: null,
+
+    /**
      * ======= Photos =======
      */
     recentPhotos: [],

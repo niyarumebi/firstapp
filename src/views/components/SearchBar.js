@@ -16,7 +16,9 @@ function SearchBar(props) {
     const [value, setValue] = useState('');
 
     useEffect(() => {
-        setValue(keyword)
+        if(keyword){
+            setValue(keyword)
+        }
     },[keyword]);
 
     return (

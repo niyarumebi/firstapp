@@ -20,7 +20,6 @@ function Home(props) {
 
     return (
         <div className="Home">
-
             <div className="main-visual">
                 <div className="main-txt">
                     <p className="t1">Unsplash</p>

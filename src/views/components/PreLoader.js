@@ -1,33 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components'
+import {connect} from "react-redux";
 
-// const Container = styled.div`
-// position: fixed;
-//   z-index: 50000;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   background: rgba(255,255,255,.5);
-//   display: flex;
-//   img{
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 70px;
-//   }
-// `;
+const Container = styled.div`
+position: absolute;
+  z-index: 50000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  img{
+    display: flex;
+    height: 140px;
+  }
+    ${props => {
+    if (props.toggle) {
+        return `
+          display: flex;
+      `;
+    } else {
+        return `
+          display: none;
 
-function PreLoader (props) {
+      `;
+    }
+}}
+`;
 
-  const {} = props;
+function PreLoader(props) {
+    const {
+        isLoading
+    } = props;
 
-  return (
-          <div className="PreLoader">
-              <div className="img"></div>
-              ddd
-          </div>
-      )
+    console.log("@@ isLoading in preloader.js", isLoading);
+    return (
+        <Container toggle={isLoading}>
+            <img src="https://flevix.com/wp-content/uploads/2019/07/Ring-Loading.gif" alt=""/>
+        </Container>
+    )
 }
 
-export default PreLoader;
+export default connect(state => ({...state}), dispatch => ({dispatch}))(PreLoader);

@@ -8,6 +8,15 @@ export default function* () {
     /**
      * ======= Common usage =======
      */
+    const isLoading = function*(load, duration){//변수이름이랑 동일하게??
+        yield put(Action.Creators.updateState({
+            isLoading: load
+        }));
+        yield spawn(function* () {
+            yield delay(2000);//toastMessage도 리듀서에써주는게..명시적으로 낫지?
+            yield put(Action.Creators.updateState({isLoading: false}))
+        })
+    };
     const toastMessage = function* (message, duration) {
         yield put(Action.Creators.updateState({
             toastMessage: message
