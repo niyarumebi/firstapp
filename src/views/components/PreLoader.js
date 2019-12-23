@@ -36,7 +36,6 @@ function PreLoader(props) {
         isLoading
     } = props;
 
-    console.log("@@ isLoading in preloader.js", isLoading);
     return (
         <Container toggle={isLoading}>
             <img src="https://flevix.com/wp-content/uploads/2019/07/Ring-Loading.gif" alt=""/>

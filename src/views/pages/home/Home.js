@@ -4,6 +4,7 @@ import SearchBar from "../../components/SearchBar";
 import {connect} from "react-redux";
 import Action from '../../../redux/action'
 import Toast from "../../components/Toast";
+import PreLoader from "../../components/PreLoader";
 
 
 function Home(props) {

@@ -4,11 +4,13 @@ import PhotoCard from "./PhotoCard";
 import PhotoDetail from "./PhotoDetail";
 import {connect} from "react-redux";
 import Action from "../../redux/action";
+import PreLoader from "./PreLoader";
 
 function Photos(props) {
 
     const {
         dispatch,
+        isLoading,
         selectedPhoto,
         photos = [],
     } = props;
@@ -25,9 +27,8 @@ function Photos(props) {
     });
 
     return (
-        <div className="Photos">
-            {/*<div className="fixed-center" style={{backgroundColor: 'yellow'}}>Scroll position: {scrollY}px</div>*/}
-
+        <div className="Photos" style={{position: 'relative'}}>
+            <PreLoader isLoading={isLoading}/>
             {
                 _.map(_photos, (group, i) => <PhotoGroup
                     key={i}

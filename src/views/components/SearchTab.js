@@ -15,12 +15,15 @@ function SearchTab(props) {
 
     const {
         dispatch,
+        isLoading,
         searchResult,
     } = props;
 
     const T1 = 'photos';
     const T2 = 'collections';
     const T3 = 'users';
+    const TYPES = ['photos', 'collections', 'users'];
+    const paramType = TYPES[0];
 
     const [type, setType] = useState(props.match.params.type);
     const keyword = props.match.params.keyword;
@@ -47,7 +50,11 @@ function SearchTab(props) {
 
     useEffect(() => {
         dispatch(Action.Creators.fetchSearch(keyword));
-    }, [keyword]);
+    }, [keyword]); // 비동기통신은 keyword바뀔때만 도니까
+
+    useEffect(()=> {
+        setType(paramType)
+    }, [paramType]);
 
     if (!searchResult) {
         return false;

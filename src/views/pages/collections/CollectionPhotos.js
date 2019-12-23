@@ -12,6 +12,7 @@ function CollectionPhotos(props) {
 
     const {
         dispatch,
+        showSharePopup,
         collectionById,
         collectionPhotos,
     } = props;
@@ -41,7 +42,8 @@ function CollectionPhotos(props) {
                             name={collectionById.user.username}
                         />
                         <div className="btn-basic btn-type btn-share" onClick={() => {
-                            navigate(`/collections/${id}/${makeADash(collectionById.title)}/share`)
+                            // navigate(`/collections/${id}/${makeADash(collectionById.title)}/share`)
+                            dispatch(Action.Creators.updateState({showSharePopup:true}))
                         }}>
                             <i className="material-icons">reply</i> Share
                         </div>

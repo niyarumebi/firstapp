@@ -6,7 +6,7 @@ const initialState = {
      */
     isLoading: false,
     toastMessage: '',
-    popupShare: null,
+    showSharePopup: null,
 
     /**
      * ======= Photos =======
