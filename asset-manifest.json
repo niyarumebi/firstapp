@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/reactUnsplash/static/css/main.cb8e3745.chunk.css",
+    "main.js": "/reactUnsplash/static/js/main.a5a7c114.chunk.js",
+    "main.js.map": "/reactUnsplash/static/js/main.a5a7c114.chunk.js.map",
+    "runtime-main.js": "/reactUnsplash/static/js/runtime-main.d2dc09a5.js",
+    "runtime-main.js.map": "/reactUnsplash/static/js/runtime-main.d2dc09a5.js.map",
+    "static/js/2.546e32d0.chunk.js": "/reactUnsplash/static/js/2.546e32d0.chunk.js",
+    "static/js/2.546e32d0.chunk.js.map": "/reactUnsplash/static/js/2.546e32d0.chunk.js.map",
+    "index.html": "/reactUnsplash/index.html",
+    "precache-manifest.b83a6fdc06b9b34041633b6b10afe070.js": "/reactUnsplash/precache-manifest.b83a6fdc06b9b34041633b6b10afe070.js",
+    "service-worker.js": "/reactUnsplash/service-worker.js",
+    "static/css/main.cb8e3745.chunk.css.map": "/reactUnsplash/static/css/main.cb8e3745.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d2dc09a5.js",
+    "static/js/2.546e32d0.chunk.js",
+    "static/css/main.cb8e3745.chunk.css",
+    "static/js/main.a5a7c114.chunk.js"
+  ]
+}
