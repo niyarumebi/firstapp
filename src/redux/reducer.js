@@ -6,6 +6,7 @@ const initialState = {
      */
     isLoading: false,
     toastMessage: '',
+    opacityScreen: false,
     showSharePopup: null,
 
     /**

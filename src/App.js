@@ -13,23 +13,33 @@ import RandomPhotos from "./views/pages/randomPhotos/RandomPhotos";
 import CollectionPhotos from "./views/pages/collections/CollectionPhotos";
 import PopupShare from "./views/components/PopupShare";
 import Toast from "./views/components/Toast";
+import OpacityScreen from "./views/components/OpacityScreen";
 
 function App(props) {
 
     const {
         dispatch,
-        isLoading,
         toastMessage,
+        opacityScreen,
         showSharePopup,
         location,
     } = props;
 
     useEffect(() => {
-       dispatch(Action.Creators.updateState({
-           // toastMessage: '',
-           currentPath: location.pathname,
-       }))
+        dispatch(Action.Creators.updateState({
+            // toastMessage: '',
+            currentPath: location.pathname,
+            showSharePopup: false,
+        }));
+
+        if(location.pathname.indexOf('search') < 0){
+            dispatch(Action.Creators.updateState({
+                keyword: '',
+            }));
+        }
     }, [location.pathname]);
+    
+    console.log("@@ props", props);
 
     return (
         <div className="App">
@@ -53,6 +63,10 @@ function App(props) {
             {
                 showSharePopup &&
                 <PopupShare/>
+            }
+            {
+                opacityScreen &&
+                    <OpacityScreen/>
             }
 
             {

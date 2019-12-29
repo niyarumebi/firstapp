@@ -41,7 +41,6 @@ export default function* () {
         yield put(Action.Creators.updateState({recentPhotos: result.data}));
         yield isLoading(false);
         yield toastMessage('로드가 완료되었습니다.', 2000);
-
     });
 
     yield takeLatest(Action.Types.FETCH_RANDOM_PHOTOS, function* () {
@@ -116,12 +115,10 @@ export default function* () {
     });
 
     yield takeLatest(Action.Types.FETCH_COLLECTION_BY_ID, function* (action) {
-        yield isLoading(true);
         const result = yield call(api.fetchCollectionById, action.payload);
         console.log(`[saga] [fetchCollectionById]`, result.data);
 
         yield put(Action.Creators.updateState({collectionById: result.data}))
-        yield isLoading(false);
     });
 
     yield takeLatest(Action.Types.FETCH_COLLECTION_PHOTOS, function* (action) {

@@ -7,12 +7,12 @@ import UserIcon from "../../components/UserIcon";
 import cn from 'classnames'
 import {navigate} from "../../../helpers/HistoryHelper";
 import {makeADash} from "../../../helpers/CommonHelper";
+import PreLoader from "../../components/PreLoader";
 
 function CollectionPhotos(props) {
 
     const {
         dispatch,
-        showSharePopup,
         collectionById,
         collectionPhotos,
     } = props;
@@ -21,12 +21,13 @@ function CollectionPhotos(props) {
     const id = props.match.params.id;
 
     useEffect(() => {
+        //PreLoader로 초기화도 가려질 것.
         // dispatch(Action.Creators.updateS tate({collectionById : null, collectionPhotos: null}));
         dispatch(Action.Creators.fetchCollectionById(id));
         dispatch(Action.Creators.fetchCollectionPhotos(id));
     }, [id]);
-    
-    if(!collectionById){
+
+    if (!collectionById) {
         return false;
     }
 
@@ -35,15 +36,14 @@ function CollectionPhotos(props) {
             <div className="page-header">
                 <div className="bg"
                      style={{backgroundImage: `url(${collectionById.cover_photo.urls.regular})`}}/>
-                <PageTitle  title={collectionById.title} msg={collectionById.description}>
+                <PageTitle title={collectionById.title} msg={collectionById.description}>
                     <div className="user-wrap">
                         <UserIcon
                             src={collectionById.user.profile_image.small}
                             name={collectionById.user.username}
                         />
                         <div className="btn-basic btn-type btn-share" onClick={() => {
-                            // navigate(`/collections/${id}/${makeADash(collectionById.title)}/share`)
-                            dispatch(Action.Creators.updateState({showSharePopup:true}))
+                            dispatch(Action.Creators.updateState({showSharePopup: true, opacityScreen: true}))
                         }}>
                             <i className="material-icons">reply</i> Share
                         </div>
@@ -55,7 +55,6 @@ function CollectionPhotos(props) {
                 <div className="count-info">
                     {collectionById.total_photos} photos
                 </div>
-
                 <Photos photos={collectionPhotos}></Photos>
             </div>
 

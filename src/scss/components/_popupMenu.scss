@@ -35,7 +35,7 @@
     transform: rotate(45deg);
   }
   &.open-active{
-    z-index:50000;
+    z-index:10001;
     opacity: 1;
     -webkit-transform: scale(1);
     -moz-transform: scale(1);

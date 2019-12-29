@@ -4,7 +4,7 @@ import {navigate} from "../../helpers/HistoryHelper";
 
 const Container = styled.div`
 position: fixed;
-z-index: 60000;
+z-index: 30000;
 top: 0;
 bottom: 0;
 left: 0;

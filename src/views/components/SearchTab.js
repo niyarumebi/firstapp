@@ -113,7 +113,6 @@ function SearchTab(props) {
                             }
                         </div>
                     </div>
-
                     {
                         type === T1 && <Photos photos={searchResult.photos.results}></Photos>
                         // searchPhotos.results.length > 0) ?  : <NoData/>
