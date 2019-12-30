@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import {navigate} from "../../helpers/HistoryHelper";
+import {BASE_LINE} from "../../helpers/ConstsHelper";
 
 const Container = styled.div`
 position: fixed;

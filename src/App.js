@@ -6,7 +6,6 @@ import Home from "./views/pages/home/Home";
 import Header from "./views/components/Header";
 import NotFound from "./views/pages/NotFound";
 import Search from "./views/pages/search/Search";
-
 import Collections from "./views/pages/collections/Collections";
 import Footer from "./views/components/Footer";
 import RandomPhotos from "./views/pages/randomPhotos/RandomPhotos";
@@ -43,8 +42,6 @@ function App(props) {
 
     return (
         <div className="App">
-
-
             <Header currentPath={location.pathname}/>
 
             <Switch>
