@@ -14,10 +14,6 @@ export default function* () {
         }));
     };
 
-    function hasLoading(fn){
-
-    };
-
     const toastMessage = function* (message, duration) {
         yield put(Action.Creators.updateState({
             toastMessage: message

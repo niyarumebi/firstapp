@@ -1,18 +1,3 @@
-// import * as axios from "axios";
-// import {BASE_URL} from "./ConstsHelper";
-//
-// //컨스트 이름은 아무거나
-// // 비동기란?
-// //통신이 잇고 왓다갓다하는 건데
-// const axioInstance = axios.create({
-//     baseURL: BASE_URL,
-//     timeout: 15000,
-//     headers: { //통신방식. 그냥 찾아보기
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//     }
-// });
-
 import axios from 'axios';
 import {ACCESS_KEY, BASE_URL} from './ConstsHelper';
 
