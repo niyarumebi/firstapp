@@ -4,12 +4,14 @@ import _ from 'lodash'
 import CollectionItem from "../../components/CollectionItem";
 import {connect} from "react-redux";
 import Action from "../../../redux/action";
+import PreLoader from "../../components/PreLoader";
 
 function Collections(props) {
 
     const {
         dispatch,
-        collections
+        isLoading,
+        collections,
     } = props;
 
     useEffect(() => {
@@ -25,7 +27,8 @@ function Collections(props) {
                 linkTxt={'Unsplash License'}
             />
             <div className="container">
-                <div className="collection-wrap">
+                <div className="collection-wrap" style={{position: 'relative'}}>
+                    <PreLoader isLoading={isLoading}/>
                     {
                         _.map(collections, (collection,i) =>
                             <CollectionItem

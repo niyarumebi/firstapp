@@ -2,22 +2,30 @@ import React, {useState, useEffect} from 'react';
 import FetchHelper from "../../helpers/FetchHelper";
 import Action from "../../redux/action";
 import {connect} from "react-redux";
+import {navigate} from "../../helpers/HistoryHelper";
 
 function SearchBar(props) {
 
     const {
         placeholder = 'Search free high-resolution photos',
+        keyword,
         dispatch,
     } = props;
 
+
     const [value, setValue] = useState('');
+
+    useEffect(() => {
+        if(keyword){
+            setValue(keyword)
+        }
+    },[keyword]);
+
     return (
         <div className="SearchBar">
             <i className="material-icons"
             onClick={() => {
-                dispatch(Action.Creators.fetchSearchPhotos(value));
-                // dispatch(Action.Creators.fetchSearchCollections(value));
-                // dispatch(Action.Creators.fetchSearchUsers(value));
+                navigate(`/search/photos/${value}`)
             }}>search</i>
             <input
                 type="text"
@@ -28,9 +36,7 @@ function SearchBar(props) {
                 }}
                 onKeyUp={(e) => {
                     if (e.keyCode === 13) {
-                        dispatch(Action.Creators.fetchSearchPhotos(value));
-                        // dispatch(Action.Creators.fetchSearchCollections(value));
-                        // dispatch(Action.Creators.fetchSearchUsers(value));
+                        navigate(`/search/photos/${value}`)
                     }
                 }}
             />

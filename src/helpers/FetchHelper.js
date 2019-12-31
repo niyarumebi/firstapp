@@ -1,18 +1,3 @@
-// import * as axios from "axios";
-// import {BASE_URL} from "./ConstsHelper";
-//
-// //컨스트 이름은 아무거나
-// // 비동기란?
-// //통신이 잇고 왓다갓다하는 건데
-// const axioInstance = axios.create({
-//     baseURL: BASE_URL,
-//     timeout: 15000,
-//     headers: { //통신방식. 그냥 찾아보기
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//     }
-// });
-
 import axios from 'axios';
 import {ACCESS_KEY, BASE_URL} from './ConstsHelper';
 
@@ -56,8 +41,6 @@ const request = async (method, url, data = {}) => {
         };
 
         if(method === FetchConsts.GET) {
-            //왜 get에만 이렇게 나눠서 따로 잡지? params는 위에 없는데
-            //get일때는 params로 추가해서 쓰고, 나머지 통신은 data로 쓰는 요소인가본,,
             axiosConfig.params = data; // get은 body가없고, url에 쿼리 추가해서 쓰는 방식이라서고.
         } else {
             axiosConfig.data = data;

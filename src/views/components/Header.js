@@ -1,88 +1,79 @@
 import React, {useState, useEffect} from 'react';
 import SearchBar from "./SearchBar";
 import HeaderCategory from "./HeaderCategory";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {navigate} from "../../helpers/HistoryHelper";
-import MenuPopup from "./MenuPopup";
-import * as _ from "lodash";
-
+import PopupMenu from "./PopupMenu";
+import { FaTwitter, FaFacebookSquare,  FaInstagram, FaMedium } from "react-icons/fa";
+import _ from 'lodash';
 function Header(props) {
-
     const {
-        currentPath,
+        currentPath
     } = props;
 
-    const [moreMenu, setMoreMenu] = useState({
-        isOpen: false,
-        isRightSide: false,
-    });
+    const [isOpen, setIsOpen] = useState(false);
 
     const moreMenuItems = [
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'Blog',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'Community',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'History',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'Made with Unsplash',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'API/Developers',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'Press',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'Join the team',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'License',
         },
         {
-            link: 'https://naver.com',
+            link: '/',
             txt: 'Help',
         },
     ];
 
+    function checkEvent(e){
+       if(document.getElementsByClassName('PopupMenu')){
+           if(e.target.innerHTML !== 'more_horiz' || e.target.className.indexOf('PopupMenu') == 0){
+               setIsOpen(false);
+           }
+       }
+    }
 
-    const collectionMenuRoutes = [
-        {
-            name: 'collec',
-            to: '/'
-        },
-        {
-            name: 'following',
-            to: '/following'
+    useEffect(() => {
+        function watchClick(){
+            window.addEventListener('click', checkEvent);
         }
-    ];
-
-    const homeMenuRoutes = [
-        {
-            name: 'Editorial',
-            to: '/'
-        },
-        {
-            name: 'following',
-            to: '/following'
+        watchClick();
+        //component will unmount 시에 걸리는 return 인가?
+        return () => {
+            window.removeEventListener('click', checkEvent)
         }
-    ];
+    }, []);
 
-
-
-    function Menu({routes}) {
-        return _.map(routes, route => <div onClick={() => navigate(route.to)}>{route.name}</div>)
+    function Menu({routes}){
+        return _.map(routes, (route, i) => <div key={i}
+                                           onClick={() => navigate(route.to)}>{route.name}</div>)
     }
 
     return (
@@ -127,31 +118,31 @@ function Header(props) {
                         </Link>
                         <div className="link"
                              style={{position: 'relative'}}
-                             onClick={() => setMoreMenu({isOpen: !moreMenu.isOpen})}
+                             onClick={() => setIsOpen(!isOpen)}
                         >
                             <div className="txt">
                                 <i className="material-icons">more_horiz</i>
                             </div>
-                            <MenuPopup
+                            <PopupMenu
                                 items={moreMenuItems}
-                                isOpen={moreMenu.isOpen}
+                                isOpen = {isOpen}
                             >
                                 <div className="col-wrap">
                                     <Link to={'/'} className="item">
-                                        <i className="material-icons">contactless</i>
+                                        <FaTwitter/>
                                     </Link>
                                     <Link to={'/'} className="item">
-                                        <i className="material-icons">contactless</i>
+                                        <FaFacebookSquare/>
                                     </Link>
                                     <Link to={'/'} className="item">
-                                        <i className="material-icons">contactless</i>
+                                        <FaInstagram/>
                                     </Link>
                                     <Link to={'/'} className="item">
-                                        <i className="material-icons">contactless</i>
+                                        <FaMedium/>
                                     </Link>
                                 </div>
 
-                            </MenuPopup>
+                            </PopupMenu>
                         </div>
                         <Link to={'/submit'} className="link btn-type">
                             <div className="txt">Submit a photo</div>
@@ -161,20 +152,21 @@ function Header(props) {
                         {/*<div className="link">*/}
                         {/*<i className="material-icons">notification_important</i>*/}
                         {/*</div>*/}
-                        <Link to={'/login'} className="link">
+                        <div className="link" onClick={() => {alert('Not prepared yet!')}}>
                             <div className="txt">Login</div>
-                        </Link>
-                        <Link to={'/join'} className="link green">
+                        </div>
+                        <div className="link green" onClick={() => {alert('Not prepared yet!')}}>
                             <div className="txt">Join free</div>
-                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="bottom">
-                <HeaderCategory/>
-            </div>
+                {
+                    (currentPath === '/' || currentPath.indexOf('bCate') > 0 ) &&
+                    <HeaderCategory/>
+                }
         </div>
     )
 }
 
-export default Header;
+export default withRouter(Header);

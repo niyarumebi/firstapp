@@ -9,7 +9,6 @@
 
 @import "components/header";
 @import "components/headerCategory";
-@import "components/headerUnderCate";
 @import "components/footer";
 
 //common piece
@@ -20,12 +19,13 @@
 
 //content piece
 @import "components/userIcon";
+@import "components/userCard";
 @import "components/tagList";
 @import "components/collection";
 
 //another layer piece
-@import "components/toast";
-@import "components/menuPopup";
+@import "components/popupMenu";
+@import "components/popupShare";
 
 //main piece
 @import "components/photos";
@@ -35,5 +35,6 @@
 
 //pages-------------------------
 @import "pages/home";
+@import "pages/search";
 @import "pages/collections";
 @import "pages/collectionPhotos";

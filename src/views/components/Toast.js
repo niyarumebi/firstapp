@@ -1,34 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
-const Container = styled.span`
+const Container = styled.div`
   position: fixed;
-  top: 123px;
-  left: 0;
-  right: 0;
-  height: 70px;
-  background:#4398ED;
-  color:#fff;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
+  z-index: 20000;
+  bottom: 70px;
+  left: 50%;
+  -webkit-transform: translate(-50%,0);
+  -moz-transform: translate(-50%,0);
+  -ms-transform: translate(-50%,0);
+  -o-transform: translate(-50%,0);
+  transform: translate(-50%,0);
+  padding: 11px 30px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  background: #17a8f1;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+  //color: $white;
 `;
 
+function Toast(props) {
+    const {
+        message
+    } = props;
 
-
-function Toast (props) {
-
-  const {
-      message
-  } = props;
-
-  return (
-          <Container>
+    return (
+        <Container>
             {message}
-          </Container>
-      )
-};
+        </Container>
+    )
+}
 
 export default Toast;

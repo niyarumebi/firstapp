@@ -4,44 +4,31 @@ import PhotoCard from "./PhotoCard";
 import PhotoDetail from "./PhotoDetail";
 import {connect} from "react-redux";
 import Action from "../../redux/action";
+import PreLoader from "./PreLoader";
 
 function Photos(props) {
 
     const {
         dispatch,
+        isLoading,
         selectedPhoto,
         photos = [],
     } = props;
 
-    // const a = [1,2,3,4,5,6,6,7];
-    //
-    // let result = [[],[],[]]
-    //
-    // _.map(a, (item, index) => {
-    //     if(index % 3 === 0) {
-    //         result[0].push(item) ;
-    //     }
-    //     else if(index % 3 === 1) {
-    //         result[1].push(item);
-    //     }
-    //     else if(index % 3 === 2) {
-    //         result[2].push(item);
-    //     }
-    // });
-    //
-    // console.log("@@ result", result);
-
-    let item_length = photos.length;
-    const unit = 3;
-    const chunk_unit = Math.floor((item_length / unit)) + 1;
-    const _photos = _.chunk(photos, chunk_unit); // 사이즈를 3으로하면 안되고 3개로 나눴을 떄 갯수로 구해야하는?
-
-
+    let _photos = [[], [], []];
+    _.map(photos, (photo, i) => {
+        if (i % 3 === 0) {
+            _photos[0].push(photo);
+        } else if (i % 3 === 1) {
+            _photos[1].push(photo);
+        } else if (i % 3 === 2) {
+            _photos[2].push(photo);
+        }
+    });
 
     return (
-        <div className="Photos">
-            {/*<div className="fixed-center" style={{backgroundColor: 'yellow'}}>Scroll position: {scrollY}px</div>*/}
-
+        <div className="Photos" style={{position: 'relative'}}>
+            <PreLoader isLoading={isLoading}/>
             {
                 _.map(_photos, (group, i) => <PhotoGroup
                     key={i}
@@ -54,7 +41,7 @@ function Photos(props) {
                 _.keys(selectedPhoto).length > 0 &&
                 <PhotoDetail photo={selectedPhoto}
                              onClose={() => {
-                                 dispatch(Action.Creators.updateState({selectedPhoto: {}}))
+                                 dispatch(Action.Creators.updateState({opacityScreen:false, selectedPhoto: {}}))
                              }}
                 />
             }
@@ -62,18 +49,20 @@ function Photos(props) {
     )
 }
 
+
 function PhotoGroup(props) {
     const {
         dispatch,
         group,
     } = props;
+
     return (
         <div className="photo-col">
             {
                 _.map(group, (photo, i) => <PhotoCard
                     key={i}
                     photo={photo}
-                    showDetail={() => dispatch(Action.Creators.updateState({selectedPhoto: photo}))}
+                    showDetail={() => dispatch(Action.Creators.updateState({opacityScreen:true ,selectedPhoto: photo}))}
                 />)
             }
         </div>

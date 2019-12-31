@@ -21,23 +21,23 @@ function PhotoDetail(props) {
     useEffect(() => {
         dispatch(Action.Creators.fetchRelatedPhotos('note'));
     }, []);
-    {/* 창 esc로 끄는 건 밖에서 window.e 캐치해서 onCLose로 연결해줘야할*/}
 
-
-    const [scrollY, setScrollY] = useState(0);
-    function logit() {
-        setScrollY(window.pageYOffset);
-    }
-    useEffect(() => {
-        function watchScroll() {
-            window.addEventListener("scroll", logit);
+    function checkEvent(e){
+        if(e.keyCode === 13 || e.keyCode === 27){
+            onClose();
         }
-        watchScroll();
-        // Remove listener (like componentWillUnmount)
+    }
+
+    useEffect(() => {
+        function watchKeyUp(){
+            window.addEventListener('keyup', checkEvent);
+        }
+        watchKeyUp();
+
         return () => {
-            window.removeEventListener("scroll", logit);
-        };
-    });
+            window.removeEventListener('keyup', checkEvent)
+        }
+    }, []);
 
     return (
         <div className="PhotoDetail"
@@ -86,7 +86,6 @@ function PhotoDetail(props) {
 
                 <div className="related-photos-wrap">
                     {
-                        console.log("@@ relatedPhotos.length", relatedPhotos.length)
                         // relatedPhotos.length > 0 &&  <Photos photos={relatedPhotos}/>
                     }
                 </div>

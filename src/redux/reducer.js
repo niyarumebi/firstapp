@@ -1,24 +1,41 @@
 import Action from "./action";
 
 const initialState = {
-    //photos
+    /**
+     * ======= Common usage =======
+     */
+    isLoading: false,
+    toastMessage: '',
+    opacityScreen: false,
+    showSharePopup: null,
+
+    /**
+     * ======= Photos =======
+     */
     recentPhotos: [],
     selectedPhoto: null,
     randomPhotos: [],
     relatedPhotos: [],
 
-    //search
+    /**
+     * ======= Search =======
+     */
     keyword: null,
+    searchResult: null,
     searchPhotos: [],
     searchCollections: [],
     searchUsers: [],
 
-    //collection
+    /**
+     * ======= Collections =======
+     */
     collections: null,
-    selectedCollection: null,
+    collectionById: null,
     collectionPhotos: [],
 
-    //user
+    /**
+     * ======= Users =======
+     */
     userProfile: null,
 };
 
@@ -27,7 +44,7 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         default:
             return state;
-            case Action.Types.UPDATE_STATE: {
+        case Action.Types.UPDATE_STATE: {
             return {
                 ...state,
                 ...action.payload

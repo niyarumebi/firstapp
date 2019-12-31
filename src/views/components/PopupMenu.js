@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import cn from 'classnames'
 import _ from 'lodash';
 
-function MenuPopup(props) {
+function PopupMenu(props) {
 
     const {
         children,
@@ -18,16 +18,15 @@ function MenuPopup(props) {
     } = props;
 
     return (
-        <div className={cn("MenuPopup", {'open-active': isOpen, 'right-side': isRightSide})}>
-
+        <div className={cn("PopupMenu", {'open-active': isOpen, 'right-side': isRightSide})}
+        >
             {_.map(items, (item, i) =>
                 <Link to={item.link} className='item' key={i}>{item.txt}</Link>
             )}
 
             {children}
-
         </div>
     )
 }
 
-export default MenuPopup;
+export default PopupMenu;
