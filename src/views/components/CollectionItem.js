@@ -1,66 +1,40 @@
 import React, {useState, useEffect} from 'react';
-import PageTitle from "../../components/PageTitle";
+import {Link} from "react-router-dom";
+import TagList from "./TagList";
 import {connect} from "react-redux";
-import Action from "../../../redux/action";
-import Photos from "../../components/Photos";
-import UserIcon from "../../components/UserIcon";
-import cn from 'classnames'
-import {navigate} from "../../../helpers/HistoryHelper";
-import {makeADash} from "../../../helpers/CommonHelper";
-import PreLoader from "../../components/PreLoader";
+import {navigate} from "../../helpers/HistoryHelper";
+import {makeADash} from "../../helpers/CommonHelper";
 
-function CollectionPhotos(props) {
+function CollectionItem(props) {
 
     const {
-        dispatch,
-        collectionById,
-        collectionPhotos,
+        collection,
     } = props;
 
 
-    const id = props.match.params.id;
-
-    useEffect(() => {
-        //PreLoader로 초기화도 가려질 것.
-        // dispatch(Action.Creators.updateS tate({collectionById : null, collectionPhotos: null}));
-        dispatch(Action.Creators.fetchCollectionById(id));
-        dispatch(Action.Creators.fetchCollectionPhotos(id));
-    }, [id]);
-
-    if (!collectionById) {
-        return false;
-    }
-
     return (
-        <div className="CollectionPhotos">
-            <div className="page-header">
-                <div className="bg"
-                     style={{backgroundImage: `url(${collectionById.cover_photo.urls.regular})`}}/>
-                <PageTitle title={collectionById.title} msg={collectionById.description}>
-                    <div className="user-wrap">
-                        <UserIcon
-                            src={collectionById.user.profile_image.small}
-                            name={collectionById.user.username}
-                        />
-                        <div className="btn-basic btn-type btn-share" onClick={() => {
-                            dispatch(Action.Creators.updateState({showSharePopup: true, opacityScreen: true}))
-                        }}>
-                            <i className="material-icons">reply</i> Share
-                        </div>
-                    </div>
-                </PageTitle>
-            </div>
-
-            <div className="container">
-                <div className="count-info">
-                    {collectionById.total_photos} photos
+        <div className="Collection" onClick={() => {
+            navigate(`/collections/${collection.id}/${makeADash(collection.title)}`)
+        }}>
+            <div className="thumbs-wrap">
+                <div className="col">
+                    <div className="thumb" style={{backgroundImage: `url(${collection.preview_photos[0].urls.small})`}}></div>
                 </div>
-                <Photos photos={collectionPhotos}></Photos>
+                <div className="col2">
+                    <div className="thumb" style={{backgroundImage: `url(${collection.preview_photos[1].urls.small})`}}>
+                    </div>
+                    <div className="thumb" style={{backgroundImage: `url(${collection.preview_photos[2].urls.small})`}}>
+                    </div>
+                </div>
             </div>
 
-
+            <div className="desc-wrap">
+                <div className="title">{collection.title}</div>
+                <div className="summary">{collection.total_photos} photos · Curated by <Link to={collection.user.links.html}>{collection.user.name}</Link></div>
+                <TagList items={collection.tags}/>
+            </div>
         </div>
     )
 }
 
-export default connect(state => ({...state}), dispatch => ({dispatch}))(CollectionPhotos);
+export default connect(state => ({...state}), dispatch => ({dispatch}))(CollectionItem);

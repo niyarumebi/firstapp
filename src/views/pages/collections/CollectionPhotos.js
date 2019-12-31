@@ -5,32 +5,29 @@ import Action from "../../../redux/action";
 import Photos from "../../components/Photos";
 import UserIcon from "../../components/UserIcon";
 import cn from 'classnames'
+import {navigate} from "../../../helpers/HistoryHelper";
+import {makeADash} from "../../../helpers/CommonHelper";
+import PreLoader from "../../components/PreLoader";
 
 function CollectionPhotos(props) {
 
     const {
         dispatch,
-        selectedCollection = {
-            id: '',
-        },
-        collectionPhotos = [],
-        collectionsById
+        collectionById,
+        collectionPhotos,
     } = props;
 
-
-    console.log("@@ collectionsById", collectionsById);
 
     const id = props.match.params.id;
 
     useEffect(() => {
-        dispatch(Action.Creators.fetchCollectionsById(id));
+        //PreLoader로 초기화도 가려질 것.
+        // dispatch(Action.Creators.updateS tate({collectionById : null, collectionPhotos: null}));
+        dispatch(Action.Creators.fetchCollectionById(id));
         dispatch(Action.Creators.fetchCollectionPhotos(id));
     }, [id]);
 
-    const [openShare, setOpenShare] = useState(false);
-
-
-    if(!collectionsById) {
+    if (!collectionById) {
         return false;
     }
 
@@ -38,41 +35,26 @@ function CollectionPhotos(props) {
         <div className="CollectionPhotos">
             <div className="page-header">
                 <div className="bg"
-                     style={{backgroundImage: `url(${collectionsById.cover_photo.urls.regular})`}}/>
-                <PageTitle  title={collectionsById.title} msg={collectionsById.description}>
+                     style={{backgroundImage: `url(${collectionById.cover_photo.urls.regular})`}}/>
+                <PageTitle title={collectionById.title} msg={collectionById.description}>
                     <div className="user-wrap">
                         <UserIcon
-                            src={collectionsById.user.profile_image.small}
-                            name={collectionsById.user.username}
+                            src={collectionById.user.profile_image.small}
+                            name={collectionById.user.username}
                         />
-                        <div className="btn-basic btn-type btn-share">
+                        <div className="btn-basic btn-type btn-share" onClick={() => {
+                            dispatch(Action.Creators.updateState({showSharePopup: true, opacityScreen: true}))
+                        }}>
                             <i className="material-icons">reply</i> Share
                         </div>
                     </div>
-
-                    <div className={cn("share-popup", {'is-active': openShare})} onClick={() => setOpenShare(true)}>
-                        <div className="btn-close" onClick={(e) => {
-                            e.stopPropagation();
-                            setOpenShare(false);}}>
-                            <i className="material-icons">cancel</i>
-                        </div>
-                        <div className="title">Share</div>
-                        <div className="sub">CollectionPhotos by {collectionsById.user.username}</div>
-
-                        <div className="link-wrap text-ellipsis">
-                            {collectionsById.links.html}
-                            <div className="btn-basic">Copy link</div>
-                        </div>
-                    </div>
-
                 </PageTitle>
             </div>
 
             <div className="container">
                 <div className="count-info">
-                    {collectionsById.total_photos} photos
+                    {collectionById.total_photos} photos
                 </div>
-
                 <Photos photos={collectionPhotos}></Photos>
             </div>
 

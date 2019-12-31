@@ -7,6 +7,7 @@ import PopupMenu from "./PopupMenu";
 import { FaTwitter, FaFacebookSquare,  FaInstagram, FaMedium } from "react-icons/fa";
 import _ from 'lodash';
 function Header(props) {
+
     const {
         currentPath
     } = props;
@@ -53,11 +54,11 @@ function Header(props) {
     ];
 
     function checkEvent(e){
-       if(document.getElementsByClassName('PopupMenu')){
-           if(e.target.innerHTML !== 'more_horiz' || e.target.className.indexOf('PopupMenu') == 0){
-               setIsOpen(false);
-           }
-       }
+        if(document.getElementsByClassName('PopupMenu')){
+            if(e.target.innerHTML !== 'more_horiz' || e.target.className.indexOf('PopupMenu') == 0){
+                setIsOpen(false);
+            }
+        }
     }
 
     useEffect(() => {
@@ -73,21 +74,12 @@ function Header(props) {
 
     function Menu({routes}){
         return _.map(routes, (route, i) => <div key={i}
-                                           onClick={() => navigate(route.to)}>{route.name}</div>)
+                                                onClick={() => navigate(route.to)}>{route.name}</div>)
     }
 
     return (
         //className={cn(((e.scorllTop >= 100vh) && 'get-scroll' ))}
         <div className="Header">
-            {
-                currentPath === '/' &&
-                <Menu routes={homeMenuRoutes}/>
-            }
-
-            {
-                currentPath === '/collections' &&
-                <Menu routes={collectionMenuRoutes}/>
-            }
             <div className="upper">
                 <div className="
                 logo">
@@ -161,10 +153,10 @@ function Header(props) {
                     </div>
                 </div>
             </div>
-                {
-                    (currentPath === '/' || currentPath.indexOf('bCate') > 0 ) &&
-                    <HeaderCategory/>
-                }
+            {
+                (currentPath === '/' || currentPath.indexOf('bCate') > 0 ) &&
+                <HeaderCategory/>
+            }
         </div>
     )
 }
