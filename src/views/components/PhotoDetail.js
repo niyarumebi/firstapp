@@ -86,7 +86,6 @@ function PhotoDetail(props) {
 
                 <div className="related-photos-wrap">
                     {
-                        console.log("@@ relatedPhotos.length", relatedPhotos.length)
                         // relatedPhotos.length > 0 &&  <Photos photos={relatedPhotos}/>
                     }
                 </div>

@@ -38,8 +38,6 @@ function App(props) {
         }
     }, [location.pathname]);
     
-    console.log("@@ props", props);
-
     return (
         <div className="App">
             <Header currentPath={location.pathname}/>

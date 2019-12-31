@@ -41,7 +41,7 @@ function Photos(props) {
                 _.keys(selectedPhoto).length > 0 &&
                 <PhotoDetail photo={selectedPhoto}
                              onClose={() => {
-                                 dispatch(Action.Creators.updateState({selectedPhoto: {}}))
+                                 dispatch(Action.Creators.updateState({opacityScreen:false, selectedPhoto: {}}))
                              }}
                 />
             }
@@ -61,7 +61,7 @@ function PhotoGroup(props) {
                 _.map(group, (photo, i) => <PhotoCard
                     key={i}
                     photo={photo}
-                    showDetail={() => dispatch(Action.Creators.updateState({selectedPhoto: photo}))}
+                    showDetail={() => dispatch(Action.Creators.updateState({opacityScreen:true ,selectedPhoto: photo}))}
                 />)
             }
         </div>

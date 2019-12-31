@@ -3,8 +3,6 @@ import Photos from "../../components/Photos";
 import SearchBar from "../../components/SearchBar";
 import {connect} from "react-redux";
 import Action from '../../../redux/action'
-import Toast from "../../components/Toast";
-import PreLoader from "../../components/PreLoader";
 
 
 function Home(props) {
@@ -13,10 +11,8 @@ function Home(props) {
         recentPhotos,
     } = props;
 
-    //일단 한번만 실행함 > 내부에 선언해놓은 인풋값이 변하면 다시 실행하겠단 .. 그게 input괄호구나.. 그래서 계속 갱신됐던;
     useEffect(() => {
-        // getPhotos(); //이건 어떻게 했었는 지 기억안난다.
-        dispatch(Action.Creators.fetchPhotos()); //뷰랑 비동기-로직들이 분리되는 순간~~~ 꺌뀸
+        dispatch(Action.Creators.fetchPhotos());
     }, []);
 
     return (

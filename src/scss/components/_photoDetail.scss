@@ -16,6 +16,9 @@
   //  right: 0;
   //  background: rgba(0,0,0,0.5);
   //}
+  .photo-wrap{
+    padding: 8px 0;
+  }
   .photo-upper{
     position: relative;
     top: 0;
@@ -30,17 +33,20 @@
     }
     .left-area{
       float: left;
+      .UserIcon{
+        display: inline-block;
+      }
       .info-wrap{
         display: inline-block;
         vertical-align: middle;
       }
       .user-name{
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 500;
         cursor: pointer;
       }
       .user-id{
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 400;
         color: $gray;
       }
@@ -63,7 +69,7 @@
       top: -20px;
       left: -20px;
       font-size: 20px;
-      color: $gray;
+      color: #404040;
       cursor: pointer;
     }
   }
