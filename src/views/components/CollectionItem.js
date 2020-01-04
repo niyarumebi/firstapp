@@ -10,7 +10,7 @@ function CollectionItem(props) {
     const {
         collection,
     } = props;
-
+    
 
     return (
         <div className="Collection" onClick={() => {

@@ -54,11 +54,19 @@ function Header(props) {
     ];
 
     function checkEvent(e){
+<<<<<<< HEAD
         if(document.getElementsByClassName('PopupMenu')){
             if(e.target.innerHTML !== 'more_horiz' || e.target.className.indexOf('PopupMenu') == 0){
                 setIsOpen(false);
             }
         }
+=======
+       if(document.getElementsByClassName('PopupMenu')){
+           if(e.target.innerHTML !== 'more_horiz' || e.target.className.indexOf('PopupMenu') == 0){
+               setIsOpen(false);
+           }
+       }
+>>>>>>> play
     }
 
     useEffect(() => {
@@ -74,7 +82,11 @@ function Header(props) {
 
     function Menu({routes}){
         return _.map(routes, (route, i) => <div key={i}
+<<<<<<< HEAD
                                                 onClick={() => navigate(route.to)}>{route.name}</div>)
+=======
+                                           onClick={() => navigate(route.to)}>{route.name}</div>)
+>>>>>>> play
     }
 
     return (
@@ -153,10 +165,17 @@ function Header(props) {
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
             {
                 (currentPath === '/' || currentPath.indexOf('bCate') > 0 ) &&
                 <HeaderCategory/>
             }
+=======
+                {
+                    (currentPath === '/' || currentPath.indexOf('bCate') > 0 ) &&
+                    <HeaderCategory/>
+                }
+>>>>>>> play
         </div>
     )
 }

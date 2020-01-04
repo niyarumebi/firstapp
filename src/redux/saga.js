@@ -137,4 +137,8 @@ export default function* () {
         yield put(Action.Creators.updateState({userProfile: result.data}));
         yield isLoading(false);
     });
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> play

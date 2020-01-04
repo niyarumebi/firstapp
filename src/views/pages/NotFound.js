@@ -77,4 +77,8 @@ function NotFound (props) {
       )
 }
 
+<<<<<<< HEAD
 export default NotFound;
+=======
+export default NotFound;
+>>>>>>> play

@@ -23,6 +23,7 @@ function App(props) {
         showSharePopup,
         location,
     } = props;
+<<<<<<< HEAD
 
     useEffect(() => {
         dispatch(Action.Creators.updateState({
@@ -37,7 +38,23 @@ function App(props) {
             }));
         }
     }, [location.pathname]);
+=======
 
+    useEffect(() => {
+        dispatch(Action.Creators.updateState({
+            // toastMessage: '',
+            currentPath: location.pathname,
+            showSharePopup: false,
+        }));
+>>>>>>> play
+
+        if(location.pathname.indexOf('search') < 0){
+            dispatch(Action.Creators.updateState({
+                keyword: '',
+            }));
+        }
+    }, [location.pathname]);
+    
     return (
         <div className="App">
             <Header currentPath={location.pathname}/>
@@ -61,7 +78,11 @@ function App(props) {
             }
             {
                 opacityScreen &&
+<<<<<<< HEAD
                 <OpacityScreen/>
+=======
+                    <OpacityScreen/>
+>>>>>>> play
             }
 
             {
