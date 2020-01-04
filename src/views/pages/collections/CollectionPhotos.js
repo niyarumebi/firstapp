@@ -35,7 +35,7 @@ function CollectionPhotos(props) {
         <div className="CollectionPhotos">
             <div className="page-header">
                 <div className="bg"
-                     style={{backgroundImage: `url(${collectionById.cover_photo.urls.regular})`}}/>
+                     style={{backgroundImage: `url(${collectionById.cover_photo.urls.small})`}}/>
                 <PageTitle title={collectionById.title} msg={collectionById.description}>
                     <div className="user-wrap">
                         <UserIcon

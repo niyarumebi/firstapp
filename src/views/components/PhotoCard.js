@@ -12,7 +12,7 @@ function PhotoCard(props) {
 
             showDetail()
         }}>
-            <img src={photo.urls.regular} alt="" className="img"/>
+            <img src={photo.urls.small} alt="" className="img"/>
             <div className="desc">
 
                 <div className="upper">
