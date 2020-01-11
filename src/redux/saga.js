@@ -1,7 +1,6 @@
 import {all, put, call, takeLatest, select, delay, spawn} from 'redux-saga/effects'
 import Action from './action';
 import api from './api'
-import {navigate} from "../helpers/HistoryHelper";
 
 export default function* () {
 
