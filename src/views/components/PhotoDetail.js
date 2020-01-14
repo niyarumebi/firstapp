@@ -18,9 +18,9 @@ function PhotoDetail(props) {
         dispatch,
     } = props;
 
-    useEffect(() => {
-        dispatch(Action.Creators.fetchRelatedPhotos('note'));
-    }, []);
+    // useEffect(() => {
+    //     dispatch(Action.Creators.fetchRelatedPhotos('note'));
+    // }, []);
 
     function checkEvent(e){
         if(e.keyCode === 13 || e.keyCode === 27){

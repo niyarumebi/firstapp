@@ -31,13 +31,17 @@ function App(props) {
             showSharePopup: false,
         }));
 
-        if(location.pathname.indexOf('search') < 0){
+        if (location.pathname.indexOf('search') < 0) {
+            console.log('location.pathname.indexOf(\'search\')', location.pathname.indexOf('search'))
             dispatch(Action.Creators.updateState({
                 keyword: '',
+                //reset popup Detail
+                opacityScreen: false,
+                selectedPhoto: {}
             }));
         }
     }, [location.pathname]);
-    
+
     return (
         <div className="App">
             <Header currentPath={location.pathname}/>
@@ -61,7 +65,7 @@ function App(props) {
             }
             {
                 opacityScreen &&
-                    <OpacityScreen/>
+                <OpacityScreen/>
             }
 
             {

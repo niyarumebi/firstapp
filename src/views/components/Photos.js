@@ -70,12 +70,3 @@ function PhotoGroup(props) {
 }
 
 export default connect(state => ({...state}), (dispatch) => ({dispatch}))(Photos); //(state) => ({...state})
-//무조건 바로 스토어로 연결해서 빨대꼽는애 , = 스토어가 가지고잇는 스테이트 값 가져올수잇음
-//커넥은 인자로 함수 두개 받음 현재스테이트 알아야하고state, 랜더링해야하니까 dispatch
-//connect((state) => {}, (dispatch) => {})()  :: 앞에 함수인자받은애가 리턴을 함수로 하기 애 (연결하려는 컴포넌트).
-//photo(여기)는 프랍스에서 받게된당~~
-// export default connect((store) => (store.state), (store.dispatch) => {})(Photos);
-
-//foo는 이 photo.js에서만 쓸 커스텀 함수 하고싶을떄 일케쓰면됨
-//state안으로 접근안하고 바로 photo랑 병ㄱ렬로 놓게 !! ...으로 state전개해주기
-// export default connect((state) => ({state, foo: function foo(){ return 'hi';}}), (dispatch) => ({dispatch}))(Photos);

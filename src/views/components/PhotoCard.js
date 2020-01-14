@@ -9,7 +9,6 @@ function PhotoCard(props) {
 
     return (
         <div className="PhotoCard" onClick={() => {
-
             showDetail()
         }}>
             <img src={photo.urls.small} alt="" className="img"/>

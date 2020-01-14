@@ -142,6 +142,9 @@ function SearchTab(props) {
                             )}
                         </div>
                     }
+                    {
+                        searchResult.photos.total === 0 && <NoData msg={'검색 결과가 없습니다.'}/>
+                    }
                 </div>
             </div>
 

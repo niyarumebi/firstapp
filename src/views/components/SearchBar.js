@@ -16,9 +16,7 @@ function SearchBar(props) {
     const [value, setValue] = useState('');
 
     useEffect(() => {
-        if(keyword){
-            setValue(keyword)
-        }
+        setValue(keyword)
     },[keyword]);
 
     return (
@@ -26,6 +24,7 @@ function SearchBar(props) {
             <i className="material-icons"
             onClick={() => {
                 navigate(`/search/photos/${value}`)
+                dispatch(Action.Creators.updateState({keyword: value}))
             }}>search</i>
             <input
                 type="text"
@@ -33,10 +32,12 @@ function SearchBar(props) {
                 value={value}
                 onChange={(e) => {
                     setValue(e.target.value);
+                    // dispatch(Action.Creators.updateState({keyword: value}))
                 }}
                 onKeyUp={(e) => {
                     if (e.keyCode === 13) {
-                        navigate(`/search/photos/${value}`)
+                        navigate(`/search/photos/${value}`);
+                        dispatch(Action.Creators.updateState({keyword: value}))
                     }
                 }}
             />
