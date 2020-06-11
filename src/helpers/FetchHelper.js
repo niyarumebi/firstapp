@@ -47,6 +47,11 @@ const request = async (method, url, data = {}) => {
         }
 
         const result = await axiosInstance(axiosConfig);
+
+        console.log('@@ axiosInstance', axiosInstance); // fn으로 출력
+        console.log('@@ axiosConfig', axiosConfig); // [object]출력 > 클릭 시 설정값들 나옴
+        console.log('@@ await axiosInstance(axiosConfig)', await axiosInstance(axiosConfig)); // [object]출력 > 클릭 시 통신한 data 나옴
+
         return response(true, result.data);
 
     } catch (e) {
