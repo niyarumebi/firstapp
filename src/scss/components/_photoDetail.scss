@@ -67,7 +67,7 @@
     transform: translateY(-50%);
     margin: 30px auto;
     max-width: 1150px;
-    min-width: 80%;
+    width: 93%;
     background: $white;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -77,7 +77,7 @@
       top: -19px;
       left: -24px;
       font-size: 20px;
-      color: #404040;
+      color: #c1c1c1;
       cursor: pointer;
     }
   }
@@ -85,12 +85,8 @@
     padding: 20px 10px;
     text-align: center;
     > img{
-      display: inline-block;
       vertical-align: middle;
-      //width: 80%;
-      //max-width: 700px;
-      max-height: 80%;
-      max-width: 65%;
+      max-height: 440px;
     }
   }
   .photo-bottom{
